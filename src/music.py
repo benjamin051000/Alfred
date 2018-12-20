@@ -2,7 +2,8 @@ import discord
 from discord.ext import commands
 import youtube_dl
 from os import listdir
-import asyncio #for song_queue
+import asyncio  #for song_queue
+
 
 class MusicCog:
     def __init__(self, bot):
@@ -17,7 +18,7 @@ class MusicCog:
     async def join(self, ctx):
         await self.joinChannel(ctx)
 
-    async def joinChannel(self, ctx): #must this be its own method?
+    async def joinChannel(self, ctx):  #must this be its own method?
         '''Join the invoking player's voice channel.'''
         try:
             self.vc = await ctx.message.author.voice.channel.connect() #weird things happen when window is x'ed out
@@ -81,6 +82,7 @@ class MusicCog:
                 return await ctx.message.add_reaction("\U00002753") #question mark
         else:
             await ctx.send('Volume set at ' + str(self.audio_streamer.volume) + '.')
+
 
 def setup(bot):
     bot.add_cog(MusicCog(bot))

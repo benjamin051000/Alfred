@@ -9,6 +9,7 @@ print("Loading config data...\n")
 configLoader = configparser.ConfigParser()
 configLoader.read("..\\config.ini")
 
+
 def configSectionMap(section):
     dict = {}
     options = configLoader.options(section)

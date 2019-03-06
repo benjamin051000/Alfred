@@ -1,0 +1,28 @@
+INFO 2019-03-06 11:12:59,587 - Logger set up successfully.
+INFO 2019-03-06 11:13:00,034 - logging in using static token
+INFO 2019-03-06 11:13:00,572 - Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6&compress=zlib-stream
+INFO 2019-03-06 11:13:00,573 - Shard ID None has sent the IDENTIFY payload.
+INFO 2019-03-06 11:13:00,767 - Shard ID None has connected to Gateway: gateway-prd-main-gtb6, discord-sessions-prd-1-12 (Session ID: 5308fbc4576ee9ca63eea61a76287a72).
+INFO 2019-03-06 11:13:30,707 - Connecting to voice...
+INFO 2019-03-06 11:13:30,707 - Starting voice handshake...
+INFO 2019-03-06 11:13:30,812 - Voice handshake complete. Endpoint found us-south150.discord.gg (IP: 45.35.151.226)
+INFO 2019-03-06 11:13:31,227 - selected the voice protocol for use (xsalsa20_poly1305_suffix)
+INFO 2019-03-06 11:13:31,274 - received secret key for voice connection
+WARNING 2019-03-06 11:13:32,924 - We are being rate limited. Retrying in 0.13 seconds. Handled under the bucket "DELETE:435980913789370368:None:/channels/{channel_id}/messages/{message_id}/reactions/{emoji}/@me"
+INFO 2019-03-06 11:13:35,689 - Preparing to terminate ffmpeg process 14844.
+INFO 2019-03-06 11:13:35,689 - ffmpeg process 14844 has not terminated. Waiting to terminate...
+INFO 2019-03-06 11:13:35,703 - ffmpeg process 14844 should have terminated with a return code of 1.
+WARNING 2019-03-06 11:13:39,800 - We are being rate limited. Retrying in 0.09 seconds. Handled under the bucket "DELETE:435980913789370368:None:/channels/{channel_id}/messages/{message_id}/reactions/{emoji}/@me"
+WARNING 2019-03-06 11:13:40,110 - We are being rate limited. Retrying in 0.10 seconds. Handled under the bucket "PUT:435980913789370368:None:/channels/{channel_id}/messages/{message_id}/reactions/{emoji}/@me"
+WARNING 2019-03-06 11:13:41,666 - We are being rate limited. Retrying in 0.15 seconds. Handled under the bucket "DELETE:435980913789370368:None:/channels/{channel_id}/messages/{message_id}/reactions/{emoji}/@me"
+INFO 2019-03-06 11:13:43,211 - Preparing to terminate ffmpeg process 1880.
+INFO 2019-03-06 11:13:43,211 - ffmpeg process 1880 has not terminated. Waiting to terminate...
+INFO 2019-03-06 11:13:43,228 - ffmpeg process 1880 should have terminated with a return code of 1.
+INFO 2019-03-06 11:13:46,552 - Preparing to terminate ffmpeg process 19392.
+INFO 2019-03-06 11:13:46,553 - ffmpeg process 19392 has not terminated. Waiting to terminate...
+INFO 2019-03-06 11:13:46,567 - ffmpeg process 19392 should have terminated with a return code of 1.
+INFO 2019-03-06 11:13:52,796 - The voice handshake is being terminated for Channel ID 390906086753959938 (Guild ID 390906084379983902)
+INFO 2019-03-06 11:13:52,797 - The voice client has been removed for Channel ID 390906086753959938 (Guild ID 390906084379983902)
+INFO 2019-03-06 11:13:52,875 - Websocket closed with 1000 (), cannot reconnect.
+INFO 2019-03-06 11:13:52,875 - Cleaning up event loop.
+INFO 2019-03-06 11:13:52,875 - Cleaning up after 11 tasks

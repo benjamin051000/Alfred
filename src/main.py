@@ -44,7 +44,7 @@ if __name__ == "__main__":
 
 @bot.event
 async def on_ready():
-    print("\nConnected to Discord as", bot.user.name, "-", bot.user.id)
+    print("\nConnected to Discord as", bot.user.name, "- ID ", bot.user.id)
     print("Alfred II loaded successfully.\n______________________________\n")
     #await bot.change_presence(activity = discord.Activity(name = "", type = 2)) #type: 0-playing a game, 1-live on twitch, 2-listening, 3-watching
 

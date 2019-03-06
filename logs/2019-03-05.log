@@ -1,0 +1,11 @@
+INFO 2019-03-05 23:01:56,887 - Logger set up successfully.
+INFO 2019-03-05 23:01:57,317 - logging in using static token
+INFO 2019-03-05 23:01:57,782 - Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6&compress=zlib-stream
+INFO 2019-03-05 23:01:57,783 - Shard ID None has sent the IDENTIFY payload.
+INFO 2019-03-05 23:01:57,891 - Shard ID None has connected to Gateway: gateway-prd-main-k3l0, discord-sessions-prd-1-22 (Session ID: b96347ee829847bbe9774d7f8404a4c8).
+INFO 2019-03-05 23:02:26,169 - Connecting to voice...
+INFO 2019-03-05 23:02:26,169 - Starting voice handshake...
+INFO 2019-03-05 23:02:26,265 - Voice handshake complete. Endpoint found us-south632.discord.gg (IP: 45.35.34.30)
+INFO 2019-03-05 23:02:26,634 - selected the voice protocol for use (xsalsa20_poly1305_suffix)
+INFO 2019-03-05 23:02:26,679 - received secret key for voice connection
+WARNING 2019-03-05 23:02:27,050 - We are being rate limited. Retrying in 0.17 seconds. Handled under the bucket "PUT:435980913789370368:None:/channels/{channel_id}/messages/{message_id}/reactions/{emoji}/@me"

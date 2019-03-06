@@ -5,7 +5,7 @@ from os import listdir
 import asyncio  #for song_queue
 
 
-class MusicCog:
+class MusicCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.vc = None
@@ -81,7 +81,7 @@ class MusicCog:
                 print('Volume must be a float.')
                 return await ctx.message.add_reaction("\U00002753") #question mark
         else:
-            await ctx.send('Volume set at ' + str(self.audio_streamer.volume) + '.')
+            await ctx.send('Volume set at ' + str(int(self.audio_streamer.volume) * 100) + '.')
 
 
 def setup(bot):

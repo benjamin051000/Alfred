@@ -4,6 +4,8 @@ import datetime
 
 
 class CommandsCog(commands.Cog):
+    prune_cutoff = 25
+
     def __init__(self, bot):
         self.bot = bot
 
@@ -14,10 +16,10 @@ class CommandsCog(commands.Cog):
     @commands.command(aliases = ["clean", "purge"])
     async def prune(self, ctx, n = 1):
         '''Deletes a number n of messages.'''
-        if abs(n) > 25:
+        n = abs(n)
+        if n > CommandsCog.prune_cutoff:
             await ctx.channel.send("You can only delete up to 25 messages at a time.")
             return
-        n = abs(n)
         print(f"Purging {n + 1} message(s)...") #accounts for command invoke
         await ctx.message.remove_reaction("\U000023F3", ctx.me) #hourglass not done
         await ctx.channel.purge(limit = n + 1)

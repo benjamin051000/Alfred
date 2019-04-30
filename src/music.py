@@ -36,8 +36,6 @@ class MusicActivity(commands.Cog):
         pass
 
 
-
-
 ############################################
 class MusicCog(commands.Cog):
 
@@ -78,8 +76,17 @@ class MusicCog(commands.Cog):
     @commands.command()
     async def queue(self, ctx): # TODO implement in discord in human-readable way, embed
         '''Displays the queue.'''
-        await ctx.send(str(self.queue))
-        #print(self.queue)
+        output = ''
+        if len(self.queue) == 0:
+            await ctx.send("Nothing is enqueued. Play a song with /play")
+            return
+        else:
+            for p in self.queue:
+                output += p + '\n'
+
+        embed = discord.Embed(title='Song Queue', colour=discord.Colour(0xe7d066)) #Yellow
+        embed.set_footer(text=output)
+        await ctx.send(embed=embed)
 
     @commands.command()
     async def play(self, ctx, url):

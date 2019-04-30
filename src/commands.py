@@ -15,7 +15,7 @@ class CommandsCog(commands.Cog):
 
     @commands.command(aliases = ["clean", "purge"])
     async def prune(self, ctx, n = 1):
-        '''Deletes a number n of messages.'''
+        """Deletes a number n of messages."""
         n = abs(n)
         if n > CommandsCog.prune_cutoff:
             await ctx.channel.send("You can only delete up to 25 messages at a time.")
@@ -29,7 +29,7 @@ class CommandsCog(commands.Cog):
 
     @commands.command()
     async def shutdown(self, ctx):
-        '''Shuts down the bot.'''
+        """Shuts down the bot."""
         if ctx.author.id == 176384928672514050: # TODO put ID in config file
             await ctx.message.add_reaction("\U0001F50C") #power plug emoji
             await self.bot.logout()

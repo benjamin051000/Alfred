@@ -1,7 +1,4 @@
 ###############
 # Music files #
 ###############
-*.m4a
-*.webm
-*.mp3
-
+**/music_cache

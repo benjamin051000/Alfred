@@ -3,31 +3,16 @@ import asyncio
 from discord.ext import commands
 from discord.voice_client import VoiceClient
 import sys, traceback
-import configparser
+import configloader as cfload
 
 print("Loading config data...\n")
-configLoader = configparser.ConfigParser()
-configLoader.read("..\\config.ini")
-
-
-def configSectionMap(section):
-    dict = {}
-    options = configLoader.options(section)
-    for option in options:
-        try:
-            dict[option] = configLoader.get(section, option)
-            if dict[option] == -1:
-                DebugPrint("skip: %s!" % option)
-        except:
-            print("exception on %s!" % option)
-            dict[option] = None
-    return dict
+cfload.read("..\\config.ini")
 
 #######################    Begin Loading Process   ################################
-startup_extensions = configSectionMap("Startup")["startup_extensions"].split()
-command_prefix = configSectionMap("Commands")["command_prefix"]
+startup_extensions = cfload.configSectionMap("Startup")["startup_extensions"].split()
+command_prefix = cfload.configSectionMap("Commands")["command_prefix"]
 
-bot = commands.Bot(command_prefix = commands.when_mentioned_or(command_prefix), description = configSectionMap("Startup")["description"])
+bot = commands.Bot(command_prefix = commands.when_mentioned_or(command_prefix), description = cfload.configSectionMap("Startup")["description"])
 
 print(bot.description)
 
@@ -58,4 +43,4 @@ async def on_message(message):
         await message.add_reaction("\U0001F44B") #waving hand
 
 ###################################################################################
-bot.run(configSectionMap("Startup")["token"])
+bot.run(cfload.configSectionMap("Startup")["token"])

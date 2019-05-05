@@ -1,7 +1,10 @@
 import discord
 from discord.ext import commands
 import datetime
+import configloader as cfload
 
+cfload.read("..\\config.ini")
+print(cfload.configSectionMap("Owner Credentials"), "is the owner. Only he can use /shutdown.")
 
 class CommandsCog(commands.Cog):
     prune_cutoff = 25
@@ -23,14 +26,14 @@ class CommandsCog(commands.Cog):
         print(f"Purging {n + 1} message(s)...") #accounts for command invoke
         await ctx.message.remove_reaction("\U000023F3", ctx.me) #hourglass not done
         await ctx.channel.purge(limit = n + 1)
-        embed = discord.Embed(title = f'{ctx.message.author} purged {n} messages!', colour = discord.Colour(0xe7d066))
+        embed = discord.Embed(title = f'{ctx.message.author} deleted {n} messages!', colour = discord.Colour(0xe7d066))
         embed.set_footer(text = f"Messages purged at {datetime.datetime.now()}") # TODO round off seconds!
         await ctx.send(embed = embed)
 
     @commands.command()
     async def shutdown(self, ctx):
         '''Shuts down the bot.'''
-        if ctx.author.id == 176384928672514050: # TODO put ID in config file
+        if ctx.author.id == int(cfload.configSectionMap("Owner Credentials")["owner_id"]):
             await ctx.message.add_reaction("\U0001F50C") #power plug emoji
             await self.bot.logout()
         else:

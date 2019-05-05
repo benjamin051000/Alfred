@@ -5,7 +5,7 @@ from collections import deque
 from enum import Enum
 import asyncio
 
-class MusicActivity(commands.Cog):
+class MusicActivity(commands.Cog): # TODO rich presence
     class Status(Enum):
         PLAYING = 1
         PAUSED = 2

@@ -1,4 +1,5 @@
-###############
-# Music files #
-###############
+# Music files
 **/music_cache
+
+**/.idea
+config.ini

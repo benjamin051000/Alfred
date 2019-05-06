@@ -6,7 +6,7 @@ from enum import Enum
 import asyncio
 import functools
 
-class MusicActivity(commands.Cog): # TODO rich presence
+class MusicActivity(commands.Cog):
     class Status(Enum):
         PLAYING = 1
         PAUSED = 2
@@ -15,7 +15,6 @@ class MusicActivity(commands.Cog): # TODO rich presence
     def __init__(self, bot):
         self.bot = bot
         self.activity = discord.Activity()
-        # self.bot.change_presence(activity=self.activity)
 
     async def change_activity(self, status, ytdl_info=None):
         if status == MusicActivity.Status.PLAYING:
@@ -23,7 +22,7 @@ class MusicActivity(commands.Cog): # TODO rich presence
         elif status == MusicActivity.Status.PAUSED:
             pass
         elif status == MusicActivity.Status.STOPPED:
-            self.activity = discord.Activity() # remove activity from pane
+            self.activity = discord.Activity() # reset activity
 
         await self.bot.change_presence(activity=self.activity)
         print('updated bot presence.')
@@ -32,6 +31,7 @@ class MusicActivity(commands.Cog): # TODO rich presence
         #print(info_dict)
         self.activity.type = discord.ActivityType.listening
         self.activity.name = info_dict['title']
+        self.activity.details = "test details section"
 
     def paused(self, info_dict):
         pass
@@ -40,7 +40,7 @@ class MusicActivity(commands.Cog): # TODO rich presence
 ############################################
 class MusicCog(commands.Cog):
 
-    ytdl_opts = { #move to higher scope?
+    ytdl_opts = {
         "default_search": "auto",
         "noplaylist": True,
         'quiet' : True,
@@ -54,7 +54,7 @@ class MusicCog(commands.Cog):
         self.vc = None
         self.audio_streamer = None
         self.default_volume = 0.5
-        self.queue = deque([])
+        self.queue = deque([]) # A queue with tuples: (path, title)
         self.songinfo = {}
         self.now_playing_pane = MusicActivity(bot)
 
@@ -79,34 +79,33 @@ class MusicCog(commands.Cog):
     @commands.command()
     async def queue(self, ctx): # TODO just song title/link, may need info_dict
         '''Displays the queue.'''
-        output = ''
+        embed = discord.Embed(title='Song Queue', colour=discord.Colour(0xe7d066)) #Yellow
         if len(self.queue) == 0:
             await ctx.send("Nothing is enqueued. Play a song with /play")
             return
         else:
             for p in self.queue:
-                output += p + '\n' #TODO something doesn't work with the newline
+                embed.add_field(name=self.songinfo[p]['title'], value=None)
 
-        embed = discord.Embed(title='Song Queue', colour=discord.Colour(0xe7d066)) #Yellow
-        embed.set_footer(text=output)
         await ctx.send(embed=embed)
 
     @commands.command()
     async def play(self, ctx, *url):
-        '''Play a song via url.'''
+        '''Play a song.'''
         await ctx.message.add_reaction("\U000023F3") #hourglass not done
         await self.joinChannel(ctx)
-        # TODO check if the song is already downloaded (maybe), faster caching? May fix download bug
+        # TODO check if the song is already downloaded (maybe), faster caching?
         path, info = await MusicCog.download(url)
-        self.songinfo[path] = info
+        self.songinfo[path] = info #a record of every songinfo in the path. TODO pickle this? idk
         self.queue.append(path)
         print('Enqueued {}'.format(path))
         # Begin playing if we aren't already.
         if not self.vc.is_playing():
             self.playNext(ctx)
 
+        await ctx.message.remove_reaction("\U000023F3", ctx.me)  # hourglass not done
         await ctx.message.add_reaction("\U00002705") #white heavy check mark (green background in discord)
-        await ctx.message.remove_reaction("\U000023F3", ctx.me) #remove hourglass not done
+
 
     def playNext(self, ctx): # TODO: Add optional path for downloaded stuff?
         '''Streams the next enqueued path in self.queue.'''
@@ -114,7 +113,6 @@ class MusicCog(commands.Cog):
             asyncio.run_coroutine_threadsafe(self.now_playing_pane.change_activity(MusicActivity.Status.STOPPED, None), self.bot.loop) #update the activity
             print('The audio queue is empty.')
             return
-
         path = self.queue.popleft()
         self.audio_streamer = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(path), volume = self.default_volume)
         self.vc.play(self.audio_streamer, after = lambda e : self.playNext(ctx))
@@ -122,12 +120,14 @@ class MusicCog(commands.Cog):
         print('playing', path)
 
     @staticmethod
-    async def download(*url): # TODO BUG can't use \ / in file name
-        #'''Downloads the video using ytdl. Returns file path as a string.'''
-        print(url)
+    async def download(*url): # TODO BUG can't use characters windows doesn't like in file name.
+        '''Downloads the video using ytdl. Returns file path as a string.'''
         url = ' '.join(url[0]) #url is a tuple of tuples
         with YoutubeDL(MusicCog.ytdl_opts) as ydl:
-            info_dict = ydl.extract_info(url) # TODO BUG if streaming a song, and the same song is requested, error. may be m4a issue?
+            try:
+                info_dict = ydl.extract_info(url) # BUG if streaming a song, and the same song is requested, error. Also HTTP Errors.
+            except Exception as e:
+                print("An error occurred while trying to download the song:", e)
             if "entries" in info_dict: #something random from the github that I guess is required (see below)
                 info_dict = info_dict["entries"][0]
             print('Downloaded ', info_dict['title'] + ' successfully.')
@@ -175,4 +175,4 @@ class MusicCog(commands.Cog):
 
 def setup(bot):
     bot.add_cog(MusicCog(bot))
-    bot.add_cog(MusicActivity(bot))
+    #bot.add_cog(MusicActivity(bot))

@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e37654ec-6a1d-4080-9d15-14bbfe331706" name="Default Changelist" comment="" />
+    <list default="true" id="e37654ec-6a1d-4080-9d15-14bbfe331706" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/New Text Document.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/music_cache/Squidward's life is fucking over.webm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/music_cache/Trading With Minecraft Villagers Discord Meme.m4a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/music.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/music.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +23,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/commands.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
+            <state relative-caret-position="493">
               <caret line="29" column="83" selection-start-line="29" selection-start-column="83" selection-end-line="29" selection-end-column="83" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
@@ -28,22 +35,22 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/music.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="118" column="16" lean-forward="true" selection-start-line="118" selection-start-column="16" selection-end-line="118" selection-end-column="16" />
+            <state relative-caret-position="169">
+              <caret line="93" column="26" lean-forward="true" selection-start-line="93" selection-start-column="26" selection-end-line="93" selection-end-column="26" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/youtube_dl/YoutubeDL.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="340" lean-forward="true" selection-start-line="340" selection-end-line="340" />
-              <folding>
-                <element signature="e#2351#14909#1" />
+                <element signature="e#209#1107#0" />
+                <element signature="e#237#287#0" />
+                <element signature="e#1202#1368#0" />
+                <element signature="e#1687#1714#0" />
+                <element signature="e#1857#2047#0" />
+                <element signature="e#2022#2123#0" />
+                <element signature="e#4444#5154#0" />
+                <element signature="e#5057#5078#0" />
+                <element signature="e#4854#4936#0" />
+                <element signature="e#5020#5102#0" />
+                <element signature="e#5167#5254#0" />
+                <element signature="e#5352#5825#0" />
               </folding>
             </state>
           </provider>
@@ -61,20 +68,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="398">
+              <caret line="37" selection-start-line="37" selection-end-line="37" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config.ini">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
             </state>
           </provider>
         </entry>
@@ -92,6 +90,8 @@
     <findStrings>
       <find>VolumeTransformer</find>
       <find>configSectionMap</find>
+      <find>YoutubeDL</find>
+      <find>functools</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -115,7 +115,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1087" />
@@ -244,7 +244,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557108064617</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added the ability to search YT with a query, which enqueues the first song in the results!">
+      <created>1557115299050</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1557115299050</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -257,30 +264,67 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="974" height="1087" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.23824786" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15068494" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32914045" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49894625" weight="0.26939204" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39832285" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4963119" visible="true" weight="0.2897196" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.40083075" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32914045" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.4957265" weight="0.32914045" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.24195223" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.4946581" weight="0.32914045" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49786323" weight="0.32914045" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50427353" side_tool="true" weight="0.32914045" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5036881" side_tool="true" weight="0.2897196" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49894625" weight="0.32917964" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Changed configloader to be its own file, so other files can access config.ini" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed configloader to be its own file, so other files can access config.ini" />
+    <MESSAGE value="Added the ability to search YT with a query, which enqueues the first song in the results!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the ability to search YT with a query, which enqueues the first song in the results!" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/__future__.py" />
@@ -340,13 +384,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/commands.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
+        <state relative-caret-position="493">
           <caret line="29" column="83" selection-start-line="29" selection-start-column="83" selection-end-line="29" selection-end-column="83" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/youtube_dl/YoutubeDL.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="340" selection-start-line="340" selection-end-line="340" />
+          <folding>
+            <element signature="e#2351#14909#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/youtube_dl_info.txt">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/configloader.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -355,39 +412,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.py">
+    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/discord/ext/commands/core.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="176">
+          <caret line="697" selection-start-line="697" selection-end-line="697" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/discord/ext/commands/bot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="894" selection-start-line="894" selection-end-line="894" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/discord/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="254" selection-start-line="254" selection-end-line="254" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config.ini">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/youtube_dl/YoutubeDL.py">
+    <entry file="file://$PROJECT_DIR$/src/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="340" lean-forward="true" selection-start-line="340" selection-end-line="340" />
+        <state relative-caret-position="398">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
           <folding>
-            <element signature="e#2351#14909#1" />
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/music.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="118" column="16" lean-forward="true" selection-start-line="118" selection-start-column="16" selection-end-line="118" selection-end-column="16" />
+        <state relative-caret-position="169">
+          <caret line="93" column="26" lean-forward="true" selection-start-line="93" selection-start-column="26" selection-end-line="93" selection-end-column="26" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#209#1107#0" />
+            <element signature="e#237#287#0" />
+            <element signature="e#1202#1368#0" />
+            <element signature="e#1687#1714#0" />
+            <element signature="e#1857#2047#0" />
+            <element signature="e#2022#2123#0" />
+            <element signature="e#4444#5154#0" />
+            <element signature="e#5057#5078#0" />
+            <element signature="e#4854#4936#0" />
+            <element signature="e#5020#5102#0" />
+            <element signature="e#5167#5254#0" />
+            <element signature="e#5352#5825#0" />
           </folding>
         </state>
       </provider>

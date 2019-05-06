@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-import youtube_dl
+from youtube_dl import YoutubeDL
 from collections import deque
 from enum import Enum
 import asyncio
@@ -116,13 +116,7 @@ class MusicCog(commands.Cog):
     @staticmethod
     async def download(url): # TODO BUG can't use \ / in file name
         #'''Downloads the video using ytdl. Returns file path as a string.'''
-        # ytdl_opts = { #move to higher scope?
-        # 'quiet' : True,
-        # #'logger' : 'the logger'
-        # 'format' : 'bestaudio/best',
-        # 'outtmpl' : '..\\music_cache\\%(title)s.%(ext)s',
-        # }
-        with youtube_dl.YoutubeDL(MusicCog.ytdl_opts) as ydl:
+        with YoutubeDL(MusicCog.ytdl_opts) as ydl:
             info_dict = ydl.extract_info(url) # TODO BUG if streaming a song, and the same song is requested, error. may be m4a issue?
             print('Downloaded ', info_dict['title'] + ' successfully.')
             return ("..\\music_cache\\" + info_dict['title'] + '.' + info_dict['ext'], info_dict)

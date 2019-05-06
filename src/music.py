@@ -4,6 +4,7 @@ from youtube_dl import YoutubeDL
 from collections import deque
 from enum import Enum
 import asyncio
+import functools
 
 class MusicActivity(commands.Cog): # TODO rich presence
     class Status(Enum):
@@ -40,10 +41,12 @@ class MusicActivity(commands.Cog): # TODO rich presence
 class MusicCog(commands.Cog):
 
     ytdl_opts = { #move to higher scope?
-    'quiet' : True,
-    #'logger' : 'the logger'
-    'format' : 'bestaudio/best',
-    'outtmpl' : '..\\music_cache\\%(title)s.%(ext)s',
+        "default_search": "auto",
+        "noplaylist": True,
+        'quiet' : True,
+        #'logger' : 'the logger'
+        'format' : 'bestaudio/best',
+        'outtmpl' : '..\\music_cache\\%(title)s.%(ext)s',
     }
 
     def __init__(self, bot):
@@ -74,7 +77,7 @@ class MusicCog(commands.Cog):
 
 
     @commands.command()
-    async def queue(self, ctx): # TODO implement in discord in human-readable way, embed
+    async def queue(self, ctx): # TODO just song title/link, may need info_dict
         '''Displays the queue.'''
         output = ''
         if len(self.queue) == 0:
@@ -82,14 +85,14 @@ class MusicCog(commands.Cog):
             return
         else:
             for p in self.queue:
-                output += p + '\n'
+                output += p + '\n' #TODO something doesn't work with the newline
 
         embed = discord.Embed(title='Song Queue', colour=discord.Colour(0xe7d066)) #Yellow
         embed.set_footer(text=output)
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def play(self, ctx, url):
+    async def play(self, ctx, *url):
         '''Play a song via url.'''
         await ctx.message.add_reaction("\U000023F3") #hourglass not done
         await self.joinChannel(ctx)
@@ -105,7 +108,6 @@ class MusicCog(commands.Cog):
         await ctx.message.add_reaction("\U00002705") #white heavy check mark (green background in discord)
         await ctx.message.remove_reaction("\U000023F3", ctx.me) #remove hourglass not done
 
-
     def playNext(self, ctx): # TODO: Add optional path for downloaded stuff?
         '''Streams the next enqueued path in self.queue.'''
         if not self.queue:
@@ -119,14 +121,29 @@ class MusicCog(commands.Cog):
         asyncio.run_coroutine_threadsafe(self.now_playing_pane.change_activity(MusicActivity.Status.PLAYING, self.songinfo[path]), self.bot.loop) #update the activity
         print('playing', path)
 
-
     @staticmethod
-    async def download(url): # TODO BUG can't use \ / in file name
+    async def download(*url): # TODO BUG can't use \ / in file name
         #'''Downloads the video using ytdl. Returns file path as a string.'''
+        print(url)
+        url = ' '.join(url[0]) #url is a tuple of tuples
         with YoutubeDL(MusicCog.ytdl_opts) as ydl:
             info_dict = ydl.extract_info(url) # TODO BUG if streaming a song, and the same song is requested, error. may be m4a issue?
+            if "entries" in info_dict: #something random from the github that I guess is required (see below)
+                info_dict = info_dict["entries"][0]
             print('Downloaded ', info_dict['title'] + ' successfully.')
             return ("..\\music_cache\\" + info_dict['title'] + '.' + info_dict['ext'], info_dict)
+
+    # @commands.command()
+    # async def search(self, ctx, *, search : str):
+    #
+    #     ydl = YoutubeDL(MusicCog.ytdl_opts)
+    #     func = functools.partial(ydl.extract_info, search, download = False)
+    #     info = await self.bot.loop.run_in_executor(None, func)
+    #     if "entries" in info:
+    #         info = info["entries"][0]
+    #     # for i in info:
+    #     #     print(i, ':', info[i])
+    #     await ctx.send(info['webpage_url'])
 
     @commands.command()
     async def pause(self, ctx):

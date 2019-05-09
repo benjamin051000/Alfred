@@ -75,9 +75,8 @@ class MusicCog(commands.Cog):
         if self.vc is not None:
             await self.vc.disconnect()
 
-
     @commands.command()
-    async def queue(self, ctx): # TODO just song title/link, may need info_dict
+    async def queue(self, ctx): # TODO just song title/link, may need info_dict. make it nice
         '''Displays the queue.'''
         embed = discord.Embed(title='Song Queue', colour=discord.Colour(0xe7d066)) #Yellow
         if len(self.queue) == 0:
@@ -106,7 +105,6 @@ class MusicCog(commands.Cog):
         await ctx.message.remove_reaction("\U000023F3", ctx.me)  # hourglass not done
         await ctx.message.add_reaction("\U00002705") #white heavy check mark (green background in discord)
 
-
     def playNext(self, ctx): # TODO: Add optional path for downloaded stuff?
         '''Streams the next enqueued path in self.queue.'''
         if not self.queue:
@@ -123,14 +121,14 @@ class MusicCog(commands.Cog):
     async def download(*url): # TODO BUG can't use characters windows doesn't like in file name.
         '''Downloads the video using ytdl. Returns file path as a string.'''
         url = ' '.join(url[0]) #url is a tuple of tuples
-        with YoutubeDL(MusicCog.ytdl_opts) as ydl:
+        with YoutubeDL(MusicCog.ytdl_opts) as ydl: #TODO add time limit? 2hr/10hr
             try:
                 info_dict = ydl.extract_info(url) # BUG if streaming a song, and the same song is requested, error. Also HTTP Errors.
             except Exception as e:
                 print("An error occurred while trying to download the song:", e)
             if "entries" in info_dict: #something random from the github that I guess is required (see below)
                 info_dict = info_dict["entries"][0]
-            print('Downloaded ', info_dict['title'] + ' successfully.')
+            print('Downloaded ', info_dict['title'] + ' successfully.') #TODO raises HTTPerrors sometimes, says info_dict is referenced before initialization :-(
             return ("..\\music_cache\\" + info_dict['title'] + '.' + info_dict['ext'], info_dict)
 
     # @commands.command()
@@ -164,15 +162,15 @@ class MusicCog(commands.Cog):
     async def volume(self, ctx, input = None):
         if input is not None:
             try:
-                self.audio_streamer.volume = float(input) / 100
-                await ctx.message.add_reaction("\U00002705") #white heavy check mark
+                vol = max(min(100, float(input)), 0)
             except:
                 print('Volume must be a float.')
                 return await ctx.message.add_reaction("\U00002753") #question mark
+
+            self.audio_streamer.volume = vol / 100
+            await ctx.message.add_reaction("\U00002705")  # white heavy check mark
         else:
             await ctx.send('Volume set to ' + str(int(self.audio_streamer.volume * 100)) + '%.')#broken when below 100%
 
-
 def setup(bot):
     bot.add_cog(MusicCog(bot))
-    #bot.add_cog(MusicActivity(bot))

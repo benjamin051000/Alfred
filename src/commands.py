@@ -25,10 +25,11 @@ class CommandsCog(commands.Cog):
             return
         print(f"Purging {n + 1} message(s)...") #accounts for command invoke
         await ctx.message.remove_reaction("\U000023F3", ctx.me) #hourglass not done
-        await ctx.channel.purge(limit = n + 1)
-        embed = discord.Embed(title = f'{ctx.message.author} deleted {n} messages!', colour = discord.Colour(0xe7d066))
-        embed.set_footer(text = f"Messages purged at {datetime.datetime.now()}") # TODO round off seconds!
-        await ctx.send(embed = embed)
+        await ctx.channel.purge(limit=n + 1)
+        title = f'{ctx.message.author} deleted {n} message'
+        title += 's!' if n > 1 else '!'
+        embed = discord.Embed(title=title, colour=discord.Colour(0xe7d066))
+        await ctx.send(embed=embed)
 
     @commands.command()
     async def shutdown(self, ctx):

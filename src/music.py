@@ -46,7 +46,7 @@ class MusicCog(commands.Cog):
         'quiet' : True,
         #'logger' : 'the logger'
         'format' : 'bestaudio/best',
-        'outtmpl' : '..\\music_cache\\%(title)s.%(ext)s',
+        'outtmpl' : '..\\music_cache\\%(extractor)s-%(id)s-%(title)s.%(ext)s', #%(title)s.%(ext)s',
     }
 
     def __init__(self, bot):
@@ -89,12 +89,15 @@ class MusicCog(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def play(self, ctx, *url):
+    async def play(self, ctx, *query):
         '''Play a song.'''
+        query = ' '.join(query)
+
         await ctx.message.add_reaction("\U000023F3") #hourglass not done
         await self.joinChannel(ctx)
+
         # TODO check if the song is already downloaded (maybe), faster caching?
-        path, info = await MusicCog.download(url)
+        path, info = await MusicCog.download(query)
         self.songinfo[path] = info #a record of every songinfo in the path. TODO pickle this? idk
         self.queue.append(path)
         print('Enqueued {}'.format(path))
@@ -118,18 +121,17 @@ class MusicCog(commands.Cog):
         print('playing', path)
 
     @staticmethod
-    async def download(*url): # TODO BUG can't use characters windows doesn't like in file name.
+    async def download(query): # TODO BUG can't use characters windows doesn't like in file name.
         '''Downloads the video using ytdl. Returns file path as a string.'''
-        url = ' '.join(url[0]) #url is a tuple of tuples
         with YoutubeDL(MusicCog.ytdl_opts) as ydl: #TODO add time limit? 2hr/10hr
             try:
-                info_dict = ydl.extract_info(url) # BUG if streaming a song, and the same song is requested, error. Also HTTP Errors.
+                info_dict = ydl.extract_info(query) # BUG if streaming a song, and the same song is requested, error. Also HTTP Errors.
             except Exception as e:
                 print("An error occurred while trying to download the song:", e)
             if "entries" in info_dict: #something random from the github that I guess is required (see below)
                 info_dict = info_dict["entries"][0]
             print('Downloaded ', info_dict['title'] + ' successfully.') #TODO raises HTTPerrors sometimes, says info_dict is referenced before initialization :-(
-            return ("..\\music_cache\\" + info_dict['title'] + '.' + info_dict['ext'], info_dict)
+            return ("..\\music_cache\\" + ydl.prepare_filename(info_dict), info_dict)
 
     # @commands.command()
     # async def search(self, ctx, *, search : str):
@@ -170,7 +172,7 @@ class MusicCog(commands.Cog):
             self.audio_streamer.volume = vol / 100
             await ctx.message.add_reaction("\U00002705")  # white heavy check mark
         else:
-            await ctx.send('Volume set to ' + str(int(self.audio_streamer.volume * 100)) + '%.')#broken when below 100%
+            await ctx.send('Volume set to ' + str(int(self.audio_streamer.volume * 100)) + '%.', delete_after=10)
 
 def setup(bot):
     bot.add_cog(MusicCog(bot))

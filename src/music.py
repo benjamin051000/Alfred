@@ -37,7 +37,7 @@ class MusicActivity():
         pass
 
 
-class YTDLSource():
+class YTDLSource(): #subclass to PCMVolumeTransformer?
 
     ytdl_opts = {
         "default_search": "auto",
@@ -49,22 +49,33 @@ class YTDLSource():
     }
 
     def __init__(self, query):
-        self.query = query
-        await download(self.query)
+        self.query = ' '.join(query)
+        self.data = {}
+        self.path = None #necessary?
 
-
-    @classmethod
-    async def download(cls, query):  # TODO BUG can't use characters windows doesn't like in file name.
-        '''(Searches for and) Downloads the video using ytdl. Returns file path as a string.'''
-        with YoutubeDL(MusicCog.ytdl_opts) as ydl:  # TODO add time limit? 2hr
+        with YoutubeDL(YTDLSource.ytdl_opts) as ydl:
             try:
-                info_dict = ydl.extract_info(query)  # BUG if streaming a song, and the same song is requested, error. Also HTTP Errors.
+                self.data = ydl.extract_info(self.query)  # BUG if streaming a song, and the same song is requested, error. Also HTTP Errors.
             except Exception as e:
-                print("An error occurred while trying to download the song:", e)
-            if "entries" in info_dict:  # may have to do with playlists?
-                info_dict = info_dict["entries"][0]
-            print('Downloaded ', info_dict['title'] + ' successfully.')  # raises HTTPerrors sometimes, says info_dict is referenced before initialization :-(
-            return ("..\\music_cache\\" + ydl.prepare_filename(info_dict), info_dict)
+                print(e)
+
+            if "entries" in self.data:  # if we get a playlist, grab the first video
+                self.data = self.data["entries"][0]
+            self.path = '..\\music_cache\\' + ydl.prepare_filename(self.data)
+
+    # @classmethod
+    # async def download(cls, query):
+    #     '''(Searches for and) Downloads the video using ytdl. Returns file path as a string.'''
+    #     with YoutubeDL(MusicCog.ytdl_opts) as ydl:
+    #         try:
+    #             info_dict = ydl.extract_info(query)  # BUG if streaming a song, and the same song is requested, error. Also HTTP Errors.
+    #         except Exception as e:
+    #             print("An error occurred while trying to download the song:", e)
+    #         if "entries" in info_dict:  # may have to do with playlists?
+    #             info_dict = info_dict["entries"][0]
+    #         print('Downloaded ', info_dict['title'] + ' successfully.')  # raises HTTPerrors sometimes, says info_dict is referenced before initialization :-(
+    #         return ("..\\music_cache\\" + ydl.prepare_filename(info_dict), info_dict)
+
 
 
 
@@ -111,16 +122,17 @@ class MusicCog(commands.Cog):
     @commands.command()
     async def play(self, ctx, *query):
         '''Play a song.'''
-        query = ' '.join(query)
+
+        self.queue.append(YTDLSource(query))
 
         await ctx.message.add_reaction("\U000023F3") #hourglass not done
         await self.joinChannel(ctx)
 
-        path, info = await MusicCog.download(query)
-        self.queue.append(path)
-        print('Enqueued {}'.format(path))
+        # path, info = await MusicCog.download(query)
+        # self.queue.append(path)
+        # print('Enqueued {}'.format(path))
         # Begin playing if we aren't already.
-        if not self.vc.is_playing():
+        if not self.vc.is_playing(): # sometimes vc isn't instantiated and throws. just make sure to always use /shutdown
             self.playNext(ctx)
 
         await ctx.message.remove_reaction("\U000023F3", ctx.me)  # hourglass not done
@@ -133,11 +145,11 @@ class MusicCog(commands.Cog):
             asyncio.run_coroutine_threadsafe(self.now_playing_pane.change_activity(MusicActivity.Status.STOPPED, None), self.bot.loop) #update the activity
             print('The audio queue is empty.')
             return
-        path = self.queue.popleft()
-        self.audio_streamer = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(path), volume = self.default_volume)
+        nextSong = self.queue.popleft()
+        self.audio_streamer = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(nextSong.path), volume = self.default_volume)
         self.vc.play(self.audio_streamer, after = lambda e : self.playNext(ctx))
-        asyncio.run_coroutine_threadsafe(self.now_playing_pane.change_activity(MusicActivity.Status.PLAYING, self.songinfo[path]), self.bot.loop) #update the activity
-        print('playing', path)
+        asyncio.run_coroutine_threadsafe(self.now_playing_pane.change_activity(MusicActivity.Status.PLAYING, nextSong.data['title']), self.bot.loop) #update the activity
+        # print('playing', nextSong.data['title'])
 
 
 

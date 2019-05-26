@@ -6,7 +6,7 @@ from enum import Enum
 import asyncio
 import functools
 
-class MusicActivity():
+class MusicActivity(): #TODO fix
     class Status(Enum):
         PLAYING = 1
         PAUSED = 2
@@ -31,7 +31,7 @@ class MusicActivity():
         #print(info_dict)
         self.activity.type = discord.ActivityType.listening
         self.activity.name = info_dict['title']
-        self.activity.details = "test details section"
+        self.activity.details = "test details section" #doesnt work
 
     def paused(self, info_dict):
         pass
@@ -57,25 +57,11 @@ class YTDLSource(): #subclass to PCMVolumeTransformer?
             try:
                 self.data = ydl.extract_info(self.query)  # BUG if streaming a song, and the same song is requested, error. Also HTTP Errors.
             except Exception as e:
-                print(e)
+                print('YTDLException:', e)
 
             if "entries" in self.data:  # if we get a playlist, grab the first video
                 self.data = self.data["entries"][0]
             self.path = '..\\music_cache\\' + ydl.prepare_filename(self.data)
-
-    # @classmethod
-    # async def download(cls, query):
-    #     '''(Searches for and) Downloads the video using ytdl. Returns file path as a string.'''
-    #     with YoutubeDL(MusicCog.ytdl_opts) as ydl:
-    #         try:
-    #             info_dict = ydl.extract_info(query)  # BUG if streaming a song, and the same song is requested, error. Also HTTP Errors.
-    #         except Exception as e:
-    #             print("An error occurred while trying to download the song:", e)
-    #         if "entries" in info_dict:  # may have to do with playlists?
-    #             info_dict = info_dict["entries"][0]
-    #         print('Downloaded ', info_dict['title'] + ' successfully.')  # raises HTTPerrors sometimes, says info_dict is referenced before initialization :-(
-    #         return ("..\\music_cache\\" + ydl.prepare_filename(info_dict), info_dict)
-
 
 
 
@@ -88,6 +74,7 @@ class MusicCog(commands.Cog):
         self.default_volume = 0.5
         self.queue = deque() # A queue with TYDLSource objects
         self.now_playing_pane = MusicActivity(bot)
+        self.now_playing = None
 
     @commands.command()
     async def join(self, ctx):
@@ -107,11 +94,11 @@ class MusicCog(commands.Cog):
             await self.vc.disconnect()
 
     @commands.command()
-    async def queue(self, ctx): # TODO just song title/link, may need info_dict. make it nice
+    async def queue(self, ctx): # TODO I'm sure this is broken now, also make it look nice
         '''Displays the song queue.'''
         embed = discord.Embed(title='Song Queue', colour=discord.Colour(0xe7d066)) #Yellow
         if len(self.queue) == 0:
-            await ctx.send("Nothing is enqueued. Play a song with /play")
+            await ctx.send("Nothing is enqueued. Play a song with /play", delete_after=10)
             return
         else:
             for p in self.queue:
@@ -122,36 +109,35 @@ class MusicCog(commands.Cog):
     @commands.command()
     async def play(self, ctx, *query):
         '''Play a song.'''
+        await ctx.message.add_reaction("\U0000231B")  # hourglass done
 
-        self.queue.append(YTDLSource(query))
+        async with ctx.typing():
+            self.queue.append(YTDLSource(query))
+            print('Enqueued', self.queue[-1].data['title']) #not sure if I did this correctly
 
-        await ctx.message.add_reaction("\U000023F3") #hourglass not done
         await self.joinChannel(ctx)
 
-        # path, info = await MusicCog.download(query)
-        # self.queue.append(path)
-        # print('Enqueued {}'.format(path))
-        # Begin playing if we aren't already.
-        if not self.vc.is_playing(): # sometimes vc isn't instantiated and throws. just make sure to always use /shutdown
+        if not self.vc.is_playing():
             self.playNext(ctx)
 
-        await ctx.message.remove_reaction("\U000023F3", ctx.me)  # hourglass not done
-        await ctx.message.add_reaction("\U00002705") #white heavy check mark (green background in discord)
+        await ctx.message.remove_reaction("\U0000231B", ctx.me)  # hourglass done
+        await ctx.message.add_reaction("\U00002705") #white heavy check mark (green in discord)
 
 
-    def playNext(self, ctx):
-        '''Streams the next enqueued path in self.queue.'''
+
+    def playNext(self, ctx): #TODO make async? Probably not. It's quick
+        '''Streams the next YTDLSource.'''
         if not self.queue:
             asyncio.run_coroutine_threadsafe(self.now_playing_pane.change_activity(MusicActivity.Status.STOPPED, None), self.bot.loop) #update the activity
             print('The audio queue is empty.')
             return
-        nextSong = self.queue.popleft()
-        self.audio_streamer = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(nextSong.path), volume = self.default_volume)
+        self.now_playing = self.queue.popleft()
+        #TODO find a way to preserve last song's volume.
+        self.audio_streamer = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(self.now_playing.path), volume=self.default_volume) #This could be shortened by making YTDLSource a PCMAudiostreamer, like in the streamer.py example...
         self.vc.play(self.audio_streamer, after = lambda e : self.playNext(ctx))
-        asyncio.run_coroutine_threadsafe(self.now_playing_pane.change_activity(MusicActivity.Status.PLAYING, nextSong.data['title']), self.bot.loop) #update the activity
+
+        asyncio.run_coroutine_threadsafe(self.now_playing_pane.change_activity(MusicActivity.Status.PLAYING, self.now_playing.data['title']), self.bot.loop)
         # print('playing', nextSong.data['title'])
-
-
 
 
     # @commands.command()

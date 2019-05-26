@@ -31,7 +31,7 @@ class CommandsCog(commands.Cog):
         embed = discord.Embed(title=title, colour=discord.Colour(0xe7d066))
         await ctx.send(embed=embed)
 
-    @commands.command()
+    @commands.command(aliases=['sd']) #TODO remove alias to remove accidental shutdowns? Not necessary?
     async def shutdown(self, ctx):
         '''Shuts down the bot.'''
         if ctx.author.id == int(cfload.configSectionMap("Owner Credentials")["owner_id"]):

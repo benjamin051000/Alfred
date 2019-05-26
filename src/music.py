@@ -16,25 +16,22 @@ class MusicActivity(): #TODO fix
         self.bot = bot
         self.activity = discord.Activity()
 
-    async def change_activity(self, status, ytdl_info=None):
+    async def change_activity(self, status, YTDLSource=None):
         if status == MusicActivity.Status.PLAYING:
-            self.playing(ytdl_info)
+            self.playing(YTDLSource)
         elif status == MusicActivity.Status.PAUSED:
             pass
         elif status == MusicActivity.Status.STOPPED:
             self.activity = discord.Activity() # reset activity
 
         await self.bot.change_presence(activity=self.activity)
-        print('updated bot presence.')
+        print('Updated bot presence.')
 
-    def playing(self, info_dict):
-        #print(info_dict)
+    def playing(self, source):
         self.activity.type = discord.ActivityType.listening
-        self.activity.name = info_dict['title']
-        self.activity.details = "test details section" #doesnt work
+        self.activity.name = source.data['title']
+        # self.activity.details = "test details section" #doesnt work
 
-    def paused(self, info_dict):
-        pass
 
 
 class YTDLSource(): #subclass to PCMVolumeTransformer?
@@ -51,7 +48,7 @@ class YTDLSource(): #subclass to PCMVolumeTransformer?
     def __init__(self, query):
         self.query = ' '.join(query)
         self.data = {}
-        self.path = None #necessary?
+        # self.path = None #is this line necessary?
 
         with YoutubeDL(YTDLSource.ytdl_opts) as ydl:
             try:
@@ -74,7 +71,7 @@ class MusicCog(commands.Cog):
         self.default_volume = 0.5
         self.queue = deque() # A queue with TYDLSource objects
         self.now_playing_pane = MusicActivity(bot)
-        self.now_playing = None
+        self.current_song = None
 
     @commands.command()
     async def join(self, ctx):
@@ -102,7 +99,7 @@ class MusicCog(commands.Cog):
             return
         else:
             for p in self.queue:
-                embed.add_field(name=self.songinfo[p]['title'], value=None)
+                embed.add_field(name=p.data['title'], value=None)
 
         await ctx.send(embed=embed)
 
@@ -131,12 +128,12 @@ class MusicCog(commands.Cog):
             asyncio.run_coroutine_threadsafe(self.now_playing_pane.change_activity(MusicActivity.Status.STOPPED, None), self.bot.loop) #update the activity
             print('The audio queue is empty.')
             return
-        self.now_playing = self.queue.popleft()
+        self.current_song = self.queue.popleft()
         #TODO find a way to preserve last song's volume.
-        self.audio_streamer = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(self.now_playing.path), volume=self.default_volume) #This could be shortened by making YTDLSource a PCMAudiostreamer, like in the streamer.py example...
+        self.audio_streamer = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(self.current_song.path), volume=self.default_volume) #This could be abbrev'd by subclassing YTDLSource to PCMAudiostreamer, see streamer.py example.
         self.vc.play(self.audio_streamer, after = lambda e : self.playNext(ctx))
 
-        asyncio.run_coroutine_threadsafe(self.now_playing_pane.change_activity(MusicActivity.Status.PLAYING, self.now_playing.data['title']), self.bot.loop)
+        asyncio.run_coroutine_threadsafe(self.now_playing_pane.change_activity(MusicActivity.Status.PLAYING, self.current_song), self.bot.loop)
         # print('playing', nextSong.data['title'])
 
 
@@ -153,7 +150,7 @@ class MusicCog(commands.Cog):
     #     await ctx.send(info['webpage_url'])
 
     @commands.command()
-    async def pause(self, ctx):
+    async def pause(self, ctx): #TODO if paused, /play will skip the song we are paused in. Add an if clause in play command.
         self.vc.pause()
         await ctx.message.add_reaction("\U000023F8") #pause button
 

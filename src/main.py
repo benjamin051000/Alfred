@@ -6,7 +6,7 @@ import sys, traceback
 import configloader as cfload
 
 print("Loading config data...\n")
-cfload.read("..\\config.ini")
+cfload.read("../config.ini")
 
 #######################    Begin Loading Process   ################################
 startup_extensions = cfload.configSectionMap("Startup")["startup_extensions"].split()

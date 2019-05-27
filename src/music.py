@@ -42,7 +42,7 @@ class YTDLSource(): #subclass to PCMVolumeTransformer?
         'quiet': True,
         # 'logger' : 'the logger'
         'format': 'bestaudio/best',
-        'outtmpl': '..\\music_cache\\%(extractor)s-%(id)s-%(title)s.%(ext)s',  # %(title)s.%(ext)s',
+        'outtmpl': '../music_cache/%(extractor)s-%(id)s-%(title)s.%(ext)s',  # %(title)s.%(ext)s',
     }
 
     def __init__(self, query):
@@ -58,7 +58,7 @@ class YTDLSource(): #subclass to PCMVolumeTransformer?
 
             if "entries" in self.data:  # if we get a playlist, grab the first video
                 self.data = self.data["entries"][0]
-            self.path = '../music_cache/' + ydl.prepare_filename(self.data)
+            self.path = ydl.prepare_filename(self.data)
 
 
 

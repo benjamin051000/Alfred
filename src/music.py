@@ -34,7 +34,7 @@ class MusicActivity(): #TODO fix
 
 
 
-class YTDLSource(): #subclass to PCMVolumeTransformer?
+class YTDLSource(): #TODO subclass to PCMVolumeTransformer? like that noob in the help server said to
 
     ytdl_opts = {
         "default_search": "auto",
@@ -79,10 +79,10 @@ class MusicCog(commands.Cog):
 
     async def joinChannel(self, ctx):
         '''Join the invoking player's voice channel.'''
-        # try:
-        self.vc = await ctx.message.author.voice.channel.connect()
-        # except Exception as e:
-            # print("Player already connected.")
+        try:
+            self.vc = await ctx.message.author.voice.channel.connect()
+        except Exception as e:
+            print("Player already connected.")
             # print(e)
 
     @commands.command()

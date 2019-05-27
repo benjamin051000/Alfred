@@ -4,7 +4,7 @@ import datetime
 import configloader as cfload
 
 cfload.read("..\\config.ini")
-print(cfload.configSectionMap("Owner Credentials"), "is the owner. Only he can use /shutdown.")
+print(cfload.configSectionMap("Owner Credentials")['owner_id'], "is the owner. Only he can use /shutdown.")
 
 class CommandsCog(commands.Cog):
     prune_cutoff = 25
@@ -18,7 +18,7 @@ class CommandsCog(commands.Cog):
 
     @commands.command(aliases = ["clean", "purge"])
     async def prune(self, ctx, n = 1):
-        '''Deletes a number n of messages.'''
+        '''Deletes n messages.'''
         n = abs(n)
         if n > CommandsCog.prune_cutoff:
             await ctx.channel.send("You can only delete up to 25 messages at a time.")

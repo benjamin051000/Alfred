@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e37654ec-6a1d-4080-9d15-14bbfe331706" name="Default Changelist" comment="">
+    <list default="true" id="e37654ec-6a1d-4080-9d15-14bbfe331706" name="Default Changelist" comment="Changed voicechannel connect thing so it prints the exception to debug linux.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/music.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/music.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +31,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/music.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="84" column="46" lean-forward="true" selection-start-line="84" selection-start-column="46" selection-end-line="84" selection-end-column="46" />
+            <state relative-caret-position="83">
+              <caret line="117" column="64" lean-forward="true" selection-start-line="117" selection-start-column="64" selection-end-line="117" selection-end-column="64" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
                 <element signature="e#203#1029#0" />
@@ -165,10 +166,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
-    <option name="width" value="974" />
-    <option name="height" value="1087" />
+    <option name="width" value="1185" />
+    <option name="height" value="587" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -350,7 +351,21 @@
       <option name="project" value="LOCAL" />
       <updated>1558917431683</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Changed voicechannel connect thing so it prints the exception to debug linux.">
+      <created>1558918993249</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1558918993250</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Changed voicechannel connect thing so it prints the exception to debug linux.">
+      <created>1558919158774</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1558919158774</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -363,22 +378,21 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="0" width="1185" height="587" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4968254" visible="true" weight="0.11854584" />
-      <window_info id="Structure" order="1" sideWeight="0.5031746" side_tool="true" visible="true" weight="0.11854584" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4955947" visible="true" weight="0.19616391" />
+      <window_info id="Structure" order="1" sideWeight="0.50440526" side_tool="true" visible="true" weight="0.19616391" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3281412" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49525815" weight="0.24714434" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49947312" visible="true" weight="0.34579438" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49525815" weight="0.3061674" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49947312" weight="0.40748897" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.24195223" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49420443" weight="0.3281412" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49786323" weight="0.3281412" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50052685" side_tool="true" weight="0.34579438" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50052685" side_tool="true" weight="0.34361234" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49894625" weight="0.32914045" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -446,7 +460,8 @@
     <MESSAGE value="Fixed activity." />
     <MESSAGE value="Fixed play/pause issue (where it would skip a paused song if the music player was paused and a user invoked /play)." />
     <MESSAGE value="fixed slash issues. Windows is dumb" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed slash issues. Windows is dumb" />
+    <MESSAGE value="Changed voicechannel connect thing so it prints the exception to debug linux." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed voicechannel connect thing so it prints the exception to debug linux." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/__future__.py" />
@@ -615,8 +630,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/music.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="84" column="46" lean-forward="true" selection-start-line="84" selection-start-column="46" selection-end-line="84" selection-end-column="46" />
+        <state relative-caret-position="83">
+          <caret line="117" column="64" lean-forward="true" selection-start-line="117" selection-start-column="64" selection-end-line="117" selection-end-column="64" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
             <element signature="e#203#1029#0" />

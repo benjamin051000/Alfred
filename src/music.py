@@ -79,11 +79,11 @@ class MusicCog(commands.Cog):
 
     async def joinChannel(self, ctx):
         '''Join the invoking player's voice channel.'''
-        try:
-            self.vc = await ctx.message.author.voice.channel.connect()
-        except Exception as e:
+        # try:
+        self.vc = await ctx.message.author.voice.channel.connect()
+        # except Exception as e:
             # print("Player already connected.")
-            print(e)
+            # print(e)
 
     @commands.command()
     async def leave(self, ctx):
@@ -109,11 +109,12 @@ class MusicCog(commands.Cog):
         '''Play a song.'''
         await ctx.message.add_reaction("\U0000231B")  # hourglass done
 
+        await self.joinChannel(ctx)
+
         async with ctx.typing():
             self.queue.append(YTDLSource(query))
             print('Enqueued', self.queue[-1].data['title']) #not sure if I did this correctly
 
-        await self.joinChannel(ctx)
 
         if not self.vc.is_playing() and not self.vc.is_paused():
             self.playNext(ctx)

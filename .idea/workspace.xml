@@ -31,8 +31,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/music.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="150" lean-forward="true" selection-start-line="150" selection-end-line="150" />
+            <state relative-caret-position="139">
+              <caret line="36" column="54" lean-forward="true" selection-start-line="36" selection-start-column="54" selection-end-line="36" selection-end-column="54" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
                 <element signature="e#1174#1437#0" />
@@ -321,7 +321,14 @@
       <option name="project" value="LOCAL" />
       <updated>1558906028866</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fixed activity.">
+      <created>1558907161533</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1558907161533</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -414,7 +421,8 @@
     <MESSAGE value="Cleaned play and download methods up a little bit. Changed url argument to query." />
     <MESSAGE value="Fixed command. YTDLSource class now works properly in place of the old version. Much cleaner. TODO: Add cleanup functions to delete stuff in music_cache, also look for bugs and such." />
     <MESSAGE value="Changed hourglass emoji to one that looks nicer. Added some comments. Added an async with ctx.typing(). /shutdown now has an alias /sd." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed hourglass emoji to one that looks nicer. Added some comments. Added an async with ctx.typing(). /shutdown now has an alias /sd." />
+    <MESSAGE value="Fixed activity." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed activity." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/__future__.py" />
@@ -576,8 +584,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/music.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="150" lean-forward="true" selection-start-line="150" selection-end-line="150" />
+        <state relative-caret-position="139">
+          <caret line="36" column="54" lean-forward="true" selection-start-line="36" selection-start-column="54" selection-end-line="36" selection-end-column="54" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
             <element signature="e#1174#1437#0" />

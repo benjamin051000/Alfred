@@ -114,7 +114,7 @@ class MusicCog(commands.Cog):
 
         await self.joinChannel(ctx)
 
-        if not self.vc.is_playing():
+        if not self.vc.is_playing() and not self.vc.is_paused():
             self.playNext(ctx)
 
         await ctx.message.remove_reaction("\U0000231B", ctx.me)  # hourglass done

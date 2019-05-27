@@ -58,7 +58,7 @@ class YTDLSource(): #subclass to PCMVolumeTransformer?
 
             if "entries" in self.data:  # if we get a playlist, grab the first video
                 self.data = self.data["entries"][0]
-            self.path = '..\\music_cache\\' + ydl.prepare_filename(self.data)
+            self.path = '../music_cache/' + ydl.prepare_filename(self.data)
 
 
 

@@ -81,8 +81,9 @@ class MusicCog(commands.Cog):
         '''Join the invoking player's voice channel.'''
         try:
             self.vc = await ctx.message.author.voice.channel.connect()
-        except:
-            print("Player already connected.")
+        except Exception as e:
+            # print("Player already connected.")
+            print(e)
 
     @commands.command()
     async def leave(self, ctx):

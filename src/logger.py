@@ -3,7 +3,7 @@ from discord.ext import commands
 import logging
 import datetime
 
-class Logger(commands.Cog):
+class Logger:#(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.setupLogger()
@@ -20,5 +20,5 @@ class Logger(commands.Cog):
 
 
 
-def setup(bot):
-    bot.add_cog(Logger(bot))
+# def setup(bot):
+#     bot.add_cog(Logger(bot))

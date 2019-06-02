@@ -6,7 +6,7 @@ import configloader as cfload
 cfload.read("..\\config.ini")
 print(cfload.configSectionMap("Owner Credentials")['owner_id'], "is the owner. Only he can use /shutdown.")
 
-class CommandsCog(commands.Cog):
+class Commands(commands.Cog):
     prune_cutoff = 25
 
     def __init__(self, bot):
@@ -31,7 +31,7 @@ class CommandsCog(commands.Cog):
         embed = discord.Embed(title=title, colour=discord.Colour(0xe7d066))
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=['sd']) #TODO remove alias to remove accidental shutdowns? Not necessary?
+    @commands.command(aliases=['sd'])
     async def shutdown(self, ctx):
         '''Shuts down the bot.'''
         if ctx.author.id == int(cfload.configSectionMap("Owner Credentials")["owner_id"]):
@@ -41,4 +41,4 @@ class CommandsCog(commands.Cog):
             await ctx.send("You can't shut me down.")
 
 def setup(bot):
-    bot.add_cog(CommandsCog(bot))
+    bot.add_cog(Commands(bot))

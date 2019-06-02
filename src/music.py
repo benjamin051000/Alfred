@@ -33,7 +33,6 @@ class MusicActivity(): #TODO fix
         # self.activity.details = "test details section" #doesnt work
 
 
-
 class YTDLSource(): #TODO subclass to PCMVolumeTransformer? like that noob in the help server said to
 
     ytdl_opts = {
@@ -61,8 +60,7 @@ class YTDLSource(): #TODO subclass to PCMVolumeTransformer? like that noob in th
             self.path = ydl.prepare_filename(self.data)
 
 
-
-class MusicCog(commands.Cog):
+class Music(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
@@ -122,8 +120,6 @@ class MusicCog(commands.Cog):
         await ctx.message.remove_reaction("\U0000231B", ctx.me)  # hourglass done
         await ctx.message.add_reaction("\U00002705") #white heavy check mark (green in discord)
 
-
-
     def playNext(self, ctx): #TODO make async? Probably not. It's quick
         '''Streams the next YTDLSource.'''
         if not self.queue:
@@ -181,4 +177,4 @@ class MusicCog(commands.Cog):
             await ctx.send('Volume set to ' + str(int(self.audio_streamer.volume * 100)) + '%.', delete_after=10)
 
 def setup(bot):
-    bot.add_cog(MusicCog(bot))
+    bot.add_cog(Music(bot))

@@ -46,8 +46,7 @@ class YTDLSource(): #TODO subclass to PCMVolumeTransformer? like that noob in th
 
     def __init__(self, query):
         self.query = ' '.join(query)
-        self.data = {}
-        # self.path = None #is this line necessary?
+        self.data = {} #Necessary?
 
         with YoutubeDL(YTDLSource.ytdl_opts) as ydl:
             try:
@@ -61,13 +60,14 @@ class YTDLSource(): #TODO subclass to PCMVolumeTransformer? like that noob in th
 
 
 class Music(commands.Cog):
+    default_volume = 0.5
 
     def __init__(self, bot):
         self.bot = bot
         self.vc = None
         self.audio_streamer = None
-        self.default_volume = 0.5
-        self.queue = deque() # A queue with TYDLSource objects
+        self.volume = Music.default_volume
+        self.queue = deque() # A queue with YTDLSource objects
         self.now_playing_pane = MusicActivity(bot)
         self.current_song = None
 
@@ -111,8 +111,7 @@ class Music(commands.Cog):
 
         async with ctx.typing():
             self.queue.append(YTDLSource(query))
-            print('Enqueued', self.queue[-1].data['title']) #not sure if I did this correctly
-
+            print('Enqueued', self.queue[-1].data['title'])
 
         if not self.vc.is_playing() and not self.vc.is_paused():
             self.playNext(ctx)
@@ -127,8 +126,7 @@ class Music(commands.Cog):
             print('The audio queue is empty.')
             return
         self.current_song = self.queue.popleft()
-        #TODO find a way to preserve last song's volume.
-        self.audio_streamer = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(self.current_song.path), volume=self.default_volume) #This could be abbrev'd by subclassing YTDLSource to PCMAudiostreamer, see streamer.py example.
+        self.audio_streamer = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(self.current_song.path), volume=self.volume) #This could be abbrev'd by subclassing YTDLSource to PCMAudiostreamer, see streamer.py example.
         self.vc.play(self.audio_streamer, after = lambda e : self.playNext(ctx))
 
         asyncio.run_coroutine_threadsafe(self.now_playing_pane.change_activity(MusicActivity.Status.PLAYING, self.current_song), self.bot.loop)
@@ -171,7 +169,8 @@ class Music(commands.Cog):
                 print('Volume must be a float.')
                 return await ctx.message.add_reaction("\U00002753") #question mark
 
-            self.audio_streamer.volume = vol / 100
+            self.volume = vol / 100
+            self.audio_streamer.volume = self.volume
             await ctx.message.add_reaction("\U00002705")  # white heavy check mark
         else:
             await ctx.send('Volume set to ' + str(int(self.audio_streamer.volume * 100)) + '%.', delete_after=10)

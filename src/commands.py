@@ -20,7 +20,7 @@ class Commands(commands.Cog):
     async def prune(self, ctx, n = 1):
         '''Deletes n messages.'''
         n = abs(n)
-        if n > CommandsCog.prune_cutoff:
+        if n > Commands.prune_cutoff:
             await ctx.channel.send("You can only delete up to 25 messages at a time.")
             return
         print(f"Purging {n + 1} message(s)...") #accounts for command invoke

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e37654ec-6a1d-4080-9d15-14bbfe331706" name="Default Changelist" comment="Fixed volume persistence between songs.">
+    <list default="true" id="e37654ec-6a1d-4080-9d15-14bbfe331706" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/commands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logger.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/commands.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="264">
+              <caret line="52" column="20" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -30,13 +32,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/music.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="156" lean-forward="true" selection-start-line="156" selection-end-line="156" />
+            <state relative-caret-position="856">
+              <caret line="156" selection-start-line="156" selection-end-line="156" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
                 <element signature="e#203#1029#0" />
-                <element signature="e#1152#1413#0" />
-                <element signature="e#5083#5104#0" />
               </folding>
             </state>
           </provider>
@@ -45,7 +45,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
+            <state relative-caret-position="85">
               <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
@@ -54,8 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="391">
+              <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -63,8 +63,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/logger.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="357">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -72,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config_example.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="552">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="391">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
             </state>
           </provider>
         </entry>
@@ -93,7 +93,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/configloader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
+            <state relative-caret-position="272">
               <caret line="16" selection-start-line="16" selection-end-line="16" />
             </state>
           </provider>
@@ -102,8 +102,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="170">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -114,7 +114,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/start.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
+            <state relative-caret-position="51">
               <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
@@ -161,18 +161,17 @@
         <option value="$PROJECT_DIR$/src/configloader.py" />
         <option value="$PROJECT_DIR$/src/config.ini" />
         <option value="$PROJECT_DIR$/config_example.ini" />
-        <option value="$PROJECT_DIR$/src/commands.py" />
+        <option value="$PROJECT_DIR$/src/music.py" />
         <option value="$PROJECT_DIR$/src/logger.py" />
         <option value="$PROJECT_DIR$/config.ini" />
-        <option value="$PROJECT_DIR$/src/music.py" />
+        <option value="$PROJECT_DIR$/src/commands.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="128" />
-    <option name="y" value="-9" />
-    <option name="width" value="1183" />
-    <option name="height" value="548" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
+    <option name="height" value="1087" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -215,8 +214,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
-    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -404,7 +403,14 @@
       <option name="project" value="LOCAL" />
       <updated>1559512652447</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Fixed small bug in /prune.">
+      <created>1559514812306</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1559514812306</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -417,16 +423,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="7" />
+    <frame x="-7" y="0" width="974" height="1087" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.59536356" visible="true" weight="0.11854584" />
-      <window_info id="Structure" order="1" sideWeight="0.40463647" side_tool="true" visible="true" weight="0.11854584" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.59363955" visible="true" weight="0.24038461" />
+      <window_info id="Structure" order="1" sideWeight="0.40636042" side_tool="true" visible="true" weight="0.24038461" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3281412" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49525815" weight="0.18124342" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49947312" weight="0.40748897" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49947312" visible="true" weight="0.4067086" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.24195223" />
@@ -506,7 +512,8 @@
     <MESSAGE value="Put back in the try/except handling for joinChannel and changed some docs" />
     <MESSAGE value="Changed class names" />
     <MESSAGE value="Fixed volume persistence between songs." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed volume persistence between songs." />
+    <MESSAGE value="Fixed small bug in /prune." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed small bug in /prune." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/__future__.py" />
@@ -604,62 +611,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
+        <state relative-caret-position="85">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/commands.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/music.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="156" lean-forward="true" selection-start-line="156" selection-end-line="156" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <element signature="e#203#1029#0" />
-            <element signature="e#1152#1413#0" />
-            <element signature="e#5083#5104#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/configloader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/start.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -670,20 +623,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logger.py">
+    <entry file="file://$PROJECT_DIR$/src/configloader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="272">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/start.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config_example.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="391">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logger.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/music.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="856">
+          <caret line="156" selection-start-line="156" selection-end-line="156" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#203#1029#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/commands.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="52" column="20" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

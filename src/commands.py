@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import datetime
 import configloader as cfload
+import praw, random
 
 cfload.read("..\\config.ini")
 print(cfload.configSectionMap("Owner Credentials")['owner_id'], "is the owner. Only he can use /shutdown.")
@@ -39,6 +40,22 @@ class Commands(commands.Cog):
             await self.bot.logout()
         else:
             await ctx.send("You can't shut me down.")
+
+    @commands.command()
+    async def meme(self, ctx):
+        """Gets a random meme from reddit and posts it."""
+        r = praw.Reddit(client_id='2iDsXiLTxBul9w',
+                           client_secret='ZeoMYdHyHYMkEOXYDN7T7WRZyDs',
+                           user_agent='Alfred',
+                           username='benjamin051000',
+                           password='Myst3exile.') #TODO HIDE THIS! (config.ini)
+        sub = r.subreddit('bonehurtingjuice')
+        posts = sub.hot(limit=100)
+        rand = random.randint(0, 100)
+        for i, post in enumerate(posts):
+            if i == rand:
+                await ctx.send(post.url)
+
 
 def setup(bot):
     bot.add_cog(Commands(bot))

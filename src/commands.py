@@ -88,12 +88,25 @@ class Commands(commands.Cog):
                         url='http://www.reddit.com/user/' + str(post.author),
                         icon_url=post.author.icon_img
                     )
-                    # embed.add_field(
-                    #     name='Points: ' + str(post.score),
-                    #     value='yeet'
-                    # )
+                    if post.selftext is not '': #If the post is a text post
+                        description = (post.selftext[:1021] + '...') if len(post.selftext) > 1024 else post.selftext
+                        embed.add_field(
+                            name=str(post.score) + ' points',
+                            value=description
+                        )
+                    else: #If the post is a link post
+                        embed.add_field(
+                            name='Score:',
+                            value=post.score,
+                            inline=True
+                        )
+                        embed.add_field(
+                            name='Comments:',
+                            value=len(post.comments),
+                            inline=True
+                        )
                     embed.set_footer(
-                        text=str(post.score) + ' points',
+                        text='r/' + str(post.subreddit),
                         icon_url='https://styles.redditmedia.com/t5_6/styles/communityIcon_a8uzjit9bwr21.png'
                     )
 
@@ -101,7 +114,7 @@ class Commands(commands.Cog):
 
         except Exception as e:
             await ctx.message.add_reaction("\U0000274C") #Cross mark
-            print(e)
+            print('Exception in meme():', e)
         finally:
             await ctx.message.remove_reaction('\U0000231B', ctx.me)
 

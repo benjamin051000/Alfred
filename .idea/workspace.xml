@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e37654ec-6a1d-4080-9d15-14bbfe331706" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/commands.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/commands.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="45" column="23" lean-forward="true" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+            <state relative-caret-position="417">
+              <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -31,20 +32,7 @@
         <entry file="file://$PROJECT_DIR$/update_git.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="3" column="10" lean-forward="true" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/music.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1394">
-              <caret line="106" column="26" selection-start-line="106" selection-start-column="26" selection-end-line="106" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-                <element signature="e#203#1029#0" />
-              </folding>
+              <caret line="3" column="11" lean-forward="true" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -163,6 +151,7 @@
         <option value="$PROJECT_DIR$/config.ini" />
         <option value="$PROJECT_DIR$/config_example.ini" />
         <option value="$PROJECT_DIR$/update_git.sh" />
+        <option value="$PROJECT_DIR$/src/update.py" />
         <option value="$PROJECT_DIR$/src/commands.py" />
       </list>
     </option>
@@ -459,7 +448,21 @@
       <option name="project" value="LOCAL" />
       <updated>1561038508174</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/commands.py">
+      <created>1561038799901</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1561038799901</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Merge remote-tracking branch 'origin/master'">
+      <created>1561038937859</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1561038937859</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -475,7 +478,7 @@
     <frame x="-7" y="0" width="974" height="1087" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.67912775" visible="true" weight="0.23931624" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.67912775" visible="true" weight="0.23931624" />
       <window_info id="Structure" order="1" sideWeight="0.32087228" side_tool="true" weight="0.23987207" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -485,7 +488,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.24195223" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="7" sideWeight="0.49420443" visible="true" weight="0.32809225" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49420443" weight="0.32809225" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49786323" weight="0.3281412" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50106835" side_tool="true" weight="0.34591195" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49894625" weight="0.32914045" />
@@ -568,7 +571,9 @@
     <MESSAGE value="Changed /meme to exclude NSFW subreddits (to be tested). Added reactions&#10;to specify loading times." />
     <MESSAGE value="Polished meme embed" />
     <MESSAGE value="Output of subprocess call goes to update_git_log.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Output of subprocess call goes to update_git_log.txt" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/commands.py" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/master'" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/master'" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/__future__.py" />
@@ -741,14 +746,17 @@
     <entry file="file://$PROJECT_DIR$/update_git.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" column="10" lean-forward="true" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+          <caret line="3" column="11" lean-forward="true" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/update.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/commands.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="45" column="23" lean-forward="true" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+        <state relative-caret-position="417">
+          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>

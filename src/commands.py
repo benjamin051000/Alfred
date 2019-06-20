@@ -3,6 +3,7 @@ from discord.ext import commands
 import datetime
 import configloader as cfload
 import praw, random
+import subprocess
 
 cfload.read("..\\config.ini")
 print(cfload.configSectionMap("Owner Credentials")['owner_id'], "is the owner. Only he can use /shutdown.")
@@ -39,9 +40,19 @@ class Commands(commands.Cog):
             await ctx.message.add_reaction("\U0001F50C") #power plug emoji
             await self.bot.logout()
         else:
-            await ctx.send("You can't shut me down.")
+            await ctx.message.add_reaction('\U0000274C') #Cross mark
+            await ctx.send("You can't shut me down.", delete_after=15)
 
-#cfload.configSectionMap("Owner Credentials")["owner_id"]
+    @commands.command()
+    async def update(self, ctx):
+        """Shuts down the bot, updates the repo, and restarts using start.sh."""
+        if ctx.author.id == int(cfload.configSectionMap("Owner Credentials")["owner_id"]):
+            await ctx.message.add_reaction("\U0001F50C") #power plug emoji
+            await self.bot.logout()
+            subprocess.call(['../update_git.sh'])
+        else:
+            await ctx.message.add_reaction('\U0000274C') #Cross mark
+
     @commands.command()
     async def meme(self, ctx, subreddit='dankmemes'):
         """Gets a random meme from reddit and posts it.
@@ -63,6 +74,7 @@ class Commands(commands.Cog):
         for i, post in enumerate(posts):
             if i == rand:
                 await ctx.send(post.url)
+
 
 
 def setup(bot):

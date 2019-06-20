@@ -60,6 +60,8 @@ class Commands(commands.Cog):
         #Load the reddit login and bot credentials from config.ini
         credentials = cfload.configSectionMap("Reddit API")
 
+        await ctx.message.add_reaction("\U0000231B")  # hourglass done (not actually done)
+
         r = praw.Reddit(client_id=credentials['client_id'],
                            client_secret=credentials['client_secret'],
                            user_agent=credentials['user_agent'],
@@ -67,14 +69,17 @@ class Commands(commands.Cog):
                            password=credentials['password'])
         try:
             sub = r.subreddit(subreddit)
+            if sub.over18:
+                return await ctx.message.add_reaction("\U0001F6AB") #Prohibited
+            posts = sub.hot(limit=100)
+            rand = random.randint(0, 100)
+            for i, post in enumerate(posts):
+                if i == rand:
+                    await ctx.send(post.url)
         except Exception:
             await ctx.message.add_reaction("\U0000274C") #Cross mark
-        posts = sub.hot(limit=100)
-        rand = random.randint(0, 100)
-        for i, post in enumerate(posts):
-            if i == rand:
-                await ctx.send(post.url)
-
+        finally:
+            await ctx.message.remove_reaction('\U0000231B', ctx.me)
 
 
 def setup(bot):

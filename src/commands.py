@@ -49,12 +49,13 @@ class Commands(commands.Cog):
         if ctx.author.id == int(cfload.configSectionMap("Owner Credentials")["owner_id"]):
             await ctx.message.add_reaction("\U0001F50C") #power plug emoji
             file = open('update_git_log.txt', 'w')
+            await self.bot.logout()
             subprocess.call(['../update_git.sh'], stdout=file)
             file.close()
         else:
             await ctx.message.add_reaction('\U0000274C') #Cross mark
 
-        await self.bot.logout()
+
 
     @commands.command()
     async def meme(self, ctx, subreddit='dankmemes'):

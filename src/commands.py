@@ -20,7 +20,7 @@ class Commands(commands.Cog):
 
     @commands.command(aliases = ["clean", "purge"])
     async def prune(self, ctx, n = 1):
-        '''Deletes n messages.'''
+        '''Deletes a number n of messages.'''
         n = abs(n)
         if n > Commands.prune_cutoff:
             await ctx.channel.send("You can only delete up to 25 messages at a time.")
@@ -75,11 +75,41 @@ class Commands(commands.Cog):
             rand = random.randint(0, 100)
             for i, post in enumerate(posts):
                 if i == rand:
-                    await ctx.send(post.url)
-        except Exception:
+                    #Create the embed
+                    embed = discord.Embed(
+                        title=post.title, #TODO add subreddit link somewhere, maybe use add fields
+                        url='http://www.reddit.com' + post.permalink,
+                        # description=post.name,
+                        colour=discord.Colour(0xe7d066)
+                    )
+                    embed.set_image(url=post.url)
+                    embed.set_author(
+                        name= 'u/' + str(post.author),
+                        url='http://www.reddit.com/user/' + str(post.author),
+                        icon_url=post.author.icon_img
+                    )
+                    # embed.add_field(
+                    #     name='Points: ' + str(post.score),
+                    #     value='yeet'
+                    # )
+                    embed.set_footer(
+                        text=str(post.score) + ' points',
+                        icon_url='https://styles.redditmedia.com/t5_6/styles/communityIcon_a8uzjit9bwr21.png'
+                    )
+
+                    await ctx.send(embed=embed)
+
+        except Exception as e:
             await ctx.message.add_reaction("\U0000274C") #Cross mark
+            print(e)
         finally:
             await ctx.message.remove_reaction('\U0000231B', ctx.me)
+
+# embed = discord.Embed(title="Post Title", colour=discord.Colour(0xe7d066), url="https://reddit.com", description="Post Description", timestamp=datetime.datetime.utcfromtimestamp(1561002414))
+#
+# embed.set_image(url="https://i.redd.it/eflnf3szq6531.png")
+# embed.set_author(name="author name", url="https://discordapp.com", icon_url="https://cdn.discordapp.com/embed/avatars/0.png")
+# embed.set_footer(text="Reddit", icon_url="https://styles.redditmedia.com/t5_6/styles/communityIcon_a8uzjit9bwr21.png")
 
 
 def setup(bot):

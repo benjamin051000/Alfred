@@ -2,12 +2,11 @@ import discord
 from discord.ext import commands
 from youtube_dl import YoutubeDL
 from collections import deque
-from enum import Enum
 import asyncio
 import functools
 
 class MusicActivity(): #TODO fix
-    class Status(Enum):
+    class Status(discord.Enum):
         PLAYING = 1
         PAUSED = 2
         STOPPED = 3

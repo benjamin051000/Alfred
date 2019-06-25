@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e37654ec-6a1d-4080-9d15-14bbfe331706" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/music.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/music.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,18 +16,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/commands.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2261">
-              <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/update_git.sh">
           <provider selected="true" editor-type-id="text-editor">
@@ -98,14 +85,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/music.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="31" lean-forward="true" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+            <state relative-caret-position="187">
+              <caret line="11" column="19" lean-forward="true" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
             </state>
           </provider>
         </entry>
@@ -185,11 +181,6 @@
             <path>
               <item name="Alfred II" type="b2602c69:ProjectViewProjectNode" />
               <item name="Alfred II" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Alfred II" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Alfred II" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -482,7 +473,14 @@
       <option name="project" value="LOCAL" />
       <updated>1561039131200</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Updated youtube-dl and discord-py, changed MusicActivity.Status to inherit new discord.Enum">
+      <created>1561430829259</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1561430829259</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -504,12 +502,12 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3281412" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49525815" weight="0.18124342" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49893162" visible="true" weight="0.42886811" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49893162" weight="0.42886811" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.24195223" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49420443" weight="0.32809225" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49786323" weight="0.28556594" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49786323" visible="true" weight="0.28556594" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50106835" side_tool="true" weight="0.34591195" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49894625" weight="0.32914045" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -569,7 +567,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
-    <MESSAGE value="Changed configloader to be its own file, so other files can access config.ini" />
     <MESSAGE value="Added the ability to search YT with a query, which enqueues the first song in the results!" />
     <MESSAGE value="Updated gitignore and made a config_example.ini to hide my personal token." />
     <MESSAGE value="Cleaned play and download methods up a little bit. Changed url argument to query." />
@@ -594,7 +591,8 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/commands.py" />
     <MESSAGE value="Merge remote-tracking branch 'origin/master'" />
     <MESSAGE value="Removed update command. Can't get it to work." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed update command. Can't get it to work." />
+    <MESSAGE value="Updated youtube-dl and discord-py, changed MusicActivity.Status to inherit new discord.Enum" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated youtube-dl and discord-py, changed MusicActivity.Status to inherit new discord.Enum" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/__future__.py" />
@@ -702,7 +700,7 @@
     <entry file="file://$PROJECT_DIR$/src/commands.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2261">
-          <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
+          <caret line="133" selection-start-line="133" selection-end-line="133" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
@@ -773,11 +771,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/music.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="31" lean-forward="true" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+        <state relative-caret-position="187">
+          <caret line="11" column="19" lean-forward="true" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>

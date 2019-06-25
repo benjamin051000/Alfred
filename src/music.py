@@ -83,13 +83,13 @@ class Music(commands.Cog):
             # print(e)
 
     @commands.command()
-    async def leave(self, ctx):
+    async def leave(self, ctx): #TODO add a task that does this automatically so he doesn't hang out forever in the chat
         '''Leave the voice channel.'''
         if self.vc is not None:
             await self.vc.disconnect()
 
     @commands.command()
-    async def queue(self, ctx): # TODO I'm sure this is broken now, also make it look nice
+    async def queue(self, ctx): # TODO add links to queues, make embed helpful
         '''Displays the song queue.'''
         embed = discord.Embed(title='Song Queue', colour=discord.Colour(0xe7d066)) #Yellow
         if len(self.queue) == 0:

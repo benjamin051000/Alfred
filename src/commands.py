@@ -58,7 +58,7 @@ class Commands(commands.Cog):
 
 
     @commands.command()
-    async def meme(self, ctx, subreddit='dankmemes'):
+    async def meme(self, ctx, subreddit='dankmemes'): #TODO fix gif playback
         """Gets a random meme from reddit and posts it.
         Specify a subreddit to get a post from (actually works with any sub). Default is r/dankmemes."""
         #Load the reddit login and bot credentials from config.ini

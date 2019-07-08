@@ -39,7 +39,7 @@ async def on_message(message):
     if message.author == bot.user and message.content.startswith(command_prefix):
         return
     #hello
-    if message.content.upper() in ("HELLO", "HI", "HEY", "GREETINGS", "SALUTATIONS", "YO"):
+    if not set(message.content.upper().split(' ')).isdisjoint(("HELLO", "HI", "HEY", "GREETINGS", "SALUTATIONS", "YO")): #Magically checks for any of the greetings in message
         await message.add_reaction("\U0001F44B") #waving hand
 
 ###################################################################################

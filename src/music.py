@@ -172,16 +172,24 @@ class Music(commands.Cog):
     async def playsong(self, ctx, next=False, *query):
         player = self.get_player(ctx)
 
+        if not query:
+            return await ctx.message.add_reaction("\U0000274C") #Cross mark
+
+
         await ctx.message.add_reaction("\U0000231B")  # hourglass done
 
         await self.joinChannel(ctx, player)
 
-        if next:
-            player.queue.appendleft(YTDLSource(query))
-            # Logger.info('Enqueued', player.queue[-1].data['title'])
-        else:
-            player.queue.append(YTDLSource(query))
-            # Logger.info('Enqueued', player.queue[-1].data['title'])
+        try:
+            if next:
+                player.queue.appendleft(YTDLSource(query))
+                # Logger.info('Enqueued', player.queue[-1].data['title'])
+            else:
+                player.queue.append(YTDLSource(query))
+                # Logger.info('Enqueued', player.queue[-1].data['title'])
+        except Exception as e:
+            await ctx.message.add_reaction("\U0000274C")  # Cross mark
+            print('Exception while getting the YTDLSource:', e)
 
         if not player.vc.is_playing() and not player.vc.is_paused():
             player.music_loop(ctx)

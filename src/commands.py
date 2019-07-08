@@ -16,9 +16,9 @@ class Commands(commands.Cog):
 
     @commands.command()
     async def ping(self, ctx):
-        await ctx.send("Pong! ({} ms)".format(round(self.bot.latency, 2)))
+        await ctx.send(f'Pong! ({round(self.bot.latency, 2)} ms)')
 
-    @commands.command(aliases = ["clean", "purge"])
+    @commands.command(aliases = ['clean', 'purge', 'clear'])
     async def prune(self, ctx, n = 1):
         '''Deletes a number n of messages.'''
         n = abs(n)

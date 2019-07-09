@@ -4,9 +4,10 @@ import datetime
 import configloader as cfload
 import praw, random
 import subprocess
+from logger import Logger as log
 
-cfload.read("..\\config.ini")
-print(cfload.configSectionMap("Owner Credentials")['owner_id'], "is the owner. Only he can use /shutdown.")
+cfload.read('..\\config.ini')
+log.info(cfload.configSectionMap("Owner Credentials")['owner_id'], "is the owner. Only this user can use /shutdown.")
 
 class Commands(commands.Cog):
     prune_cutoff = 25
@@ -25,9 +26,10 @@ class Commands(commands.Cog):
         if n > Commands.prune_cutoff:
             await ctx.channel.send("You can only delete up to 25 messages at a time.")
             return
-        print(f"Purging {n + 1} message(s)...") #accounts for command invoke
+        log.debug(f"Purging {n + 1} message(s)...") #accounts for command invoke
         await ctx.message.remove_reaction("\U000023F3", ctx.me) #hourglass not done
         await ctx.channel.purge(limit=n + 1)
+
         title = f'{ctx.message.author} deleted {n} message'
         title += 's!' if n > 1 else '!'
         embed = discord.Embed(title=title, colour=discord.Colour(0xe7d066))
@@ -42,19 +44,6 @@ class Commands(commands.Cog):
         else:
             await ctx.message.add_reaction('\U0000274C') #Cross mark
             await ctx.send("You can't shut me down.", delete_after=15)
-
-    # @commands.command()
-    # async def update(self, ctx):
-    #     """Shuts down the bot, updates the repo, and restarts using start.sh."""
-    #     if ctx.author.id == int(cfload.configSectionMap("Owner Credentials")["owner_id"]):
-    #         await ctx.message.add_reaction("\U0001F50C") #power plug emoji
-    #         file = open('update_git_log.txt', 'w')
-    #         await self.bot.logout()
-    #         subprocess.call(['../update_git.sh'], stdout=file)
-    #         file.close()
-    #     else:
-    #         await ctx.message.add_reaction('\U0000274C') #Cross mark
-
 
 
     @commands.command()
@@ -118,7 +107,7 @@ class Commands(commands.Cog):
 
         except Exception as e:
             await ctx.message.add_reaction("\U0000274C") #Cross mark
-            print('Exception in meme():', e)
+            log.error('Exception in /meme:', e)
         finally:
             await ctx.message.remove_reaction('\U0000231B', ctx.me)
 

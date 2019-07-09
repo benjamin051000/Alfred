@@ -10,7 +10,7 @@ class Logger:  #TODO add a guild tag in log_format. Figure it out later i guess
 
     @classmethod
     def setup_logger(cls):
-        log_format = '%(levelname)s %(asctime)s - %(message)s'
+        log_format = '[%(levelname)s] (%(asctime)s) - %(message)s'  #TODO add guild ID
         logging.basicConfig(filename='../logs/{}.log'.format(datetime.date.today()),
                             level=logging.INFO,
                             format=log_format,
@@ -19,21 +19,28 @@ class Logger:  #TODO add a guild tag in log_format. Figure it out later i guess
         cls.logger.info('Logger set up successfully.')
 
     @classmethod
-    def debug(cls, msg):
-        cls.logger.debug(msg)
+    def debug(cls, *msg):
+        for m in msg:
+            cls.logger.debug(m)
 
     @classmethod
-    def info(cls, msg):
-        cls.logger.info(msg)
+    def info(cls, *msg):
+        for m in msg:
+            cls.logger.info(m)
 
     @classmethod
-    def warning(cls, msg):
-        cls.logger.warning(msg)
+    def warning(cls, *msg):
+        for m in msg:
+            cls.logger.warning(m)
 
     @classmethod
-    def error(cls, msg):
-        cls.logger.error(msg)
+    def error(cls, *msg):
+        for m in msg:
+            cls.logger.error(m)
 
     @classmethod
-    def critical(cls, msg):
-        cls.logger.critical(msg)
+    def critical(cls, *msg):
+        for m in msg:
+            cls.logger.critical(m)
+
+Logger.setup_logger()

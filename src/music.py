@@ -4,8 +4,9 @@ from youtube_dl import YoutubeDL
 from collections import deque
 import asyncio
 import functools
+from logger import Logger as log
 
-class MusicActivity: #TODO this wont work anymore :( we have to get rid of it. Rip
+class MusicActivity: #TODO Replace with /nowplaying and in /queue. RIP
     class status(discord.Enum):
         PLAYING = 1
         PAUSED = 2
@@ -24,7 +25,7 @@ class MusicActivity: #TODO this wont work anymore :( we have to get rid of it. R
             self.activity = discord.Activity() # reset activity
 
         await self.bot.change_presence(activity=self.activity)
-        print('Updated bot presence.')
+        log.debug('Updated bot presence.')
 
     def playing(self, source):
         self.activity.type = discord.ActivityType.listening
@@ -51,7 +52,7 @@ class YTDLSource: #TODO subclass to PCMVolumeTransformer? like that noob in the 
             try:
                 self.data = ydl.extract_info(self.query)  # BUG if streaming a song, and the same song is requested, error. Also HTTP Errors.
             except Exception as e:
-                print('YTDLException:', e)
+                log.error('YTDL Exception:', e)
 
             if "entries" in self.data:  # if we get a playlist, grab the first video
                 self.data = self.data["entries"][0]
@@ -130,7 +131,7 @@ class Music(commands.Cog):
         try:
             player.vc = await ctx.message.author.voice.channel.connect()
         except Exception as e:
-            print("Player already connected.", e)
+            log.error("Player already connected.", e)
 
 
     @commands.command()
@@ -189,7 +190,7 @@ class Music(commands.Cog):
                 # Logger.info('Enqueued', player.queue[-1].data['title'])
         except Exception as e:
             await ctx.message.add_reaction("\U0000274C")  # Cross mark
-            print('Exception while getting the YTDLSource:', e)
+            log.error('Exception while getting the YTDLSource:', e) #TODO this is handled above, isn't it?
 
         if not player.vc.is_playing() and not player.vc.is_paused():
             player.music_loop(ctx)
@@ -233,7 +234,7 @@ class Music(commands.Cog):
             try:
                 vol = max(min(100, float(input)), 0)
             except:
-                print('Volume must be a float.')
+                log.debug('Volume must be a float.')
                 return await ctx.message.add_reaction("\U00002753") #question mark
 
             player.volume = vol / 100

@@ -79,14 +79,15 @@ class MusicPlayer:
     def music_loop(self, ctx):
         """Streams the next YTDLSource."""
         if not self.queue:
+            # await asyncio.sleep(15)
             self.bot.loop.create_task(self.activity.change_act(MusicActivity.status.STOPPED, None))
-            Music.cleanup_player(self.guild_id) #maybe after a time limit?
+            self.bot.loop.create_task(Music.destroy_player(self.guild_id))
             return
         self.current_source = self.queue.popleft() #TODO consider using a list, which also has pop()
         # This could be abbrev'd by subclassing YTDLSource to PCMAudiostreamer, see streamer.py example.
         self.audio_streamer = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(self.current_source.path), volume=self.volume)
         self.vc.play(self.audio_streamer, after=lambda e : self.music_loop(ctx))
-        # print('Now playing', self.current_source.data['title'])
+        log.debug('Now playing', self.current_source.data['title'])
 
         self.bot.loop.create_task(self.activity.change_act(MusicActivity.status.PLAYING, self.current_source))
 
@@ -97,34 +98,43 @@ class MusicPlayer:
 class Music(commands.Cog):
     """Music-related commands."""
 
+    players = {}
+
     def __init__(self, bot):
         self.bot = bot
-        self.players = {}
+        # self.players = {} #TODO make class object so that other classes can call cleanup
 
 
     def get_player(self, ctx):
         try:
-            player = self.players[ctx.guild.id]
+            player = Music.players[ctx.guild.id]
         except KeyError:
             player = MusicPlayer(self.bot, ctx.guild.id)
-            self.players[ctx.guild.id] = player
+            Music.players[ctx.guild.id] = player
+            log.debug('Created new MusicPlayer for guild ' + str(ctx.guild.id))
 
         return player
 
+
     @classmethod
-    def cleanup_player(cls, guild_id):
-        pass
+    async def destroy_player(cls, guild_id):
         # try:
-        #     del self.players[guild_id] #ERROR
+            if cls.players[guild_id].vc is not None:
+                await cls.players[guild_id].vc.disconnect()
+            del cls.players[guild_id]
+            log.debug('Destroyed ' + str(guild_id) + ' MusicPlayer.')
         # except Exception as e:
+        #     log.error(e)
         #     print(e)
+
+
 
     @commands.command()
     async def join(self, ctx):
         await self.joinChannel(ctx)
 
 
-    async def joinChannel(self, ctx, player):
+    async def joinChannel(self, ctx, player=None):
         '''Join the invoking player's voice channel.'''
         player = player or self.get_player(ctx) #is this a thing
 
@@ -135,23 +145,20 @@ class Music(commands.Cog):
 
 
     @commands.command()
-    async def leave(self, ctx): #TODO add a task that does this automatically so he doesn't hang out forever in the chat
-        '''Leave the voice channel.'''
+    async def leave(self, ctx): #TODO destroy player
+        '''Leave the voice channel, clear the queue.'''
         player = self.get_player(ctx)
-
-        if player.vc is not None:
-            await player.vc.disconnect()
+        await Music.destroy_player(player.guild_id)
 
 
-    @commands.command()
-    async def queue(self, ctx): # TODO add links to queues, make embed helpful
+    @commands.command(aliases=['q'])
+    async def queue(self, ctx): # TODO add links to queues, improve embed functionality and UX
         '''Displays the song queue.'''
         player = self.get_player(ctx)
 
         embed = discord.Embed(title='Song Queue', colour=discord.Colour(0xe7d066)) #Yellow
         if len(player.queue) == 0:
-            await ctx.send("Nothing is enqueued. Play a song with /play", delete_after=10)
-            return
+            return await ctx.send("Nothing is enqueued. Play a song with /play", delete_after=10)
         else:
             for p in player.queue:
                 embed.add_field(name=p.data['title'], value=None)
@@ -161,16 +168,17 @@ class Music(commands.Cog):
 
     @commands.command()
     async def play(self, ctx, *query):
-        '''Play a song.'''
+        """Play a song."""
         await self.playsong(ctx, *query)
 
 
     @commands.command()
     async def playnow(self, ctx, *query):
-        await self.playsong(ctx, next=True, *query)
+        """Skip the line! Play a song immediately after the current song."""
+        await self.playsong(ctx, *query, next=True)
 
 
-    async def playsong(self, ctx, next=False, *query):
+    async def playsong(self, ctx, *query, next=False): #Default args come after arbitrary args (otherwise the first arb. arg is assigned to next)
         player = self.get_player(ctx)
 
         if not query:
@@ -184,10 +192,8 @@ class Music(commands.Cog):
         try:
             if next:
                 player.queue.appendleft(YTDLSource(query))
-                # Logger.info('Enqueued', player.queue[-1].data['title'])
             else:
                 player.queue.append(YTDLSource(query))
-                # Logger.info('Enqueued', player.queue[-1].data['title'])
         except Exception as e:
             await ctx.message.add_reaction("\U0000274C")  # Cross mark
             log.error('Exception while getting the YTDLSource:', e) #TODO this is handled above, isn't it?

@@ -5,17 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e37654ec-6a1d-4080-9d15-14bbfe331706" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/2018-12-20.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/2018-12-23.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/2019-03-05.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/2019-03-06.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/2019-03-07.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/commands.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/music.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/music.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,8 +27,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="32" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="493">
+              <caret line="35" selection-start-line="35" selection-end-line="35" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -43,41 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/commands.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1802">
-              <caret line="112" selection-start-line="112" selection-end-line="112" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/music.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2159">
-              <caret line="133" selection-start-line="133" selection-end-line="133" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/requirements.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="136">
+              <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -92,22 +55,29 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/logger.py">
+        <entry file="file://$PROJECT_DIR$/src/music.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="68" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
+            <state relative-caret-position="-409">
+              <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
+                <element signature="e#252#1077#0" />
+                <element signature="e#1185#2052#0" />
+                <element signature="e#2078#3512#0" />
+                <element signature="e#7105#7126#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+        <entry file="file://$PROJECT_DIR$/src/logger.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="153">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -131,6 +101,9 @@
       <find>title</find>
       <find>activity</find>
       <find>player alre</find>
+      <find>next</find>
+      <find>queue</find>
+      <find>players</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -156,18 +129,18 @@
         <option value="$PROJECT_DIR$/src/config.ini" />
         <option value="$PROJECT_DIR$/update_git.sh" />
         <option value="$PROJECT_DIR$/src/update.py" />
-        <option value="$PROJECT_DIR$/config.ini" />
-        <option value="$PROJECT_DIR$/config_example.ini" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/src/commands.py" />
         <option value="$PROJECT_DIR$/src/main.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/config.ini" />
+        <option value="$PROJECT_DIR$/config_example.ini" />
         <option value="$PROJECT_DIR$/src/music.py" />
         <option value="$PROJECT_DIR$/src/logger.py" />
-        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1087" />
@@ -177,22 +150,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Alfred II" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Alfred II" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Alfred II" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Alfred II" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -209,12 +166,28 @@
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Alfred II" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Alfred II" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Alfred II" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Alfred II" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ChangesTree.GroupingKeys" value="directory" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/Git Projects/Gabriel's Netflix Torrent" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -522,7 +495,21 @@
       <option name="project" value="LOCAL" />
       <updated>1562626144297</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Added extensive logger to all modules. Updated .gitignore to&#10;exclude logs.">
+      <created>1562645081759</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1562645081759</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Added a cleanup function to always delete the queue and voice client,&#10;as well as disconnect alfred as soon as he's done playing.">
+      <created>1562709133142</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1562709133142</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -535,23 +522,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="974" height="1087" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.67912775" visible="true" weight="0.18589744" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.67912775" visible="true" weight="0.09378293" />
       <window_info id="Structure" order="1" sideWeight="0.32087228" side_tool="true" weight="0.23987207" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32809225" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49525815" weight="0.35744235" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49786323" weight="0.26272067" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3271028" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49525815" weight="0.35721704" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49786323" visible="true" weight="0.3426791" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.24195223" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49420443" weight="0.32809225" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49358973" weight="0.32809225" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49786323" weight="0.28556594" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50213677" side_tool="true" weight="0.25366876" />
-      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49894625" weight="0.32914045" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50641024" side_tool="true" weight="0.25366876" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49894625" weight="0.3281412" />
       <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -630,8 +617,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
-    <MESSAGE value="Changed hourglass emoji to one that looks nicer. Added some comments. Added an async with ctx.typing(). /shutdown now has an alias /sd." />
-    <MESSAGE value="Fixed activity." />
     <MESSAGE value="Fixed play/pause issue (where it would skip a paused song if the music player was paused and a user invoked /play)." />
     <MESSAGE value="fixed slash issues. Windows is dumb" />
     <MESSAGE value="Changed voicechannel connect thing so it prints the exception to debug linux." />
@@ -655,7 +640,25 @@
     <MESSAGE value="Checks every word for a greeting. Added /clear as alias to /prune. Small misc housekeeping." />
     <MESSAGE value="Adds red cross if empty play query or if an error is encountered getting the source." />
     <MESSAGE value="Overhauled logger.py. Updated to discord.py 1.2.3." />
-    <option name="LAST_COMMIT_MESSAGE" value="Overhauled logger.py. Updated to discord.py 1.2.3." />
+    <MESSAGE value="Added extensive logger to all modules. Updated .gitignore to&#10;exclude logs." />
+    <MESSAGE value="Added a cleanup function to always delete the queue and voice client,&#10;as well as disconnect alfred as soon as he's done playing." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a cleanup function to always delete the queue and voice client,&#10;as well as disconnect alfred as soon as he's done playing." />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="players" language="Python" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>players</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/__future__.py" />
@@ -754,20 +757,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/discord/ext/commands/core.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="726" selection-start-line="726" selection-end-line="726" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/discord/ext/commands/bot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="897" selection-start-line="897" selection-end-line="897" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/asyncio/events.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
@@ -797,40 +786,21 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/update_git_log.txt" />
-    <entry file="file://$PROJECT_DIR$/src/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
+    <entry file="file://$PROJECT_DIR$/logs/2019-07-08.log" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="102">
+            <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.ini">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/commands.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1802">
-          <caret line="112" selection-start-line="112" selection-end-line="112" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/music.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2159">
-          <caret line="133" selection-start-line="133" selection-end-line="133" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
@@ -841,6 +811,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/logging/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="1120" selection-start-line="1120" selection-end-line="1120" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/commands.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="112" selection-start-line="112" selection-end-line="112" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/2019-07-09.log" />
+    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/discord/ext/commands/core.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="727" selection-start-line="727" selection-end-line="727" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/discord/ext/commands/bot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="897" selection-start-line="897" selection-end-line="897" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config_example.ini">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -848,32 +867,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/logs/2019-07-08.log">
-      <provider selected="true" editor-type-id="LogFileEditorProvider">
-        <state relative-caret-position="289">
-          <caret line="17" column="30" lean-forward="true" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="39" selection-start-line="26" selection-end-line="27" />
+    <entry file="file://$PROJECT_DIR$/src/music.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-409">
+          <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#252#1077#0" />
+            <element signature="e#1185#2052#0" />
+            <element signature="e#2078#3512#0" />
+            <element signature="e#7105#7126#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/logger.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="68" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
+        <state relative-caret-position="153">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>

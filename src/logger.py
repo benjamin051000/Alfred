@@ -12,7 +12,7 @@ class Logger:  #TODO add a guild tag in log_format. Figure it out later i guess
     def setup_logger(cls):
         log_format = '[%(levelname)s] (%(asctime)s) - %(message)s'  #TODO add guild ID
         logging.basicConfig(filename='../logs/{}.log'.format(datetime.date.today()),
-                            level=logging.INFO,
+                            level=logging.WARNING,
                             format=log_format,
                             filemode='w')
         cls.logger = logging.getLogger()

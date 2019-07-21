@@ -41,7 +41,8 @@ class YTDLSource: #TODO subclass to PCMVolumeTransformer? like that noob in the 
         'quiet': True,
         # 'logger' : 'the logger'
         'format': 'bestaudio/best',
-        'outtmpl': '../music_cache/%(extractor)s-%(id)s-%(title)s.%(ext)s',  # %(title)s.%(ext)s',
+        'restrictfilenames': True,
+        'outtmpl': '../music_cache/%(extractor)s-%(title)s.%(ext)s',  # %(title)s.%(ext)s',
     }
 
     def __init__(self, query):
@@ -50,7 +51,11 @@ class YTDLSource: #TODO subclass to PCMVolumeTransformer? like that noob in the 
 
         with YoutubeDL(YTDLSource.ytdl_opts) as ydl:
             try:
-                self.data = ydl.extract_info(self.query)  # BUG if streaming a song, and the same song is requested, error. Also HTTP Errors.
+                info = ydl.extract_info(self.query, download=False)
+                if not info['is_live']:
+                    self.data = ydl.extract_info(self.query)  # BUG if streaming a song, and the same song is requested, error. Also HTTP Errors.
+                else:
+                    pass #TODO get next video
             except Exception as e:
                 log.error('YTDL Exception:', e)
 

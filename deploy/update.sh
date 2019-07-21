@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-#Should kill main.py TODO be more specific
-kill -9 python
+#TODO /shutdown alfred before committing. May cause some funky issues with voiceclients.
+killall -v python3 main.py
 cd ../src
 git pull
 ../start.sh

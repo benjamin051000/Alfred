@@ -5,9 +5,14 @@ let app = express();
 
 let githubUsername = 'benjamin051000';
 
+app.listen(3000, ()=>{});
+
 app.post('/webhooks/github', (request, response) => {
 
-    if(branch.indexOf('master') >= 0 && request.body.sender.login === githubUsername) {
+    let sender = request.body.sender;
+    let branch = request.body.ref;
+
+    if(branch.indexOf('master') >= 0 && sender.login === githubUsername) {
         //Update the server
         childP.exec('./update.sh', (err, stdout, stderr) => {
         if(err) {

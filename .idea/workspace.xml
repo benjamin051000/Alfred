@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e37654ec-6a1d-4080-9d15-14bbfe331706" name="Default Changelist" comment="Updated requirements.txt">
-      <change afterPath="$PROJECT_DIR$/deploy/deploy-server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/deploy/update.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deploy/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deploy/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/2018-12-20.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/2018-12-23.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/2019-03-05.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/2019-03-06.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/2019-03-07.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/music.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/music.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,16 +56,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/deploy/deploy-server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+            <state relative-caret-position="374">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deploy/update.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
@@ -173,8 +172,8 @@
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/src/logger.py" />
         <option value="$PROJECT_DIR$/src/music.py" />
-        <option value="$PROJECT_DIR$/deploy/deploy-server.js" />
         <option value="$PROJECT_DIR$/deploy/update.sh" />
+        <option value="$PROJECT_DIR$/deploy/deploy-server.js" />
       </list>
     </option>
   </component>
@@ -211,6 +210,11 @@
               <item name="Alfred II" type="b2602c69:ProjectViewProjectNode" />
               <item name="Alfred II" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Alfred II" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Alfred II" type="462c0819:PsiDirectoryNode" />
+              <item name="deploy" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -221,7 +225,7 @@
     <property name="ChangesTree.GroupingKeys" value="directory" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="D:/Git Projects/Gabriel's Netflix Torrent" />
-    <property name="settings.editor.selected.configurable" value="editing.templates" />
+    <property name="settings.editor.selected.configurable" value="preferences.customizations" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -556,7 +560,21 @@
       <option name="project" value="LOCAL" />
       <updated>1563229347140</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Guards against live video errors.">
+      <created>1563742860626</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1563742860626</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Webhook deployment via Node Express">
+      <created>1563742923114</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1563742923114</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -570,6 +588,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="974" height="1087" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.67912775" visible="true" weight="0.1923077" />
       <window_info id="Structure" order="1" sideWeight="0.32087228" side_tool="true" weight="0.23987207" />
@@ -663,8 +682,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
-    <MESSAGE value="Changed voicechannel connect thing so it prints the exception to debug linux." />
-    <MESSAGE value="moved await ctx.joinchannel() to hopefully fix the issue" />
     <MESSAGE value="Changed path name to remove redundant bit (../music_cache/../music_cache....) and fixed / \ error" />
     <MESSAGE value="Put back in the try/except handling for joinChannel and changed some docs" />
     <MESSAGE value="Changed class names" />
@@ -688,7 +705,9 @@
     <MESSAGE value="Added a cleanup function to always delete the queue and voice client,&#10;as well as disconnect alfred as soon as he's done playing." />
     <MESSAGE value="Changed logger level to warning" />
     <MESSAGE value="Updated requirements.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated requirements.txt" />
+    <MESSAGE value="Guards against live video errors." />
+    <MESSAGE value="Webhook deployment via Node Express" />
+    <option name="LAST_COMMIT_MESSAGE" value="Webhook deployment via Node Express" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -951,17 +970,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deploy/deploy-server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/deploy/update.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy/deploy-server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>

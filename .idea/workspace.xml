@@ -6,13 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="e37654ec-6a1d-4080-9d15-14bbfe331706" name="Default Changelist" comment="Updated requirements.txt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deploy/update.sh" beforeDir="false" afterPath="$PROJECT_DIR$/deploy/update.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deploy/deploy-server.js" beforeDir="false" afterPath="$PROJECT_DIR$/deploy/deploy-server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/2018-12-20.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/2018-12-23.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/2019-03-05.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/2019-03-06.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/2019-03-07.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/start.sh" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,11 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/deploy/deploy-server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="221">
+              <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -82,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+            <state relative-caret-position="85">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -153,15 +152,15 @@
         <option value="$PROJECT_DIR$/src/update.py" />
         <option value="$PROJECT_DIR$/src/commands.py" />
         <option value="$PROJECT_DIR$/src/main.py" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/config.ini" />
         <option value="$PROJECT_DIR$/config_example.ini" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/src/logger.py" />
         <option value="$PROJECT_DIR$/src/music.py" />
-        <option value="$PROJECT_DIR$/deploy/deploy-server.js" />
-        <option value="$PROJECT_DIR$/deploy/update.sh" />
         <option value="$PROJECT_DIR$/start.sh" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/deploy/update.sh" />
+        <option value="$PROJECT_DIR$/deploy/deploy-server.js" />
       </list>
     </option>
   </component>
@@ -581,7 +580,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563748788617</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Updated deploy script. Updated gitignore.">
+      <created>1563753571633</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1563753571633</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -689,7 +695,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
-    <MESSAGE value="Changed class names" />
     <MESSAGE value="Fixed volume persistence between songs." />
     <MESSAGE value="Fixed small bug in /prune." />
     <MESSAGE value="Added /meme, which returns a random r/bonehurtingjuice post (from top 100 hot). lmao" />
@@ -714,7 +719,8 @@
     <MESSAGE value="Webhook deployment via Node Express" />
     <MESSAGE value="Added package.json" />
     <MESSAGE value="Added listening port" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added listening port" />
+    <MESSAGE value="Updated deploy script. Updated gitignore." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated deploy script. Updated gitignore." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -932,20 +938,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deploy/deploy-server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deploy/update.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -986,8 +978,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy/update.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy/deploy-server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
         </state>
       </provider>
     </entry>

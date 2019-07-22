@@ -4,6 +4,7 @@ let app = express();
 
 
 let githubUsername = 'benjamin051000';
+let currentBranch = 'deploy-hook';
 
 app.use(express.json());
 
@@ -16,7 +17,7 @@ app.post('/webhooks/github', (request, response) => {
     console.log(sender);
     console.log(branch);
 
-    if(branch.indexOf('master') >= 0 && sender.login === githubUsername) {
+    if(branch.indexOf(currentBranch) >= 0 && sender.login === githubUsername) {
         //Update the server
         console.log('Attempting to execute update.sh...');
         childP.exec('./update.sh', (err, stdout, stderr) => {
@@ -29,6 +30,10 @@ app.post('/webhooks/github', (request, response) => {
                 console.log('Executed update.sh successfully.');
             }
         });
+    }
+    else {
+        console.error('Something weird happened.');
+        return response.sendStatus(500);
     }
     //Send a success
     response.sendStatus(200);

@@ -9,13 +9,12 @@ app.use(express.json());
 
 app.listen(3000, ()=>{});
 
-
-
 app.post('/webhooks/github', (request, response) => {
 
-    let sender = request.body.sender;
+    let sender = request.body.sender.login;
     let branch = request.body.ref;
-    console.log(sender, branch);
+    console.log(sender);
+    console.log(branch);
 
     if(branch.indexOf('master') >= 0 && sender.login === githubUsername) {
         //Update the server
@@ -26,7 +25,8 @@ app.post('/webhooks/github', (request, response) => {
                 return response.send(500);
             }
         });
-        //Send a success
-        res.send(200);
     }
+    //Send a success
+    response.sendStatus(200);
+    console.log('Sent reponse successfully.');
 });

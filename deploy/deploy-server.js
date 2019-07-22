@@ -18,15 +18,19 @@ app.post('/webhooks/github', (request, response) => {
 
     if(branch.indexOf('master') >= 0 && sender.login === githubUsername) {
         //Update the server
+        console.log('Attempting to execute update.sh...');
         childP.exec('./update.sh', (err, stdout, stderr) => {
             if(err) {
                 console.error(err);
                 //Send an error!
-                return response.send(500);
+                return response.sendStatus(500);
+            }
+            else {
+                console.log('Executed update.sh successfully.');
             }
         });
     }
     //Send a success
     response.sendStatus(200);
-    console.log('Sent reponse successfully.');
+    console.log('Sent response successfully.');
 });

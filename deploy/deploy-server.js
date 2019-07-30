@@ -4,7 +4,7 @@ let app = express();
 
 
 let githubUsername = 'benjamin051000';
-let currentBranch = 'deploy-hook';
+let currentBranch = 'master';
 
 app.use(express.json());
 

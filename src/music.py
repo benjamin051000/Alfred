@@ -41,7 +41,8 @@ class YTDLSource: #TODO subclass to PCMVolumeTransformer? like that noob in the 
         'quiet': True,
         # 'logger' : 'the logger'
         'format': 'bestaudio/best',
-        'outtmpl': '../music_cache/%(extractor)s-%(id)s-%(title)s.%(ext)s',  # %(title)s.%(ext)s',
+        'restrictfilenames': True,
+        'outtmpl': '../music_cache/%(extractor)s-%(title)s.%(ext)s',  # %(title)s.%(ext)s',
     }
 
     def __init__(self, query):
@@ -49,10 +50,17 @@ class YTDLSource: #TODO subclass to PCMVolumeTransformer? like that noob in the 
         self.data = {} #Necessary?
 
         with YoutubeDL(YTDLSource.ytdl_opts) as ydl:
-            try:
+            # try:
+            info = ydl.extract_info(self.query, download=False)
+            if "entries" in info:  # grab the first video #TODO can be abstracted to a function, repeated below
+                info = info["entries"][0]
+
+            if not info['is_live']:
                 self.data = ydl.extract_info(self.query)  # BUG if streaming a song, and the same song is requested, error. Also HTTP Errors.
-            except Exception as e:
-                log.error('YTDL Exception:', e)
+            else:
+                pass #TODO get next video
+            # except Exception as e:
+            #     log.error('YTDL Exception:', e)
 
             if "entries" in self.data:  # if we get a playlist, grab the first video
                 self.data = self.data["entries"][0]

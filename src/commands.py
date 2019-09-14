@@ -5,6 +5,8 @@ import configloader as cfload
 import praw, random
 import subprocess
 from logger import Logger as log
+import qrcode
+from io import BytesIO
 
 cfload.read('..\\config.ini')
 log.info(cfload.configSectionMap("Owner Credentials")['owner_id'], "is the owner. Only this user can use /shutdown.")
@@ -110,6 +112,18 @@ class Commands(commands.Cog):
             log.error('Exception in /meme:', e)
         finally:
             await ctx.message.remove_reaction('\U0000231B', ctx.me)
+
+    @commands.command()
+    async def qr(selfs, ctx, *link: str):
+        """Generates a QR code from a provided link."""
+        link = ' '.join(link)
+        img = qrcode.make(link)  # TODO Run in executor # TODO shrink img size (maybe)
+        file = BytesIO()
+        img.save(file, 'JPEG')  # TODO Run in executor
+        file.seek(0)
+        url = link if 'http://' in link else 'http://' + link
+        await ctx.send(url, file=discord.File(file, 'qr.jpeg'))
+
 
 # embed = discord.Embed(title="Post Title", colour=discord.Colour(0xe7d066), url="https://reddit.com", description="Post Description", timestamp=datetime.datetime.utcfromtimestamp(1561002414))
 #

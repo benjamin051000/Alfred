@@ -1,9 +1,7 @@
 import discord
 from discord.ext import commands
-import datetime
 import configloader as cfload
 import praw, random
-import subprocess
 from logger import Logger as log
 import qrcode
 from io import BytesIO
@@ -12,6 +10,7 @@ cfload.read('..\\config.ini')
 log.info(cfload.configSectionMap("Owner Credentials")['owner_id'], "is the owner. Only this user can use /shutdown.")
 
 class Commands(commands.Cog):
+    """Various commands"""
     prune_cutoff = 25
 
     def __init__(self, bot):
@@ -21,9 +20,9 @@ class Commands(commands.Cog):
     async def ping(self, ctx):
         await ctx.send(f'Pong! ({round(self.bot.latency, 2)} ms)')
 
-    @commands.command(aliases = ['clean', 'purge', 'clear'])
-    async def prune(self, ctx, n = 1):
-        '''Deletes a number n of messages.'''
+    @commands.command(aliases=['clean', 'purge', 'clear'])
+    async def prune(self, ctx, n=1):
+        """Deletes a number n of messages."""
         n = abs(n)
         if n > Commands.prune_cutoff:
             await ctx.channel.send("You can only delete up to 25 messages at a time.")
@@ -114,7 +113,7 @@ class Commands(commands.Cog):
             await ctx.message.remove_reaction('\U0000231B', ctx.me)
 
     @commands.command()
-    async def qr(selfs, ctx, *link: str):
+    async def qr(self, ctx, *link: str):
         """Generates a QR code from a provided link."""
         link = ' '.join(link)
         img = qrcode.make(link)  # TODO Run in executor # TODO shrink img size (maybe)

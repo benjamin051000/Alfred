@@ -1,9 +1,0 @@
-INFO 2019-03-07 13:51:02,602 - Logger set up successfully.
-INFO 2019-03-07 13:51:07,649 - logging in using static token
-INFO 2019-03-07 13:51:11,845 - Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6&compress=zlib-stream
-INFO 2019-03-07 13:51:11,847 - Shard ID None has sent the IDENTIFY payload.
-INFO 2019-03-07 13:51:13,969 - Shard ID None has connected to Gateway: gateway-prd-main-tds8, discord-sessions-prd-1-21 (Session ID: fdd2994a3a65643048f19fff73f7604b).
-WARNING 2019-03-07 13:51:16,356 - Unknown event PRESENCES_REPLACE.
-INFO 2019-03-07 13:51:26,227 - Websocket closed with 1000 (), cannot reconnect.
-INFO 2019-03-07 13:51:26,227 - Cleaning up event loop.
-INFO 2019-03-07 13:51:26,227 - Cleaning up after 5 tasks

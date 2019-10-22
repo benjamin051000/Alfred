@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 cd src
-nohup python3 main.py &
+pm2 start main.py

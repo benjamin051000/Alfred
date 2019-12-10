@@ -147,18 +147,17 @@ class Music(commands.Cog):
         await Music.destroy_player(player.guild_id)
 
     @commands.command(aliases=['q'])
-    async def queue(self, ctx):  # TODO add links to queues, improve embed functionality and UX
+    async def queue(self, ctx):  # TODO add links to queues, improve embed functionality and UX # TODO BROKEN
         """Displays the song queue."""
         player = self.get_player(ctx)
 
         embed = discord.Embed(title='Song Queue', colour=discord.Colour(0xe7d066))  #Yellow
         if len(player.queue) == 0:
-            return await ctx.send("Nothing is enqueued. Play a song with /play", delete_after=10)
+            await ctx.send("Nothing is enqueued. Play a song with /play", delete_after=10)
         else:
             for p in player.queue:
-                embed.add_field(name=p.data['title'], value='')
-
-        await ctx.send(embed=embed)
+                embed.add_field(name=p.data['title'], value='_'*10, inline=False)
+            await ctx.send(embed=embed)
 
     @commands.command()
     async def play(self, ctx, *query):

@@ -46,7 +46,6 @@ class Commands(commands.Cog):
             await ctx.message.add_reaction('\U0000274C') #Cross mark
             await ctx.send("You can't shut me down.", delete_after=15)
 
-
     @commands.command()
     async def meme(self, ctx, subreddit='dankmemes'): #TODO fix gif playback
         """Gets a random meme from reddit and posts it.
@@ -64,21 +63,21 @@ class Commands(commands.Cog):
         try:
             sub = r.subreddit(subreddit)
             if sub.over18:
-                return await ctx.message.add_reaction("\U0001F6AB") #Prohibited
+                return await ctx.message.add_reaction("\U0001F6AB")  #Prohibited
             posts = sub.hot(limit=100)
             rand = random.randint(0, 100)
             for i, post in enumerate(posts):
                 if i == rand:
                     #Create the embed
                     embed = discord.Embed(
-                        title=post.title, #TODO add subreddit link somewhere, maybe use add fields
+                        title=post.title,  #TODO add subreddit link somewhere, maybe use add fields
                         url='http://www.reddit.com' + post.permalink,
                         # description=post.name,
                         colour=discord.Colour(0xe7d066)
                     )
                     embed.set_image(url=post.url)
                     embed.set_author(
-                        name= 'u/' + str(post.author),
+                        name='u/' + str(post.author),
                         url='http://www.reddit.com/user/' + str(post.author),
                         icon_url=post.author.icon_img
                     )

@@ -46,7 +46,6 @@ class Commands(commands.Cog):
             await ctx.message.add_reaction('\U0000274C') #Cross mark
             await ctx.send("You can't shut me down.", delete_after=15)
 
-
     @commands.command()
     async def meme(self, ctx, subreddit='dankmemes'): #TODO fix gif playback
         """Gets a random meme from reddit and posts it.
@@ -64,21 +63,21 @@ class Commands(commands.Cog):
         try:
             sub = r.subreddit(subreddit)
             if sub.over18:
-                return await ctx.message.add_reaction("\U0001F6AB") #Prohibited
+                return await ctx.message.add_reaction("\U0001F6AB")  #Prohibited
             posts = sub.hot(limit=100)
             rand = random.randint(0, 100)
             for i, post in enumerate(posts):
                 if i == rand:
                     #Create the embed
                     embed = discord.Embed(
-                        title=post.title, #TODO add subreddit link somewhere, maybe use add fields
+                        title=post.title,  #TODO add subreddit link somewhere, maybe use add fields
                         url='http://www.reddit.com' + post.permalink,
                         # description=post.name,
                         colour=discord.Colour(0xe7d066)
                     )
                     embed.set_image(url=post.url)
                     embed.set_author(
-                        name= 'u/' + str(post.author),
+                        name='u/' + str(post.author),
                         url='http://www.reddit.com/user/' + str(post.author),
                         icon_url=post.author.icon_img
                     )
@@ -96,7 +95,7 @@ class Commands(commands.Cog):
                         )
                         embed.add_field(
                             name='Comments:',
-                            value=len(post.comments),
+                            value=str(len(post.comments)),
                             inline=True
                         )
                     embed.set_footer(
@@ -122,6 +121,60 @@ class Commands(commands.Cog):
         file.seek(0)
         url = link if 'http://' in link else 'http://' + link
         await ctx.send(url, file=discord.File(file, 'qr.jpeg'))
+
+    @commands.command(aliases=['ms'])
+    async def minesweeper(self, ctx, width: int = 5, height: int = 5, mines: int = 5, debug=None):
+        """Plays minesweeper. Specify the width and height of the board, and the number of mines.
+        Debug reveals all tiles. Default board is a 5x5 with 5 mines."""
+        # Check for invalid input
+        if width <= 0 or height <= 0 or mines <= 0:
+            await ctx.send('Please enter width, height, and number of mines greater than zero.')
+            return
+
+        # Max board that doesn't break is 13x13. TODO restrict this? max len is 2048 chars
+        minefield = [[None for h in range(height)] for w in range(width)]
+
+        for i in range(mines):
+            while True:
+                # Find an empty space and place a mine there
+                x, y = random.randint(0, width - 1), random.randint(0, height - 1)
+                if minefield[x][y] != 'M':
+                    minefield[x][y] = 'M'
+                    break
+        # Mark the other ones
+        for x in range(width):
+            for y in range(height):
+                if minefield[x][y] != 'M':
+                    total_mines = 0
+                    # Check the 8 tiles around it
+                    for dy in range(-1, 2):
+                        for dx in range(-1, 2):
+                            if x + dx >= 0 and x + dx < width and y + dy >= 0 and y + dy < height:
+                                total_mines += int(minefield[x + dx][y + dy] == 'M')
+                    minefield[x][y] = total_mines
+
+        # Convert the numbers to emoji
+        for x in range(width):
+            for y in range(height):
+                if minefield[x][y] == 'M':
+                    minefield[x][y] = '\U0001F4A3'
+                else:
+                    # Convert the number to its proper keycap emoji variant
+                    minefield[x][y] = f'\\U0000003{str(minefield[x][y])}\\U0000FE0F\\U000020E3'.encode().decode('unicode-escape')
+        # Create string to send
+        string_field = 'Minesweeper:\n'
+        spoiler = lambda s: '||' + s + '||'
+
+        for x in range(width):
+            for y in range(height):
+                string_field += spoiler(minefield[x][y]) if not debug == '1' else minefield[x][y]
+                string_field += ' '
+            string_field += '\n'
+
+        await ctx.send(string_field)
+
+
+
 
 
 # embed = discord.Embed(title="Post Title", colour=discord.Colour(0xe7d066), url="https://reddit.com", description="Post Description", timestamp=datetime.datetime.utcfromtimestamp(1561002414))

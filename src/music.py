@@ -4,7 +4,11 @@ from youtube_dl import YoutubeDL
 from collections import deque
 from logger import Logger as log
 
-class MusicActivity:  #TODO Replace with /nowplaying and in /queue. RIP
+class MusicActivity:
+    """Represents a Discord Activity that allows the
+    bot to change its Activity presence to the song
+    it is listening to."""
+
     class Status(discord.Enum):
         PLAYING = 1
         PAUSED = 2
@@ -17,10 +21,8 @@ class MusicActivity:  #TODO Replace with /nowplaying and in /queue. RIP
     async def change_act(self, status, source=None):
         if status == MusicActivity.Status.PLAYING:
             self.playing(source)
-        elif status == MusicActivity.Status.PAUSED:
-            pass
         elif status == MusicActivity.Status.STOPPED:
-            self.activity = discord.Activity()  # reset activity
+            self.activity = discord.Activity()  # Resets activity
 
         await self.bot.change_presence(activity=self.activity)
         log.debug('Updated bot presence.')
@@ -28,14 +30,14 @@ class MusicActivity:  #TODO Replace with /nowplaying and in /queue. RIP
     def playing(self, source):
         self.activity.type = discord.ActivityType.listening
         self.activity.name = source.data['title']
-        # self.activity.details = "test details section" #doesnt work
+        # self.activity.details = "test details section" # Doesn't work with the current Discord API
 
 
-class YTDLSource:  # TODO subclass to PCMVolumeTransformer? like that noob in the help server said to
+class YTDLSource:  # TODO subclass to PCMVolumeTransformer? (like that noob in the help server did)
 
     ytdl_opts = {
-        "default_search": "auto",
-        "noplaylist": True,
+        'default_search': 'auto',
+        'noplaylist': True,
         'quiet': True,
         # 'logger' : 'the logger'
         'format': 'bestaudio/best',
@@ -45,23 +47,20 @@ class YTDLSource:  # TODO subclass to PCMVolumeTransformer? like that noob in th
 
     def __init__(self, query):
         self.query = ' '.join(query)
-        self.data = {}  #Necessary?
+        self.data = {}
 
         with YoutubeDL(YTDLSource.ytdl_opts) as ydl:
-            # try:
             info = ydl.extract_info(self.query, download=False)
-            if "entries" in info:  # grab the first video #TODO can be abstracted to a function, repeated below
-                info = info["entries"][0]
+            if 'entries' in info:  # grab the first video
+                info = info['entries'][0]
 
             if not info['is_live']:
-                self.data = ydl.extract_info(self.query)  # BUG if streaming a song, and the same song is requested, error. Also HTTP Errors.
+                self.data = ydl.extract_info(self.query)  # TODO run in executor?
             else:
                 pass  #TODO get next video
-            # except Exception as e:
-            #     log.error('YTDL Exception:', e)
 
-            if "entries" in self.data:  # if we get a playlist, grab the first video
-                self.data = self.data["entries"][0]
+            if 'entries' in self.data:  # if we get a playlist, grab the first video TODO does ytdl_opts['noplaylist'] prevent this error?
+                self.data = self.data['entries'][0]
             self.path = ydl.prepare_filename(self.data)
 
 
@@ -76,21 +75,23 @@ class MusicPlayer:
         self.queue = deque()
         self.vc = None
         self.audio_streamer = None
-        #Necessary to preserve volume across songs. TODO Should reset after some time
+        # 0-1. Default volume to preserve volume across songs. TODO Should reset after some time
         self.volume = MusicPlayer.default_volume
         self.activity = MusicActivity(self.bot)
         self.current_source = None
 
     def music_loop(self, ctx):
-        """Streams the next YTDLSource."""
+        """Streams the next YTDLSource in self.queue."""
+        # If the queue is empty, destroy the player.
         if not self.queue:
-            # await asyncio.sleep(15)
             self.bot.loop.create_task(self.activity.change_act(MusicActivity.Status.STOPPED, None))
             self.bot.loop.create_task(Music.destroy_player(self.guild_id))
             return
+
         self.current_source = self.queue.popleft()  #TODO consider using a list, which also has pop()
-        # This could be abbrev'd by subclassing YTDLSource to PCMAudiostreamer, see streamer.py example.
+        # PCMVolumeTransformer allows the volume to be changed.
         self.audio_streamer = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(self.current_source.path), volume=self.volume)
+        # Play the audio. This has a recursive call to pop the next song until the queue is empty. TODO replace with asyncio.Queue
         self.vc.play(self.audio_streamer, after=lambda e: self.music_loop(ctx))
         log.debug('Now playing', self.current_source.data['title'])
 
@@ -100,60 +101,59 @@ class MusicPlayer:
 class Music(commands.Cog):
     """Music-related commands."""
 
+    # Represents guild-specific music clients.
     players = {}
 
     def __init__(self, bot):
         self.bot = bot
-        # self.players = {} #TODO make class object so that other classes can call cleanup
 
     def get_player(self, ctx):
+        """Gets a guild's music player.
+        If it doesn't exist, generates a new one."""
         try:
             player = Music.players[ctx.guild.id]
         except KeyError:
             player = MusicPlayer(self.bot, ctx.guild.id)
             Music.players[ctx.guild.id] = player
-            log.debug('Created new MusicPlayer for guild ' + str(ctx.guild.id))
-
+            log.debug('Created new MusicPlayer for guild', str(ctx.guild.id))
         return player
 
     @classmethod
     async def destroy_player(cls, guild_id):
-        # try:
+        """Destroys a guild's player. Disconnects from the channel
+        and deletes the player entry in Music.players."""
         if cls.players[guild_id].vc is not None:
             await cls.players[guild_id].vc.disconnect()
         del cls.players[guild_id]
-        log.debug('Destroyed ' + str(guild_id) + ' MusicPlayer.')
-        # except Exception as e:
-        #     log.error(e)
-        #     print(e)
+        log.debug('Destroyed', str(guild_id), '\'s MusicPlayer.')
 
     @commands.command()
     async def join(self, ctx):
         await self.joinChannel(ctx)
 
     async def joinChannel(self, ctx, player=None):
-        """Join the invoking player's voice channel."""
-        player = player or self.get_player(ctx)  #is this a thing
+        """Join the invoking user's voice channel."""
+        player = player or self.get_player(ctx)
 
         try:
             player.vc = await ctx.message.author.voice.channel.connect()
         except Exception as e:
-            log.error("Player already connected.", e)
+            log.error('Player already connected.', e)
 
     @commands.command()
-    async def leave(self, ctx):  #TODO destroy player
+    async def leave(self, ctx):
         """Leave the voice channel, clear the queue."""
         player = self.get_player(ctx)
         await Music.destroy_player(player.guild_id)
 
     @commands.command(aliases=['q'])
-    async def queue(self, ctx):  # TODO add links to queues, improve embed functionality and UX # TODO BROKEN
+    async def queue(self, ctx):  # TODO add links to queues, improve embed functionality and UI
         """Displays the song queue."""
         player = self.get_player(ctx)
 
-        embed = discord.Embed(title='Song Queue', colour=discord.Colour(0xe7d066))  #Yellow
+        embed = discord.Embed(title='Song Queue', colour=discord.Colour(0xe7d066))  # Yellow
         if len(player.queue) == 0:
-            await ctx.send("Nothing is enqueued. Play a song with /play", delete_after=10)
+            await ctx.send('Nothing is enqueued. Play a song with /play', delete_after=10)
         else:
             for p in player.queue:
                 embed.add_field(name=p.data['title'], value='_'*10, inline=False)
@@ -166,19 +166,23 @@ class Music(commands.Cog):
 
     @commands.command()
     async def playnow(self, ctx, *query):
-        """Skip the line! Play a song immediately after the current song."""
+        """Skip the line! Play a song immediately after the currently playing song."""
         await self.playsong(ctx, *query, up_next=True)
 
-    async def playsong(self, ctx, *query, up_next=False):  #Default args come after arbitrary args (otherwise the first arb. arg is assigned to next)
+    async def playsong(self, ctx, *query, up_next=False):
+        """Creates a YTDL source for the query, adds it to the queue, and
+        """
         player = self.get_player(ctx)
 
+        # Make sure the user actually searched something
         if not query:
-            return await ctx.message.add_reaction("\U0000274C")  #Cross mark
+            return await ctx.message.add_reaction("\U0000274C")  # Cross mark
 
-        await ctx.message.add_reaction("\U0000231B")  # hourglass done
+        await ctx.message.add_reaction("\U0000231B")  # hourglass done (not actually done)
 
         await self.joinChannel(ctx, player)
 
+        # Add the YTDLSource to the queue, either up front or in the back
         try:
             if up_next:
                 player.queue.appendleft(YTDLSource(query))
@@ -186,13 +190,15 @@ class Music(commands.Cog):
                 player.queue.append(YTDLSource(query))
         except Exception as e:
             await ctx.message.add_reaction("\U0000274C")  # Cross mark
-            log.error('Exception while getting the YTDLSource:', e)  #TODO this is handled above, isn't it?
+            log.error('Exception while getting the YTDLSource:', e)  # TODO this is handled in YTDLSource, isn't it?
 
         if not player.vc.is_playing() and not player.vc.is_paused():
+            # Start the music loop.
             player.music_loop(ctx)
 
         await ctx.message.remove_reaction("\U0000231B", ctx.me)  # hourglass done
         await ctx.message.add_reaction("\U00002705")  # white heavy check mark (green in discord)
+
     # @commands.command()
     # async def search(self, ctx, *, search : str):
     #
@@ -206,16 +212,16 @@ class Music(commands.Cog):
     #     await ctx.send(info['webpage_url'])
 
     @commands.command()
-    async def pause(self, ctx):  #TODO if paused, /play will skip the song we are paused in. Add an if clause in play command.
+    async def pause(self, ctx):
         player = self.get_player(ctx)
         player.vc.pause()
-        await ctx.message.add_reaction("\U000023F8")  #pause button
+        await ctx.message.add_reaction("\U000023F8")  # pause button
 
     @commands.command(aliases=["res"])
     async def resume(self, ctx):
         player = self.get_player(ctx)
         player.vc.resume()
-        await ctx.message.add_reaction("\U000025B6")  #play button
+        await ctx.message.add_reaction("\U000025B6")  # play button
 
     @commands.command()
     async def skip(self, ctx):
@@ -228,16 +234,17 @@ class Music(commands.Cog):
         player = self.get_player(ctx)
         if vol is not None:
             try:
-                new_vol = max(min(100., float(vol)), 0.)
+                # Limit the volume between 0 and 100.
+                new_vol = max(min(100., float(vol)), 0.)  # TODO do these need to be floats?
             except ValueError:
                 log.debug('Volume must be a float.')
-                return await ctx.message.add_reaction("\U00002753")  #question mark
+                return await ctx.message.add_reaction("\U00002753")  # question mark
 
             player.volume = new_vol / 100
             player.audio_streamer.volume = player.volume
-            await ctx.message.add_reaction("\U00002705")  # white heavy check mark
+            await ctx.message.add_reaction("\U00002705")  # white heavy check mark (green in Discord)
         else:
-            await ctx.send('Volume set to ' + str(int(player.audio_streamer.volume * 100)) + '%.', delete_after=10)
+            await ctx.send('Volume currently set to ' + str(int(player.audio_streamer.volume * 100)) + '%.', delete_after=10)
 
 def setup(bot):
     bot.add_cog(Music(bot))

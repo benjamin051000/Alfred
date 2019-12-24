@@ -246,5 +246,6 @@ class Music(commands.Cog):
         else:
             await ctx.send('Volume currently set to ' + str(int(player.audio_streamer.volume * 100)) + '%.', delete_after=10)
 
+
 def setup(bot):
     bot.add_cog(Music(bot))

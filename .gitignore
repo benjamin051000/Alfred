@@ -3,3 +3,5 @@
 **/logs/*
 **/.idea
 config.ini
+lavalink/logs/*
+lavalink/Lavalink.jar

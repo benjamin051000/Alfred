@@ -1,5 +1,5 @@
 # Music files
-**/music_cache
+**/music_cache/*
 **/logs/*
 **/.idea
 config.ini

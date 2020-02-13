@@ -136,9 +136,9 @@ class Music(commands.Cog):
         player = player or self.get_player(ctx)
 
         try:
-            player.vc = await ctx.message.author.voice.channel.connect()
-        except Exception as e:
-            log.error('Player already connected.', e)
+            player.vc = await ctx.author.voice.channel.connect()
+        except discord.errors.ClientException:
+            log.info('Player already connected.')
 
     @commands.command()
     async def leave(self, ctx):

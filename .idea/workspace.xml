@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e37654ec-6a1d-4080-9d15-14bbfe331706" name="Default Changelist" comment="Updated requirements.txt">
-      <change beforePath="$PROJECT_DIR$/.idea/Alfred II.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Alfred II.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/acnh.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test_fi.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,26 +23,10 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>VolumeTransformer</find>
-      <find>configSectionMap</find>
-      <find>YoutubeDL</find>
-      <find>functools</find>
-      <find>datetime</find>
-      <find>title</find>
-      <find>activity</find>
-      <find>player alre</find>
-      <find>next</find>
-      <find>queue</find>
-      <find>players</find>
-      <find>player already</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="deploy-hook" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -81,7 +64,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.test fi">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="Alfred II" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -126,6 +109,32 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test fi" type="PythonConfigurationType" factoryName="Python">
+      <module name="Alfred II" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="src.test_fi" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="true" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.src.main" />
+      <item itemvalue="Python.test fi" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -141,14 +150,7 @@
       <workItem from="1581572654288" duration="1874000" />
       <workItem from="1582169191548" duration="38000" />
       <workItem from="1582169358383" duration="12000" />
-      <workItem from="1585339346954" duration="305000" />
-    </task>
-    <task id="LOCAL-00003" summary="Added the ability to search YT with a query, which enqueues the first song in the results!">
-      <created>1557115299050</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1557115299050</updated>
+      <workItem from="1585339346954" duration="6889000" />
     </task>
     <task id="LOCAL-00004" summary="Updated gitignore and made a config_example.ini to hide my personal token.">
       <created>1557156490905</created>
@@ -486,7 +488,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581574161539</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Updated requirements.txt">
+      <created>1585339886212</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1585339886212</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -563,20 +572,25 @@
     <MESSAGE value="Added output for debugging" />
     <MESSAGE value="Updated update.sh" />
     <MESSAGE value="Merge remote-tracking branch 'origin/deploy-hook' into deploy-hook&#10;&#10;# Conflicts:&#10;#&#9;deploy/update.sh" />
-    <MESSAGE value="Updated requirements.txt" />
     <MESSAGE value="Removed code that causes logging issue." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed code that causes logging issue." />
+    <MESSAGE value="Updated requirements.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated requirements.txt" />
   </component>
   <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="players" language="Python" />
-      </configuration>
-    </watches-manager>
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/acnh.py</url>
+          <line>20</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Alfred$main.coverage" NAME="main Coverage Results" MODIFIED="1581572366917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/Alfred$src_main.coverage" NAME="src.main Coverage Results" MODIFIED="1585339665625" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/Alfred$test_fi.coverage" NAME="test fi Coverage Results" MODIFIED="1585347356483" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Alfred$src_main.coverage" NAME="src.main Coverage Results" MODIFIED="1585346125732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">

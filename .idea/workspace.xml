@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/music.py" line="19" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="e37654ec-6a1d-4080-9d15-14bbfe331706" name="Default Changelist" comment="Updated requirements.txt">
+      <change beforePath="$PROJECT_DIR$/.idea/Alfred II.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Alfred II.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deploy/deploy-server.js" beforeDir="false" afterPath="$PROJECT_DIR$/deploy/deploy-server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/2018-12-20.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/2018-12-23.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/2019-03-05.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/2019-03-06.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/2019-03-07.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,76 +16,6 @@
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Alfred II" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config_example.ini">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/commands.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="112" selection-start-line="112" selection-end-line="112" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/deploy/deploy-server.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/deploy/update.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/requirements.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/start.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -116,96 +41,33 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="deploy-hook" />
       </map>
     </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/music.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/configloader.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/commands.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/configloader.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/music.py" root0="SKIP_INSPECTION" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/config_parser.py" />
-        <option value="$PROJECT_DIR$/src/configloader.py" />
-        <option value="$PROJECT_DIR$/src/config.ini" />
-        <option value="$PROJECT_DIR$/update_git.sh" />
-        <option value="$PROJECT_DIR$/src/update.py" />
-        <option value="$PROJECT_DIR$/src/commands.py" />
-        <option value="$PROJECT_DIR$/src/main.py" />
-        <option value="$PROJECT_DIR$/config.ini" />
-        <option value="$PROJECT_DIR$/config_example.ini" />
-        <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/src/logger.py" />
-        <option value="$PROJECT_DIR$/src/music.py" />
-        <option value="$PROJECT_DIR$/start.sh" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/deploy/update.sh" />
-        <option value="$PROJECT_DIR$/deploy/deploy-server.js" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
-    <option name="width" value="974" />
-    <option name="height" value="547" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="Alfred II" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-            </path>
-            <path>
-              <item name="Alfred II" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Alfred II" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Alfred II" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Alfred II" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Alfred II" type="462c0819:PsiDirectoryNode" />
-              <item name="deploy" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Alfred II" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Alfred II" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
-  </component>
+  <component name="ProjectId" id="1Xjw04WYlyZBEqmIIBmOsOBm3KJ" />
   <component name="PropertiesComponent">
     <property name="ChangesTree.GroupingKeys" value="directory" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="D:/Git Projects/Gabriel's Netflix Torrent" />
-    <property name="settings.editor.selected.configurable" value="preferences.customizations" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -232,6 +94,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="src.main" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -248,11 +111,12 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="D:\discord_bots\Alfred\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="src.main" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -273,20 +137,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1545328929365</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Changed configloader to be its own file, so other files can access config.ini">
-      <created>1557077618880</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1557077618880</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Changed configloader to be its own file, so other files can access config.ini">
-      <created>1557108064616</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1557108064617</updated>
+      <workItem from="1581572585826" duration="47000" />
+      <workItem from="1581572654288" duration="1874000" />
+      <workItem from="1582169191548" duration="38000" />
+      <workItem from="1582169358383" duration="12000" />
+      <workItem from="1585339346954" duration="305000" />
     </task>
     <task id="LOCAL-00003" summary="Added the ability to search YT with a query, which enqueues the first song in the results!">
       <created>1557115299050</created>
@@ -617,7 +472,21 @@
       <option name="project" value="LOCAL" />
       <updated>1563757462333</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Updated requirements.txt">
+      <created>1581574133795</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1581574133795</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Removed code that causes logging issue.">
+      <created>1581574161539</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1581574161539</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -629,49 +498,8 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
-  <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="974" height="547" extended-state="0" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.67912775" visible="true" weight="0.1923077" />
-      <window_info id="Structure" order="1" sideWeight="0.32087228" side_tool="true" weight="0.23987207" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3271028" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49525815" weight="0.35721704" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49786323" visible="true" weight="0.3904465" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.24195223" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49358973" weight="0.32704404" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49786323" weight="0.65700483" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50641024" side_tool="true" weight="0.2536232" />
-      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49894625" weight="0.3281412" />
-      <window_info anchor="bottom" id="Messages" order="11" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.67912775" visible="true" weight="0.12065332" />
-      <window_info id="Structure" order="1" sideWeight="0.32087228" side_tool="true" weight="0.23987207" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="0" />
-      <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" weight="0.32809225" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49525815" weight="0.35744235" />
-      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49786323" weight="0.29454926" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="7" weight="0.24195223" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49420443" weight="0.32809225" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49786323" weight="0.28556594" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50213677" side_tool="true" weight="0.25366876" />
-      <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.49894625" weight="0.32914045" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -689,20 +517,7 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
+              <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
@@ -725,7 +540,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
-    <MESSAGE value="Hid reddit login credentials in config.ini." />
     <MESSAGE value="Added update.git to automatically update the repo and restart the bot." />
     <MESSAGE value="Changed /meme to exclude NSFW subreddits (to be tested). Added reactions&#10;to specify loading times." />
     <MESSAGE value="Polished meme embed" />
@@ -750,7 +564,8 @@
     <MESSAGE value="Updated update.sh" />
     <MESSAGE value="Merge remote-tracking branch 'origin/deploy-hook' into deploy-hook&#10;&#10;# Conflicts:&#10;#&#9;deploy/update.sh" />
     <MESSAGE value="Updated requirements.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated requirements.txt" />
+    <MESSAGE value="Removed code that causes logging issue." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed code that causes logging issue." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -758,6 +573,10 @@
         <watch expression="players" language="Python" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Alfred$main.coverage" NAME="main Coverage Results" MODIFIED="1581572366917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/Alfred$src_main.coverage" NAME="src.main Coverage Results" MODIFIED="1585339665625" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -767,265 +586,5 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/__future__.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/calendar.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/shelve.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/discord/__init__.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/discord/ext/commands/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/discord/ext/commands/context.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="212" selection-start-line="212" selection-end-line="212" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/discord/member.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="93" selection-start-line="93" selection-end-line="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/discord/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="56" selection-start-line="56" selection-end-line="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/configparser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8993">
-          <caret line="675" selection-start-line="675" selection-end-line="675" />
-          <folding>
-            <element signature="e#0#6285#1" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/Alfred II.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/youtube_dl/YoutubeDL.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="340" selection-start-line="340" selection-end-line="340" />
-          <folding>
-            <element signature="e#2351#14909#1" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config.ini" />
-    <entry file="file://$PROJECT_DIR$/src/streamer.py" />
-    <entry file="file://$PROJECT_DIR$/src/update_git.sh" />
-    <entry file="file://$PROJECT_DIR$/src/update.py" />
-    <entry file="file://$PROJECT_DIR$/update_git.sh" />
-    <entry file="file://$PROJECT_DIR$/youtube_dl_info.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="132" selection-start-column="127" selection-end-column="132" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/configloader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/discord/ext/commands/errors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="201" selection-start-line="201" selection-end-line="201" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/discord/ext/commands/cog.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="229" selection-start-line="229" selection-end-line="229" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/asyncio/events.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="87" selection-start-line="87" selection-end-line="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/asyncio/base_events.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="538" selection-start-line="538" selection-end-line="538" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/discord/client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="164" column="13" selection-start-line="164" selection-start-column="13" selection-end-line="164" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/334687576/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="488" column="4" selection-start-line="488" selection-start-column="4" selection-end-line="488" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/update_git_log.txt" />
-    <entry file="file://$PROJECT_DIR$/logs/2019-07-08.log" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/logging/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="1120" selection-start-line="1120" selection-end-line="1120" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logs/2019-07-09.log" />
-    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/discord/ext/commands/core.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="727" selection-start-line="727" selection-end-line="727" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/discord/ext/commands/bot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="897" selection-start-line="897" selection-end-line="897" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logs/2019-07-10.log" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/concurrent/futures/thread.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="56" selection-start-line="56" selection-end-line="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logs/2019-07-15.log" />
-    <entry file="file://$PROJECT_DIR$/src/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/logger.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/music.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="59" column="47" selection-start-line="59" selection-start-column="47" selection-end-line="59" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <element signature="e#252#1077#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/commands.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="112" selection-start-line="112" selection-end-line="112" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config_example.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="102">
-            <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/start.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/start.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deploy/package.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deploy/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2772" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deploy/update.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deploy/deploy-server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
   </component>
 </project>

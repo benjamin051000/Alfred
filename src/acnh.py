@@ -1,5 +1,6 @@
 from discord.ext import commands
 import requests
+import re
 import mwparserfromhell as mwp
 
 
@@ -35,10 +36,31 @@ class ACNH(commands.Cog):
         results = list(filter(lambda temp: temp.params[1].strip('\n []').lower() == query, n_hemisphere)) + list(
             filter(lambda temp: temp.params[1].strip('\n []').lower() == query, s_hemisphere))
 
+        # Get the icon for the embed.
+        # This uses another API call, which sucks, but I can't get the HTML URL from the above wikitext.
+        # It seems unavoidable at the moment.
         try:
-            await ctx.send(results[0])  # TODO send as an embed.
+            icon_name = results[0].params[2].strip('\n []').replace('File:', '').strip().replace(' ', '_')
         except IndexError:
             await ctx.message.add_reaction('\U00002753')
+            return
+
+        html_url = 'https://animalcrossing.fandom.com/api.php?action=parse&page=Fish_(New_Horizons)&prop=text&format=json'
+        html_r = requests.get(html_url).json()
+        html_data = html_r['parse']['text']['*']
+
+        try:
+            pic_url = re.search(f'href="(?P<URL>(.*?){icon_name}(.*?))"', html_data).group('URL')
+        except AttributeError:
+            print('Couldn\'t find', icon_name)
+            await ctx.message.add_reaction('\U00002754')  # TODO remove, or make same color as above reaction (2753)
+            return
+
+        # try:
+        await ctx.send(results[0])  # TODO send as an embed.
+        await ctx.send(pic_url)
+        # except IndexError:
+        #     await ctx.message.add_reaction('\U00002753')
 
 
 def setup(bot):

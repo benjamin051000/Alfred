@@ -1,3 +1,4 @@
+mwparserfromhell
 aiohttp==3.6.2
 async-timeout==3.0.1
 attrs==19.1.0

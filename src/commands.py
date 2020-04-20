@@ -1,10 +1,12 @@
-import discord
-from discord.ext import commands
-import configloader as cfload
-import praw, random
-from logger import Logger as log
-import qrcode
 from io import BytesIO
+
+import configloader as cfload
+import discord
+import praw
+import qrcode
+import random
+from discord.ext import commands
+from logger import Logger as log
 
 cfload.read('..\\config.ini')
 log.info(cfload.configSectionMap("Owner Credentials")['owner_id'], "is the owner. Only this user can use /shutdown.")
@@ -173,6 +175,24 @@ class Commands(commands.Cog):
             text_field += '\n'
 
         await ctx.send(text_field)
+
+    @commands.command(aliases=['rd'])
+    async def rolldice(self, ctx, ndm):
+        """ Roll n m-sided die. Format is "/rolldice 2d5" (which will roll 2 d5). If ndm is specified as 'dnd' (or 'd&d')
+        (e.g. "/rolldice dnd"), a standard D&D 7-dice set will be rolled, along with a 1d10 for a percentile roll."""
+
+        output = '__Dice roll:__\n'
+
+        if ndm.lower() == 'dnd' or ndm.lower() == 'd&d':
+            for d in (4, 6, 8, 10, 10, 12, 20):
+                output += f'd{d}: {random.randint(1, int(d))}\n'
+        else:
+            n, d = ndm.lower().split('d')
+
+            for i in range(1, int(n) + 1):
+                output += f'd{d}: {random.randint(1, int(d))}\n'
+
+        await ctx.send(output)
 
 
 def setup(bot):

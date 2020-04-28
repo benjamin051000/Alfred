@@ -1,5 +1,6 @@
-import logging
 import datetime
+import logging
+
 
 class Logger:
 
@@ -42,7 +43,7 @@ class Logger:
     def error(cls, *msg):
         for m in msg:
             cls.logger.error(m)
-        if cls.output_logs:
+        if cls.output_logs and type(msg) is str:
             print(' '.join(msg))
 
     @classmethod

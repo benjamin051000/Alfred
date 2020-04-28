@@ -1,8 +1,10 @@
+from collections import deque
+
 import discord
 from discord.ext import commands
-from youtube_dl import YoutubeDL
-from collections import deque
 from logger import Logger as log
+from youtube_dl import YoutubeDL
+
 
 class MusicActivity:
     """Represents a Discord Activity that allows the
@@ -75,7 +77,7 @@ class MusicPlayer:
         self.queue = deque()
         self.vc = None
         self.audio_streamer = None
-        # 0-1. Default volume to preserve volume across songs. TODO Should reset after some time
+        # 0-1. Default volume to preserve volume across songs.
         self.volume = MusicPlayer.default_volume
         self.activity = MusicActivity(self.bot)
         self.current_source = None
@@ -88,10 +90,10 @@ class MusicPlayer:
             self.bot.loop.create_task(Music.destroy_player(self.guild_id))
             return
 
-        self.current_source = self.queue.popleft()  #TODO consider using a list, which also has pop()
+        self.current_source = self.queue.popleft()
         # PCMVolumeTransformer allows the volume to be changed.
         self.audio_streamer = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(self.current_source.path), volume=self.volume)
-        # Play the audio. This has a recursive call to pop the next song until the queue is empty. TODO replace with asyncio.Queue
+        # Play the audio. This has a recursive call to pop the next song until the queue is empty.
         self.vc.play(self.audio_streamer, after=lambda e: self.music_loop(ctx))
         log.debug('Now playing', self.current_source.data['title'])
 
@@ -125,7 +127,7 @@ class Music(commands.Cog):
         if cls.players[guild_id].vc is not None:
             await cls.players[guild_id].vc.disconnect()
         del cls.players[guild_id]
-        log.debug('Destroyed', str(guild_id), '\'s MusicPlayer.')
+        log.debug('Destroyed', str(guild_id) + '\'s MusicPlayer.')
 
     @commands.command()
     async def join(self, ctx):
@@ -145,6 +147,7 @@ class Music(commands.Cog):
         """Leave the voice channel, clear the queue."""
         player = self.get_player(ctx)
         await Music.destroy_player(player.guild_id)
+        await self.activity.change_act(MusicActivity.Status.STOPPED, None)
 
     @commands.command(aliases=['q'])
     async def queue(self, ctx):  # TODO add links to queues, improve embed functionality and UI
@@ -165,13 +168,12 @@ class Music(commands.Cog):
         await self.playsong(ctx, *query)
 
     @commands.command()
-    async def playnow(self, ctx, *query):
+    async def playnext(self, ctx, *query):
         """Skip the line! Play a song immediately after the currently playing song."""
         await self.playsong(ctx, *query, up_next=True)
 
     async def playsong(self, ctx, *query, up_next=False):
-        """Creates a YTDL source for the query, adds it to the queue, and
-        """
+        """ Creates a YTDL source for the query, adds it to the queue, and starts the music loop. """
         player = self.get_player(ctx)
 
         # Make sure the user actually searched something
@@ -190,7 +192,7 @@ class Music(commands.Cog):
                 player.queue.append(YTDLSource(query))
         except Exception as e:
             await ctx.message.add_reaction("\U0000274C")  # Cross mark
-            log.error('Exception while getting the YTDLSource:', e)  # TODO this is handled in YTDLSource, isn't it?
+            log.error('Exception while getting the YTDLSource:', e)
 
         if not player.vc.is_playing() and not player.vc.is_paused():
             # Start the music loop.

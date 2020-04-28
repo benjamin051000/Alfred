@@ -1,17 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="e37654ec-6a1d-4080-9d15-14bbfe331706" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/acnh.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/acnh.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/music.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/music.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="Alfred II" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -30,12 +48,16 @@
     <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/commands.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/configloader.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/configloader.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/music.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/commands.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1Xjw04WYlyZBEqmIIBmOsOBm3KJ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ChangesTree.GroupingKeys" value="directory" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -47,7 +69,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="copyright" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -55,18 +77,6 @@
         <option name="myUseModuleSdk" value="true" />
         <option name="myModuleName" value="Alfred II" />
       </console-settings>
-    </option>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
     </option>
   </component>
   <component name="RunManager" selected="Python.src.main">
@@ -156,13 +166,12 @@
       <workItem from="1582169191548" duration="38000" />
       <workItem from="1582169358383" duration="12000" />
       <workItem from="1585339346954" duration="6889000" />
-    </task>
-    <task id="LOCAL-00006" summary="Fixed command. YTDLSource class now works properly in place of the old version. Much cleaner. TODO: Add cleanup functions to delete stuff in music_cache, also look for bugs and such.">
-      <created>1558810810819</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1558810810819</updated>
+      <workItem from="1587399630865" duration="1357000" />
+      <workItem from="1587943859179" duration="32000" />
+      <workItem from="1587943915916" duration="4585000" />
+      <workItem from="1588024552541" duration="4133000" />
+      <workItem from="1588037551175" duration="2436000" />
+      <workItem from="1588110792701" duration="1308000" />
     </task>
     <task id="LOCAL-00007" summary="Changed hourglass emoji to one that looks nicer. Added some comments. Added an async with ctx.typing(). /shutdown now has an alias /sd.">
       <created>1558906028866</created>
@@ -500,20 +509,18 @@
       <option name="project" value="LOCAL" />
       <updated>1585591203145</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Added /rolldice command, which will either roll n m-sided die, or a standard D&amp;D dice set.">
+      <created>1587399772229</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1587399772230</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
-  <component name="TodoView" selected-index="4">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -530,9 +537,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -551,10 +556,9 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
-    <MESSAGE value="Polished meme embed" />
     <MESSAGE value="Output of subprocess call goes to update_git_log.txt" />
     <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/commands.py" />
     <MESSAGE value="Merge remote-tracking branch 'origin/master'" />
@@ -579,10 +583,73 @@
     <MESSAGE value="Updated requirements.txt" />
     <MESSAGE value="Added /fishinfo to get AN:CH fish info. To do, embed it. Updated requirements.txt." />
     <MESSAGE value="Added icon URL retrieval via a second API call." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added icon URL retrieval via a second API call." />
+    <MESSAGE value="Added /rolldice command, which will either roll n m-sided die, or a standard D&amp;D dice set." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added /rolldice command, which will either roll n m-sided die, or a standard D&amp;D dice set." />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1877" height="242" key="GridCell.Tab.0.bottom" timestamp="1588112098478">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="242" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112098478" />
+    <state width="1877" height="242" key="GridCell.Tab.0.center" timestamp="1588112098478">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="242" key="GridCell.Tab.0.center/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112098478" />
+    <state width="1877" height="242" key="GridCell.Tab.0.left" timestamp="1588112098478">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="242" key="GridCell.Tab.0.left/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112098478" />
+    <state width="1877" height="242" key="GridCell.Tab.0.right" timestamp="1588112098478">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="242" key="GridCell.Tab.0.right/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112098478" />
+    <state width="1877" height="306" key="GridCell.Tab.1.bottom" timestamp="1588112061657">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="306" key="GridCell.Tab.1.bottom/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112061657" />
+    <state width="1877" height="306" key="GridCell.Tab.1.center" timestamp="1588112061657">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="306" key="GridCell.Tab.1.center/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112061657" />
+    <state width="1877" height="306" key="GridCell.Tab.1.left" timestamp="1588112061657">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="306" key="GridCell.Tab.1.left/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112061657" />
+    <state width="1877" height="306" key="GridCell.Tab.1.right" timestamp="1588112061657">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="306" key="GridCell.Tab.1.right/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112061657" />
+    <state x="848" y="407" width="389" height="265" key="MultipleFileMergeDialog" timestamp="1587399787898">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="848" y="407" width="389" height="265" key="MultipleFileMergeDialog/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1587399787898" />
+    <state x="461" y="184" key="SettingsEditor" timestamp="1588025134561">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="461" y="184" key="SettingsEditor/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588025134561" />
+    <state x="552" y="272" key="Vcs.Push.Dialog.v2" timestamp="1587399871075">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="552" y="272" key="Vcs.Push.Dialog.v2/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1587399871075" />
+    <state width="968" height="548" key="XDebugger.FullValuePopup" timestamp="1587400174557">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="968" height="548" key="XDebugger.FullValuePopup/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1587400174557" />
+    <state x="769" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587944144373">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="769" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1587944144373" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/acnh.py</url>
+          <line>21</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -593,7 +660,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Alfred$src_main.coverage" NAME="src.main Coverage Results" MODIFIED="1587399668335" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/Alfred$src_main.coverage" NAME="src.main Coverage Results" MODIFIED="1588112201811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/Alfred$test_fi.coverage" NAME="test fi Coverage Results" MODIFIED="1585590525941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Alfred$main.coverage" NAME="main Coverage Results" MODIFIED="1581572366917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>

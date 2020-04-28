@@ -20,7 +20,7 @@ class ACNH(commands.Cog):
         query = ' '.join(query).lower()  # Format query  # TODO breaks for "great white shark"
 
         r = requests.get(ACNH.fish_url).json()  # Consider using aiohttp (although this seems to be fast enough for now)
-        data = r['query']['pages']['143083']['revisions'][0]['*']
+        data = r['query']['pages']['151280']['revisions'][0]['*']
 
         wikitext = mwp.parse(data)
         templates = wikitext.filter_templates()
@@ -69,7 +69,9 @@ class ACNH(commands.Cog):
         fish_location = str(results[0].params[4]).strip(' \n') + ', ' + fish_tod
 
         fish_north_times = results[0].params[7:19]
-        fish_south_times = results[1].params[7:19]
+        fish_south_times = None
+        if len(results) >= 2:
+            fish_south_times = results[1].params[7:19]  # TODO breaks here
         fish_north_months = ''
         fish_south_months = ''
 
@@ -80,7 +82,7 @@ class ACNH(commands.Cog):
             if fish_north_times[n].value.strip(' \n') == '✓':
                 fish_north_months += months[n] + ', '
                 n_num += 1
-            if fish_south_times[n].value.strip(' \n') == '✓':
+            if fish_south_times is not None and fish_south_times[n].value.strip(' \n') == '✓':
                 fish_south_months += months[n] + ', '
                 s_num += 1
 
@@ -95,7 +97,7 @@ class ACNH(commands.Cog):
 
         embed = discord.Embed(title=fish_name,
                               colour=discord.Colour(0x44b9e3))  # , url="fish_url")  # TODO add url to fish page
-        embed.set_thumbnail(url=pic_url)
+        # embed.set_thumbnail(url=pic_url) TODO broken
         embed.set_footer(text="Animal Crossing: New Horizons",
                          icon_url="https://vignette.wikia.nocookie.net/animalcrossing/images/6/64/Favicon.ico/revision/latest?cb=20141121212537")  # TODO icon broken
 
@@ -103,7 +105,8 @@ class ACNH(commands.Cog):
         embed.add_field(name="Location, TOD", value=fish_location, inline=True)
         embed.add_field(name="Shadow size", value=fish_shadow_size, inline=False)
         embed.add_field(name="Northern Hemisphere", value=fish_north_months, inline=True)
-        embed.add_field(name="Southern Hemisphere", value=fish_south_months, inline=True)
+        if fish_south_times is not None:
+            embed.add_field(name="Southern Hemisphere", value=fish_south_months, inline=True)
         # embed.add_field(name="Description",
         #                 value="The blue marlin (力ジキマグロ, swordfish?), known as the swordfish in Animal Forest e+, is a rare fish in the Animal Crossing series. In Animal Forest e+ it is only seen in the sea around the Private Island, where it makes occasional appearances as an arapaima-sized shadow. However, due to the current of the island, some are impossible to catch as they are too far out to reach. The fish can be found all day and has a huge size.")
 

@@ -192,7 +192,7 @@ class Music(commands.Cog):
                 player.queue.append(YTDLSource(query))
         except Exception as e:
             await ctx.message.add_reaction("\U0000274C")  # Cross mark
-            log.error('Exception while getting the YTDLSource:', e)
+            # log.error('Exception while getting the YTDLSource:', e)
 
         if not player.vc.is_playing() and not player.vc.is_paused():
             # Start the music loop.

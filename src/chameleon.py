@@ -14,8 +14,9 @@ class GameState(enum.Enum):
     lobby = 1
     startgame = 2
     ingame = 3
-    roundover = 4
-    cleanup = 5
+    voting = 4
+    roundover = 5
+    cleanup = 6
 
 
 class Chameleon(commands.Cog):
@@ -26,9 +27,11 @@ class Chameleon(commands.Cog):
     def __init__(self, bot, command_prefix):
         self.bot = bot
         self.command_prefix = command_prefix
-        self.gamestate: GameState = GameState.init
+        self.game_state: GameState = GameState.init
         self.lobby = []  # Holds the names of the people in the lobby.
         self.category = None  # Points to category created.
+        self.round_winner = None  # Used in voting stage
+        self.points = {}  # key: name, val: points
 
     # @commands.Cog.listener('on_message')
     # async def on_message(self, message: discord.Message):
@@ -40,10 +43,10 @@ class Chameleon(commands.Cog):
         if user == reaction.message.author:  # which is the bot, or spectators
             return
 
-        if self.gamestate == GameState.lobby:
+        if self.game_state == GameState.lobby:
             if reaction.emoji == '➕':
                 channel = reaction.message.channel
-                if self.gamestate == GameState.lobby:
+                if self.game_state == GameState.lobby:
                     if len(self.lobby) >= Chameleon.MAX_PLAYERS:
                         await channel.send(f"Sorry, {user}, the game is full.")
                     else:
@@ -53,7 +56,7 @@ class Chameleon(commands.Cog):
 
             elif reaction.emoji == '▶' and user in self.lobby:
                 # Set up the game
-                self.gamestate = GameState.startgame
+                self.game_state = GameState.startgame
 
                 guild = reaction.message.channel.guild
                 self.category = await self.init_game_channels(guild)
@@ -64,19 +67,22 @@ class Chameleon(commands.Cog):
                 sent_msg: discord.Message = await gametc.send('Once everyone is ready, press ▶ to start the game!')
                 await sent_msg.add_reaction('▶')
 
-        elif self.gamestate == GameState.startgame and user in self.lobby:
+        elif self.game_state == GameState.startgame and user in self.lobby:
             if reaction.emoji == '▶':
-                self.gamestate = GameState.ingame
+                self.game_state = GameState.ingame
                 await self.gameloop()
 
-        elif self.gamestate == GameState.roundover and user in self.lobby:
+        elif self.game_state == GameState.roundover and user in self.lobby:
             if reaction.emoji == '🛑':
-                self.gamestate = GameState.cleanup
+                self.game_state = GameState.cleanup
+
                 channel = reaction.message.channel
                 await channel.send('Thanks for playing!')
                 await asyncio.sleep(3)
-                await channel.send('Deleting the category in 1 second.')
+                await channel.send('Deleting the text channels in 1 second.')
                 await asyncio.sleep(1)
+                self.lobby.clear()
+                self.game_state = GameState.init
                 await self.destroy_game_channels()
 
     @commands.Cog.listener('on_reaction_remove')
@@ -84,11 +90,11 @@ class Chameleon(commands.Cog):
         if user == reaction.message.author:  # which is the bot
             return
 
-        if self.gamestate == GameState.lobby:
+        if self.game_state == GameState.lobby:
             if reaction.emoji == '➕':
                 channel = reaction.message.channel
                 try:
-                    self.lobby.remove(user)
+                    # self.lobby.remove(user)
                     await channel.send(f'{user} left the lobby.', delete_after=3)
                     await self.update_lobby_embed(reaction.message)
                 except ValueError:
@@ -97,10 +103,10 @@ class Chameleon(commands.Cog):
     @commands.group(invoke_without_command=True)
     async def chameleon(self, ctx):
         """ Generate a lobby for players to join. """
-        if self.gamestate != GameState.init:
+        if self.game_state != GameState.init:
             await ctx.send("A game is already in play. Use a subcommand.")
         else:
-            self.gamestate = GameState.lobby
+            self.game_state = GameState.lobby
             embed = discord.Embed(title="The Chameleon", colour=discord.Colour(0xe7d066),
                                   description="Click the \'➕\' button below this message to join/leave the lobby."
                                               "Press \'▶\' to start the game with the people in the lobby.")
@@ -134,7 +140,7 @@ class Chameleon(commands.Cog):
     @chameleon.command()
     async def join(self, ctx):
         """ Join the lobby for the chameleon game. """
-        if self.gamestate == GameState.lobby:
+        if self.game_state == GameState.lobby:
             if len(self.lobby) >= Chameleon.MAX_PLAYERS:
                 await ctx.send(f"Sorry, {ctx.author}, the game is full.")
             else:
@@ -145,7 +151,7 @@ class Chameleon(commands.Cog):
     @chameleon.command()
     async def leave(self, ctx):
         """ Leave the lobby. """
-        if self.gamestate == GameState.lobby:
+        if self.game_state == GameState.lobby:
             try:
                 self.lobby.remove(ctx.author)
                 # TODO update embed here or deprecate this command
@@ -156,7 +162,7 @@ class Chameleon(commands.Cog):
     async def start(self, ctx):
         """ Starts the game with the players in the lobby. """
         await ctx.send(f"Starting game...")
-        self.gamestate = GameState.startgame
+        self.game_state = GameState.startgame
 
     async def init_game_channels(self, guild: discord.Guild):
         category = await guild.create_category('The Chameleon')
@@ -170,25 +176,30 @@ class Chameleon(commands.Cog):
 
     async def destroy_game_channels(self):
         """ Destroys the category created, as well as all channels within it. """
-        for channel in self.category.text_channels + self.category.voice_channels:
-            await channel.delete()
-        await self.category.delete()
+        try:
+            for channel in self.category.text_channels + self.category.voice_channels:
+                await channel.delete()
+            await self.category.delete()
+        except discord.errors.NotFound:
+            pass  # The channel was deleted before
 
     @chameleon.command()
     async def forcequit(self, ctx):
         """ Stops the game at any point. """
-        await ctx.send('Quitting the game in 1 second.')
+        self.game_state = GameState.cleanup
+        await ctx.send('Stopping the game in 1 second.', delete_after=1)
         await asyncio.sleep(1)
         self.lobby.clear()
-        self.gamestate = GameState.init
+        self.game_state = GameState.init
         await self.destroy_game_channels()
 
     async def gameloop(self):
         """ The main game loop. """
         game_round = 0
         tc = self.category.text_channels[0]
-        while self.gamestate == GameState.ingame:
+        while self.game_state == GameState.ingame:
             game_round += 1
+            self.round_winner = None
             await tc.send(f'__**Round {game_round}**__')
             await asyncio.sleep(2)
             category, words = self.new_category_card()
@@ -208,35 +219,79 @@ class Chameleon(commands.Cog):
             # Send private messages to tell people which one it is
             random.shuffle(self.lobby)
             # The chameleon will be the first user in the lobby.
-            for i, user in enumerate(self.lobby):
-                if i == 0:
+            the_chameleon = self.lobby[0]  # Used for voting stage later on
+            for user in self.lobby:
+                if user == the_chameleon:
                     await user.send('**You are the chameleon!** Try to blend in so you are not suspected, '
-                              'and determine the secret word.')
+                                    'and determine the secret word.')
                 else:
                     await user.send(f'You are not the chameleon. The secret word is **{word}**.')
 
             await asyncio.sleep(10)
-            await tc.send('In the following order, describe the secret word with one descriptor word.')  # TODO type it?
+            await tc.send('In the following order, describe the secret word with one descriptor word.')
 
             random.shuffle(self.lobby)
             names = [e.name for e in self.lobby]
-            embed = discord.Embed(title='Name order', colour=discord.Colour(0xe7d066), description='\n'.join(names))
-            await tc.send(embed=embed)
+            colors = ['🔴', '🟠', '🟡', '🟢', '🔵', '🟣', '🟤', '⚫', '⚪']
+            fnames = [i + ' ' + j for i, j in zip(colors, names)]
+            embed = discord.Embed(title='Player Order', colour=discord.Colour(0xe7d066), description='\n'.join(fnames))
+            poll = await tc.send(embed=embed)
 
             await asyncio.sleep(45)
             await tc.send('Once everyone has said their word, debate who you think the Chameleon is.')
             await asyncio.sleep(15)
-            await tc.send('Vote on who the Chameleon is. If the Chameleon is voted out, try to guess what the word is.')
-            await asyncio.sleep(10)
+            await tc.send('Vote on who the Chameleon is. If the Chameleon is voted out, try to guess what the word is.\n'
+                          '*Voting ends immediately after every player casts a vote.*')
 
-            msg = await tc.send('Once the round is over, click 🔁 to play another round, or 🛑 to finish the game.')
-            self.gamestate = GameState.roundover
-            await msg.add_reaction('🔁')
-            await msg.add_reaction('🛑')
+            self.game_state = GameState.voting
+            for i in range(len(fnames)):
+                await poll.add_reaction(colors[i])
+
+            await self.bot.wait_for('reaction_add', check=self.tally)
+
+            # Declare the winner(s) of the round. The winner is self.round_winner
+            if self.round_winner == the_chameleon:
+                desc = f'You discovered the chameleon to be {self.round_winner}! ' \
+                       f'Now, {self.round_winner} gets a chance to guess the right word.'
+
+                embed = discord.Embed(title='You did it!', description=desc, colour=discord.Colour(0x00cc00))
+                await tc.send(embed=embed)
+            elif self.round_winner is None:
+                desc = f'There was a tie, and the chameleon was not found. The chameleon was {the_chameleon}!'
+                embed = discord.Embed(title='Tie!', description=desc, colour=discord.Colour(0xc5c5c5))
+                await tc.send(embed=embed)
+            else:
+                desc = f'{self.round_winner} is not the chameleon! The chameleon was {the_chameleon}!'
+                embed = discord.Embed(title='Wrong!', description=desc, colour=discord.Colour(0xff0000))
+                await tc.send(embed=embed)
+
+            await asyncio.sleep(5)
+            round_over_msg = await tc.send('Once the round is over, click 🔁 to play another round, or 🛑 to finish the game.')
+            self.game_state = GameState.roundover
+            await round_over_msg.add_reaction('🔁')
+            await round_over_msg.add_reaction('🛑')
 
             await self.bot.wait_for('reaction_add', check=lambda reaction, _: str(reaction.emoji) == '🔁')
             # If we get here, go back and do it again!
-            self.gamestate = GameState.ingame
+            self.game_state = GameState.ingame
+
+    def tally(self, reaction: discord.Reaction, _):
+        """ Returns the user voted on the most in the voting stage once voting is complete. """
+        message: discord.Message = reaction.message
+        all_reacts = message.reactions
+        totals = [r.count for r in all_reacts]  # Maps directly to self.lobby
+        if sum(totals) - len(self.lobby) < len(self.lobby):  # Subtract the reactions the bot added
+            return False
+
+        m = totals.index(max(totals))
+
+        # Look for a tie. m is leftmost max.
+        for i in range(m, len(totals)):
+            if totals[i] == max(totals):
+                return True  # Do not assign a winner this round.
+
+        self.round_winner = self.lobby[m]
+        return True
 
     @staticmethod
     def new_category_card():

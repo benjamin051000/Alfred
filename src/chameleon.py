@@ -1,5 +1,6 @@
 import asyncio
 import enum
+import json
 import random
 
 import discord
@@ -13,6 +14,8 @@ class GameState(enum.Enum):
     lobby = 1
     startgame = 2
     ingame = 3
+    roundover = 4
+    cleanup = 5
 
 
 class Chameleon(commands.Cog):
@@ -34,7 +37,7 @@ class Chameleon(commands.Cog):
 
     @commands.Cog.listener('on_reaction_add')
     async def on_reaction_add(self, reaction: discord.Reaction, user):
-        if user == reaction.message.author:  # which is the bot
+        if user == reaction.message.author:  # which is the bot, or spectators
             return
 
         if self.gamestate == GameState.lobby:
@@ -48,7 +51,7 @@ class Chameleon(commands.Cog):
                         await channel.send(f'{user} is in!', delete_after=3)
                         await self.update_lobby_embed(reaction.message)
 
-            elif reaction.emoji == '▶':
+            elif reaction.emoji == '▶' and user in self.lobby:
                 # Set up the game
                 self.gamestate = GameState.startgame
 
@@ -61,13 +64,20 @@ class Chameleon(commands.Cog):
                 sent_msg: discord.Message = await gametc.send('Once everyone is ready, press ▶ to start the game!')
                 await sent_msg.add_reaction('▶')
 
-        elif self.gamestate == GameState.startgame:
+        elif self.gamestate == GameState.startgame and user in self.lobby:
             if reaction.emoji == '▶':
                 self.gamestate = GameState.ingame
                 await self.gameloop()
 
-
-
+        elif self.gamestate == GameState.roundover and user in self.lobby:
+            if reaction.emoji == '🛑':
+                self.gamestate = GameState.cleanup
+                channel = reaction.message.channel
+                await channel.send('Thanks for playing!')
+                await asyncio.sleep(3)
+                await channel.send('Deleting the category in 1 second.')
+                await asyncio.sleep(1)
+                await self.destroy_game_channels()
 
     @commands.Cog.listener('on_reaction_remove')
     async def on_reaction_remove(self, reaction: discord.Reaction, user):
@@ -78,7 +88,7 @@ class Chameleon(commands.Cog):
             if reaction.emoji == '➕':
                 channel = reaction.message.channel
                 try:
-                    # self.lobby.remove(user)
+                    self.lobby.remove(user)
                     await channel.send(f'{user} left the lobby.', delete_after=3)
                     await self.update_lobby_embed(reaction.message)
                 except ValueError:
@@ -173,7 +183,6 @@ class Chameleon(commands.Cog):
         self.gamestate = GameState.init
         await self.destroy_game_channels()
 
-
     async def gameloop(self):
         """ The main game loop. """
         game_round = 0
@@ -182,20 +191,59 @@ class Chameleon(commands.Cog):
             game_round += 1
             await tc.send(f'__**Round {game_round}**__')
             await asyncio.sleep(2)
-            card, words = self.new_category_card()
-            await tc.send('The card is:', embed=card)
+            category, words = self.new_category_card()
+
+            first_half = '\n'.join(words[:len(words)//2])
+            second_half = '\n'.join(words[len(words)//2:])
+
+            embed = discord.Embed(title=category.capitalize(), colour=discord.Colour(0xe7d066), description=f'Round {game_round}')
+            embed.add_field(name='-', value=first_half, inline=True)
+            embed.add_field(name='-', value=second_half, inline=True)
+            await tc.send('The card is:', embed=embed)
+
             await asyncio.sleep(2)
             word = random.choice(words)
             await tc.send('Check your Private Messages for the secret word. Then, come back and mark when you\'re ready to move on.')
+
             # Send private messages to tell people which one it is
-            await tc.send(f'<PM> The word is: {word}.')
+            random.shuffle(self.lobby)
+            # The chameleon will be the first user in the lobby.
+            for i, user in enumerate(self.lobby):
+                if i == 0:
+                    await user.send('**You are the chameleon!** Try to blend in so you are not suspected, '
+                              'and determine the secret word.')
+                else:
+                    await user.send(f'You are not the chameleon. The secret word is **{word}**.')
 
+            await asyncio.sleep(10)
+            await tc.send('In the following order, describe the secret word with one descriptor word.')  # TODO type it?
 
+            random.shuffle(self.lobby)
+            names = [e.name for e in self.lobby]
+            embed = discord.Embed(title='Name order', colour=discord.Colour(0xe7d066), description='\n'.join(names))
+            await tc.send(embed=embed)
 
-    def new_category_card(self):
-        words = ['Apple', 'Banana', 'Grape', 'Lemon', 'Pineapple']
-        embed = discord.Embed(title='Fruits', colour=discord.Colour(0xc77681), description='\n'.join(words))
-        return embed, words
+            await asyncio.sleep(45)
+            await tc.send('Once everyone has said their word, debate who you think the Chameleon is.')
+            await asyncio.sleep(15)
+            await tc.send('Vote on who the Chameleon is. If the Chameleon is voted out, try to guess what the word is.')
+            await asyncio.sleep(10)
+
+            msg = await tc.send('Once the round is over, click 🔁 to play another round, or 🛑 to finish the game.')
+            self.gamestate = GameState.roundover
+            await msg.add_reaction('🔁')
+            await msg.add_reaction('🛑')
+
+            await self.bot.wait_for('reaction_add', check=lambda reaction, _: str(reaction.emoji) == '🔁')
+            # If we get here, go back and do it again!
+            self.gamestate = GameState.ingame
+
+    @staticmethod
+    def new_category_card():
+        with open('chameleon_assets/batch1.json', 'r') as f:
+            cards = json.load(f)
+        category = random.choice(list(cards.items()))
+        return category
 
 
 def setup(bot):

@@ -295,8 +295,10 @@ class Chameleon(commands.Cog):
             # If we get here, go back and do it again!
             self.game_state = GameState.ingame
 
-    def tally(self, reaction: discord.Reaction, _):
-        """ Returns the user voted on the most in the voting stage once voting is complete. """
+    def tally(self, reaction: discord.Reaction, _) -> bool:
+        """ Sets self.round_winner to a winner if there is an undisputed winner.
+         In the case of a tie, no one is set as the winner.
+         Return whether or not everyone has voted (to continue in the game loop). """
         message: discord.Message = reaction.message
         all_reacts = message.reactions
         totals = [r.count for r in all_reacts]  # Maps directly to self.lobby
@@ -306,7 +308,7 @@ class Chameleon(commands.Cog):
         m = totals.index(max(totals))
 
         # Look for a tie. m is leftmost max.
-        for i in range(m, len(totals)):
+        for i in range(m+1, len(totals)):
             if totals[i] == max(totals):
                 return True  # Do not assign a winner this round.
 

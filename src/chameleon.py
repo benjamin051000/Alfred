@@ -31,7 +31,9 @@ class Chameleon(commands.Cog):
         self.lobby = []  # Holds the names of the people in the lobby.
         self.category = None  # Points to discord.categoryChannel created (NOT in-game category card).
         self.round_winner = None  # Used in voting stage
+        self.the_chameleon = None
         self.points = {}  # key: name, val: points
+        self.who_got_points = '-'  # Used in points embed to explain who got points.
         self.custom_cards = {}  # Holds custom-made cards. (key:category, val:words)
         self.use_custom_cards = False  # Whether or not to use the custom cards.
 
@@ -172,7 +174,7 @@ class Chameleon(commands.Cog):
         self.game_state = GameState.startgame
 
     async def init_game_channels(self, guild: discord.Guild) -> discord.CategoryChannel:
-        """ Create the game CategoryChannel and move players into it. Return the CategoryChannel. """
+        """ Create the game CategoryChannel and move players into it. Return the CategoryChannel."""
         category = await guild.create_category('The Chameleon')
         await guild.create_text_channel('chameleon-game', category=category)
         gamevc = await guild.create_voice_channel('The Chameleon', category=category)
@@ -204,38 +206,45 @@ class Chameleon(commands.Cog):
         await ctx.send('Stopping the game in 1 second.', delete_after=1)
         await asyncio.sleep(1)
         self.lobby.clear()
+        self.points.clear()
         self.game_state = GameState.init
         await self.destroy_game_channels()
 
     async def game_loop(self):
         """ The main game loop. """
         game_round = 0
+        self.points = {k: 0 for k in self.lobby}
         tc = self.category.text_channels[0]
+
         while self.game_state == GameState.ingame:
             game_round += 1
             self.round_winner = None
-            await tc.send(f'__**Round {game_round}**__')
+
             await asyncio.sleep(2)
             category, words = await self.new_category_card(tc)
+            category = category.capitalize()
 
             first_half = '\n'.join(words[:len(words)//2])
             second_half = '\n'.join(words[len(words)//2:])
 
-            embed = discord.Embed(title=category.capitalize(), colour=discord.Colour(0xe7d066), description=f'Round {game_round}')
+            embed = discord.Embed(title=category, colour=discord.Colour(0xe7d066), description=f'*Round {game_round}*')
             embed.add_field(name='-', value=first_half, inline=True)
             embed.add_field(name='-', value=second_half, inline=True)
-            await tc.send('The card is:', embed=embed)
+            await tc.send(f'__**Round {game_round}**__\nThe card is:', embed=embed)
 
             await asyncio.sleep(2)
+
+            ########################################################
+            # Choosing the Chameleon
+            ########################################################
             word = random.choice(words)
             await tc.send('Check your Private Messages for the secret word. Then, come back and mark when you\'re ready to move on.')
 
-            # Send private messages to tell people which one it is
             random.shuffle(self.lobby)
-            # The chameleon will be the first user in the lobby.
-            the_chameleon = self.lobby[0]  # Used for voting stage later on
+            self.the_chameleon = self.lobby[0]
+
             for user in self.lobby:
-                if user == the_chameleon:
+                if user == self.the_chameleon:
                     await user.send('**You are the chameleon!** Try to blend in so you are not suspected, '
                                     'and determine the secret word.')
                 else:
@@ -243,62 +252,117 @@ class Chameleon(commands.Cog):
 
             await asyncio.sleep(10)
 
-            # Send player order
+            # Shuffle player order again to ensure no one knows who the chameleon is.
             random.shuffle(self.lobby)
-            names = [e.name for e in self.lobby]
+
+            names = [e.display_name for e in self.lobby]
             colors = ['🔴', '🟠', '🟡', '🟢', '🔵', '🟣', '🟤', '⚫', '⚪']
-            fnames = [i + ' ' + j for i, j in zip(colors, names)]
-            embed = discord.Embed(title='Player Order', colour=discord.Colour(0xe7d066), description='\n'.join(fnames))
-            poll = await tc.send('In the following order, describe the secret word with one descriptor word.', embed=embed)
+            random.shuffle(colors)  # Vary colors (aesthetic purposes only)
+
+            f_names = [f'{c} {n}' for c, n in zip(colors, names)]
+            embed = discord.Embed(title='Player Order', colour=discord.Colour(0xe7d066), description='\n'.join(f_names))
+            poll_msg = await tc.send('In the following order, describe the secret word with one descriptor word.', embed=embed)
 
             await asyncio.sleep(45)
             await tc.send('Once everyone has said their word, debate who you think the Chameleon is.')
             await asyncio.sleep(15)
+
+            ########################################################
+            # Voting stage
+            ########################################################
             await tc.send('Vote on who the Chameleon is. If the Chameleon is voted out, try to guess what the word is.\n'
-                          '*Voting ends immediately after every player casts a vote.*')
+                          '*Voting ends immediately after everyone has cast their vote.*')
 
             self.game_state = GameState.voting
-            for i in range(len(fnames)):
-                await poll.add_reaction(colors[i])
+            for i in range(len(f_names)):
+                await poll_msg.add_reaction(colors[i])
 
             await self.bot.wait_for('reaction_add', check=self.tally)
 
-            # Declare the winner(s) of the round. The winner is self.round_winner
-            if self.round_winner == the_chameleon:
-                desc = f'You discovered the chameleon to be {self.round_winner}! ' \
-                       f'Now, {self.round_winner} gets a chance to guess the right word.'
+            ########################################################
+            # Declare chameleon, calculate points
+            ########################################################
+            chameleon_guess = False
 
+            if self.round_winner == self.the_chameleon:
+                # Chameleon was found
+                desc = f'You discovered the chameleon to be **{self.round_winner}**! ' \
+                       f'Now, {self.round_winner} gets a chance to guess the right word.'
                 embed = discord.Embed(title='You did it!', description=desc, colour=discord.Colour(0x00cc00))
                 await tc.send(embed=embed)
+                chameleon_guess = True
+
             elif self.round_winner is None:
-                desc = f'There was a tie, and the chameleon was not found. The chameleon was {the_chameleon}!'
-                embed = discord.Embed(title='Tie!', description=desc, colour=discord.Colour(0xc5c5c5))
-                await tc.send(embed=embed)
-            else:
-                desc = f'{self.round_winner} is not the chameleon! The chameleon was {the_chameleon}!'
-                embed = discord.Embed(title='Wrong!', description=desc, colour=discord.Colour(0xff0000))
+                # Tie game
+                desc = f'There was a tie, and the chameleon was not found. The chameleon was **{self.the_chameleon}**!'
+                embed = discord.Embed(title='Tie!', description=desc, colour=discord.Colour(0xababab))
                 await tc.send(embed=embed)
 
-            # Send round over message
+                chameleon_guess = True
+
+            else:
+                # Chameleon got away
+                desc = f'{self.round_winner} is not the chameleon. The chameleon was **{self.the_chameleon}!**'
+                embed = discord.Embed(title='The chameleon got away!', description=desc, colour=discord.Colour(0xff0000))
+                await tc.send(embed=embed)
+
+                # Update points. The chameleon gets 2 points.
+                self.points[self.the_chameleon] += 2
+                self.who_got_points = 'For eluding the party, chameleon gets 2 points!'
+
+            # Score chameleon's guess
+            if chameleon_guess:
+                msg = await tc.send('If the chameleon guessed correctly, press ✅. If not, press ❌.')
+                await msg.add_reaction('✅')
+                await msg.add_reaction('❌')
+
+                await self.bot.wait_for('reaction_add', check=self.check_guess)
+
             await asyncio.sleep(5)
+
+            ########################################################
+            # Display points, Round over
+            ########################################################
+            embed = discord.Embed(title=f"Round {game_round} Leaderboard",
+                                  colour=discord.Colour(0xe7d066), description=self.who_got_points)
+
+            # Player names. If a player has a custom nickname, display that and their username in parentheses.
+            sorted_lobby = sorted(self.lobby, key=lambda e: self.points[e], reverse=True)
+            p_names = [
+                f'{e.display_name} ({e.name}): {self.points[e]}' if e.display_name != e.name
+                else f'{e.display_name}: {self.points[e]}'
+                for e in sorted_lobby
+            ] or '-'
+
+            embed.add_field(name="Current Standings", value='\n'.join(p_names))
+
+            await tc.send(embed=embed)
+
             round_over_msg = await tc.send('Once the round is over, click 🔁 to play another round, or 🛑 to finish the game.'
                                            'If you play another round, click 📝 to enable/disable custom deck.')
             self.game_state = GameState.roundover
-            await round_over_msg.add_reaction('🔁')
-            await round_over_msg.add_reaction('🛑')
-            await round_over_msg.add_reaction('📝')
+            for r in '🔁🛑📝':
+                await round_over_msg.add_reaction(r)
+
             # Current state of use_custom_cards
-            await tc.send('Custom cards are enabled for next round.' if self.use_custom_cards
-                          else 'Custom cards are disabled for next round.')
+            cc = 'enabled' if self.use_custom_cards else 'disabled'
+            await tc.send(f'Custom cards are {cc} for next round.')
 
             await self.bot.wait_for('reaction_add', check=lambda reaction, _: str(reaction.emoji) == '🔁')
+
             # If we get here, go back and do it again!
             self.game_state = GameState.ingame
 
-    def tally(self, reaction: discord.Reaction, _) -> bool:
+    def tally(self, reaction: discord.Reaction, user: discord.User) -> bool:  # TODO make sure no one votes twice
         """ Sets self.round_winner to a winner if there is an undisputed winner.
          In the case of a tie, no one is set as the winner.
          Return whether or not everyone has voted (to continue in the game loop). """
+        if user == reaction.message.author:
+            return False  # Sometimes the bot types reactions that will affect the game, oops
+
+        if reaction.emoji == '⏭':  # For debugging only
+            return True
+
         message: discord.Message = reaction.message
         all_reacts = message.reactions
         totals = [r.count for r in all_reacts]  # Maps directly to self.lobby
@@ -314,6 +378,24 @@ class Chameleon(commands.Cog):
 
         self.round_winner = self.lobby[m]
         return True
+
+    def check_guess(self, reaction: discord.Reaction, _user: discord.User) -> bool:
+        tc = reaction.message
+        if reaction.message != tc or _user not in self.lobby:
+            return False
+
+        if reaction.emoji == '✅':
+            # The chameleon guessed correctly. Give the chameleon one point.
+            self.points[self.round_winner] += 1
+            self.who_got_points = 'The chameleon gets 1 point for guessing correctly!'
+            return True
+        elif reaction.emoji == '❌':
+            # The chameleon guessed wrong. Everyone except him/her gets 2 points.
+            for k in self.points.keys():
+                if k != self.the_chameleon:
+                    self.points[k] += 2
+                self.who_got_points = 'Because the chameleon guessed wrong, everyone else gets 2 points!'
+            return True
 
     async def new_category_card(self, channel):
         if self.use_custom_cards:

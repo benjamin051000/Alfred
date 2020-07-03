@@ -222,7 +222,6 @@ class Chameleon(commands.Cog):
 
             await asyncio.sleep(2)
             category, words = await self.new_category_card(tc)
-            category = category.capitalize()
 
             first_half = '\n'.join(words[:len(words)//2])
             second_half = '\n'.join(words[len(words)//2:])
@@ -238,7 +237,7 @@ class Chameleon(commands.Cog):
             # Choosing the Chameleon
             ########################################################
             word = random.choice(words)
-            await tc.send('Check your Private Messages for the secret word. Then, come back and mark when you\'re ready to move on.')
+            await tc.send('Check your Private Messages for the secret word.')
 
             random.shuffle(self.lobby)
             self.the_chameleon = self.lobby[0]
@@ -317,8 +316,6 @@ class Chameleon(commands.Cog):
                 await msg.add_reaction('❌')
 
                 await self.bot.wait_for('reaction_add', check=self.check_guess)
-
-            await asyncio.sleep(5)
 
             ########################################################
             # Display points, Round over
@@ -405,7 +402,7 @@ class Chameleon(commands.Cog):
                 await channel.send('No custom cards! Using normal deck instead. '
                                    'To add a custom card, use the `chameleon custom` command.')
 
-        with open('chameleon_assets/batch1.json', 'r') as f:
+        with open('chameleon_assets/category_cards.json', 'r') as f:
             cards: dict = json.load(f)
         return random.choice(list(cards.items()))
 

@@ -1,6 +1,7 @@
 import asyncio
 import enum
 import json
+import pickle
 import random
 
 import discord
@@ -61,9 +62,14 @@ class Chameleon(commands.Cog):
                 self.category = await self.init_game_channels(guild)
 
                 gametc = self.category.text_channels[0]
-                await gametc.send('Welcome to the Chameleon! You have been moved to this private room to play.'
-                                  '*NOTE: This game is still in development. Expect bugs and unexpected behavior!*')
-                # await gametc.send('<TODO Rules>')  # TODO add rules
+                await gametc.send('Welcome to __**The Chameleon**__ (an adaptation of the \'whodunit\' party game)! '
+                                  '\n*You have been moved to this private room to play. '
+                                  'NOTE: This game is still in development. Expect bugs and unexpected behavior!*')
+
+                await asyncio.sleep(2)
+                await gametc.send('__**Rules**__', embed=Chameleon.get_rule_embed())
+                await asyncio.sleep(1)
+
                 sent_msg: discord.Message = await gametc.send('Once everyone is ready, press ▶ to start the game!')
                 await sent_msg.add_reaction('▶')
 
@@ -145,6 +151,11 @@ class Chameleon(commands.Cog):
             value='\n'.join(names), inline=True
         )
         await message.edit(embed=new_embed)
+
+    @staticmethod
+    def get_rule_embed():
+        with open('chameleon_assets/rules_message.pickle', 'rb') as f:
+            return pickle.load(f)
 
     @chameleon.command()
     async def join(self, ctx):
@@ -420,7 +431,6 @@ class Chameleon(commands.Cog):
     def toggle_custom_cards(self):
         """ Invoked via reaction event handler. """
         self.use_custom_cards = not self.use_custom_cards
-
 
 def setup(bot):
     prefix = cfload.configSectionMap('Commands')['command_prefix']

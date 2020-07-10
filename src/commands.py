@@ -1,11 +1,17 @@
+"""
+A file containing several classes relating to various
+miscellaneous commands Alfred features.
+"""
+import random
 from io import BytesIO
 
-import configloader as cfload
 import discord
 import praw
 import qrcode
-import random
+import requests
 from discord.ext import commands
+
+import configloader as cfload
 from logger import Logger as log
 
 cfload.read('..\\config.ini')
@@ -113,8 +119,8 @@ class Commands(commands.Cog):
         finally:
             await ctx.message.remove_reaction('\U0000231B', ctx.me)
 
-    @commands.command()
-    async def qr(self, ctx, *link: str):
+    # @commands.command()
+    async def qr(self, ctx, *link: str):  # TODO broken
         """Generates a QR code from a provided link."""
         link = ' '.join(link)
         img = qrcode.make(link)  # TODO Run in executor # TODO shrink img size (maybe)
@@ -195,5 +201,45 @@ class Commands(commands.Cog):
         await ctx.send(output)
 
 
+class Dictionary(commands.Cog):
+    dict_url = 'https://www.dictionaryapi.com/api/v3/references/collegiate/json/'
+    thes_url = ''
+
+    def __init__(self, bot, dict_key, thes_key):
+        self.bot = bot
+        self.dict_key = dict_key  # Dictionary key
+        self.thes_key = thes_key  # Thesaurus key
+
+    @commands.command(aliases=['define', 'definition', 'def'])
+    async def dictionary(self, ctx, *word):
+        """ Gets the definition of a word. """
+        formatted_word = ' '.join(word)
+        url_word = '%20'.join(word)
+
+        r = requests.get(Dictionary.dict_url + f'{url_word}?key={self.dict_key}')
+        resp = r.json()
+        try:
+            definition = resp[0]['shortdef'][0]
+            url = f"https://www.merriam-webster.com/dictionary/{url_word}"
+        except Exception:
+            word = f'"{formatted_word}" not found.'
+            others = ', '.join(resp)
+            definition = f'Did you mean:\n{others}'
+            url = ''
+
+        embed: discord.Embed = discord.Embed(title=f"{formatted_word.lower()}",
+                                             colour=discord.Colour(0xe7d066),
+                                             url=url,
+                                             description=f"{definition}"
+                                             )
+        embed.set_footer(text="Merriam-Webster's Collegiate Dictionary")
+        await ctx.send(embed=embed)
+
+
 def setup(bot):
     bot.add_cog(Commands(bot))
+
+    # Get keys from config file
+    cfload.read('../config.ini')
+    keys = cfload.configSectionMap('Merriam Webster API')
+    bot.add_cog(Dictionary(bot, keys['dictionary_key'], keys['thesaurus_key']))

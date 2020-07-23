@@ -4,32 +4,33 @@
     <expand>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
     <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:chameleon" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e37654ec-6a1d-4080-9d15-14bbfe331706" name="Default Changelist" comment="">
+    <list default="true" id="e37654ec-6a1d-4080-9d15-14bbfe331706" name="Default Changelist" comment="First working version of the game!">
+      <change beforePath="$PROJECT_DIR$/.idea/Alfred II.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Alfred II.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/acnh.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/acnh.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/music.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/music.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -41,7 +42,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="dictionary-api" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,9 +50,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/commands.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/configloader.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/music.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/commands.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1Xjw04WYlyZBEqmIIBmOsOBm3KJ" />
   <component name="ProjectViewState">
@@ -60,9 +61,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ChangesTree.GroupingKeys" value="directory" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Git Projects/Gabriel's Netflix Torrent" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -79,7 +82,7 @@
       </console-settings>
     </option>
   </component>
-  <component name="RunManager" selected="Python.src.main">
+  <component name="RunManager">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="Alfred II" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -109,9 +112,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="D:\discord_bots\Alfred\venv\Scripts\python.exe" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
@@ -124,32 +127,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test fi" type="PythonConfigurationType" factoryName="Python">
-      <module name="Alfred II" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="src.test_fi" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="true" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Python.src.main" />
-      <item itemvalue="Python.test fi" />
-    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -171,84 +148,26 @@
       <workItem from="1587943915916" duration="4585000" />
       <workItem from="1588024552541" duration="4133000" />
       <workItem from="1588037551175" duration="2436000" />
-      <workItem from="1588110792701" duration="1308000" />
-    </task>
-    <task id="LOCAL-00007" summary="Changed hourglass emoji to one that looks nicer. Added some comments. Added an async with ctx.typing(). /shutdown now has an alias /sd.">
-      <created>1558906028866</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1558906028866</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Fixed activity.">
-      <created>1558907161533</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1558907161533</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Fixed play/pause issue (where it would skip a paused song if the music player was paused and a user invoked /play).">
-      <created>1558915591673</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1558915591673</updated>
-    </task>
-    <task id="LOCAL-00010" summary="fixed slash issues. Windows is dumb">
-      <created>1558917431683</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1558917431683</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Changed voicechannel connect thing so it prints the exception to debug linux.">
-      <created>1558918993249</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1558918993250</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Changed voicechannel connect thing so it prints the exception to debug linux.">
-      <created>1558919158774</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1558919158774</updated>
-    </task>
-    <task id="LOCAL-00013" summary="moved await ctx.joinchannel() to hopefully fix the issue">
-      <created>1558920588629</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1558920588630</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Changed path name to remove redundant bit (../music_cache/../music_cache....) and fixed / \ error">
-      <created>1558990890630</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1558990890630</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Put back in the try/except handling for joinChannel and changed some docs">
-      <created>1558991443247</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1558991443247</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Changed class names">
-      <created>1559509943329</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1559509943329</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Fixed volume persistence between songs.">
-      <created>1559512652447</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1559512652447</updated>
+      <workItem from="1588110792701" duration="1547000" />
+      <workItem from="1588182793150" duration="86000" />
+      <workItem from="1588996517536" duration="1337000" />
+      <workItem from="1589296682170" duration="9000" />
+      <workItem from="1592604256172" duration="33440000" />
+      <workItem from="1592800093637" duration="5533000" />
+      <workItem from="1592880255537" duration="1935000" />
+      <workItem from="1593228568457" duration="1671000" />
+      <workItem from="1593318145231" duration="4552000" />
+      <workItem from="1593457327631" duration="156000" />
+      <workItem from="1593554728716" duration="755000" />
+      <workItem from="1593623659159" duration="8000" />
+      <workItem from="1593663885612" duration="6714000" />
+      <workItem from="1593746788577" duration="3414000" />
+      <workItem from="1593892241010" duration="8660000" />
+      <workItem from="1593984099747" duration="5142000" />
+      <workItem from="1594305431777" duration="11000" />
+      <workItem from="1594393474483" duration="8550000" />
+      <workItem from="1595269238054" duration="9000" />
+      <workItem from="1595476349917" duration="54000" />
     </task>
     <task id="LOCAL-00018" summary="Fixed small bug in /prune.">
       <created>1559514812306</created>
@@ -516,7 +435,84 @@
       <option name="project" value="LOCAL" />
       <updated>1587399772230</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Small improvements">
+      <created>1588112300523</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1588112300524</updated>
+    </task>
+    <task id="LOCAL-00057" summary="removed error-prone log statement, updated requirements.txt">
+      <created>1588997477643</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1588997477644</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Added lobby and basic game loop for chameleon.">
+      <created>1592723527922</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1592723527923</updated>
+    </task>
+    <task id="LOCAL-00059" summary="First working version of the game!">
+      <created>1592793638272</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1592793638272</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Added voting system (not tested)">
+      <created>1592852783856</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1592852783856</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Fixed tie bug in voting phase">
+      <created>1592884781980</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1592884781981</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Added points. Various other improvements.">
+      <created>1593670763094</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1593670763095</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Added rest of card assets">
+      <created>1593753116476</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1593753116476</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Added rules as a pickled message.">
+      <created>1593916518421</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1593916518422</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Fixed typo">
+      <created>1594008363260</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1594008363261</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Added /dictionary, which looks up words">
+      <created>1594403496543</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1594403496544</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -537,7 +533,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="chameleon" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -559,17 +567,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Output of subprocess call goes to update_git_log.txt" />
-    <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/commands.py" />
-    <MESSAGE value="Merge remote-tracking branch 'origin/master'" />
-    <MESSAGE value="Removed update command. Can't get it to work." />
-    <MESSAGE value="Updated youtube-dl and discord-py, changed MusicActivity.Status to inherit new discord.Enum" />
-    <MESSAGE value="Per-guild playlist and voice client support" />
-    <MESSAGE value="Checks every word for a greeting. Added /clear as alias to /prune. Small misc housekeeping." />
-    <MESSAGE value="Adds red cross if empty play query or if an error is encountered getting the source." />
-    <MESSAGE value="Overhauled logger.py. Updated to discord.py 1.2.3." />
-    <MESSAGE value="Added extensive logger to all modules. Updated .gitignore to&#10;exclude logs." />
-    <MESSAGE value="Added a cleanup function to always delete the queue and voice client,&#10;as well as disconnect alfred as soon as he's done playing." />
     <MESSAGE value="Changed logger level to warning" />
     <MESSAGE value="Guards against live video errors." />
     <MESSAGE value="Webhook deployment via Node Express" />
@@ -584,72 +581,151 @@
     <MESSAGE value="Added /fishinfo to get AN:CH fish info. To do, embed it. Updated requirements.txt." />
     <MESSAGE value="Added icon URL retrieval via a second API call." />
     <MESSAGE value="Added /rolldice command, which will either roll n m-sided die, or a standard D&amp;D dice set." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added /rolldice command, which will either roll n m-sided die, or a standard D&amp;D dice set." />
+    <MESSAGE value="Small improvements" />
+    <MESSAGE value="removed error-prone log statement, updated requirements.txt" />
+    <MESSAGE value="Added lobby and basic game loop for chameleon." />
+    <MESSAGE value="First working version of the game!" />
+    <MESSAGE value="Added voting system (not tested)" />
+    <MESSAGE value="Fixed tie bug in voting phase" />
+    <MESSAGE value="Added points. Various other improvements." />
+    <MESSAGE value="Added rest of card assets" />
+    <MESSAGE value="Added rules as a pickled message." />
+    <MESSAGE value="Fixed typo" />
+    <MESSAGE value="Added /dictionary, which looks up words" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added /dictionary, which looks up words" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1877" height="242" key="GridCell.Tab.0.bottom" timestamp="1588112098478">
+    <state x="414" y="194" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594399196134">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="242" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112098478" />
-    <state width="1877" height="242" key="GridCell.Tab.0.center" timestamp="1588112098478">
+    <state x="414" y="194" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/-1280.0.1280.1024@0.0.1920.1080" timestamp="1592605288512" />
+    <state x="414" y="194" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/-1280.226.1280.1024@0.0.1920.1080" timestamp="1594399196134" />
+    <state x="707" y="341" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593915469827">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="242" key="GridCell.Tab.0.center/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112098478" />
-    <state width="1877" height="242" key="GridCell.Tab.0.left" timestamp="1588112098478">
+    <state x="707" y="341" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080/-1280.226.1280.1024@0.0.1920.1080" timestamp="1593915469827" />
+    <state x="689" y="329" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1594398346175">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="242" key="GridCell.Tab.0.left/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112098478" />
-    <state width="1877" height="242" key="GridCell.Tab.0.right" timestamp="1588112098478">
+    <state x="689" y="329" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1080/-1280.0.1280.1024@0.0.1920.1080" timestamp="1592604657641" />
+    <state x="689" y="329" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1080/-1280.226.1280.1024@0.0.1920.1080" timestamp="1594398346175" />
+    <state x="112" y="-11" width="1736" height="896" maximized="true" key="DiffContextDialog" timestamp="1593751599402">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="242" key="GridCell.Tab.0.right/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112098478" />
-    <state width="1877" height="306" key="GridCell.Tab.1.bottom" timestamp="1588112061657">
+    <state x="112" y="-11" width="1736" height="896" maximized="true" key="DiffContextDialog/0.0.1920.1080/-1280.226.1280.1024@0.0.1920.1080" timestamp="1593751599402" />
+    <state x="739" y="281" key="FileChooserDialogImpl" timestamp="1588182849242">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="306" key="GridCell.Tab.1.bottom/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112061657" />
-    <state width="1877" height="306" key="GridCell.Tab.1.center" timestamp="1588112061657">
+    <state x="739" y="281" key="FileChooserDialogImpl/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588182849242" />
+    <state width="1877" height="387" key="GridCell.Tab.0.bottom" timestamp="1595476379018">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="306" key="GridCell.Tab.1.center/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112061657" />
-    <state width="1877" height="306" key="GridCell.Tab.1.left" timestamp="1588112061657">
+    <state width="1877" height="157" key="GridCell.Tab.0.bottom/0.0.1920.1080/-1280.0.1280.1024@0.0.1920.1080" timestamp="1592885022010" />
+    <state width="1237" height="170" key="GridCell.Tab.0.bottom/0.0.1920.1080/-1280.226.1280.1024@-1280.226.1280.1024" timestamp="1593231243948" />
+    <state width="1877" height="387" key="GridCell.Tab.0.bottom/0.0.1920.1080/-1280.226.1280.1024@0.0.1920.1080" timestamp="1595476379018" />
+    <state width="1877" height="306" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112339985" />
+    <state width="1237" height="226" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.52.1280.1024@1920.52.1280.1024" timestamp="1588997854857" />
+    <state width="1877" height="387" key="GridCell.Tab.0.center" timestamp="1595476379018">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="306" key="GridCell.Tab.1.left/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112061657" />
-    <state width="1877" height="306" key="GridCell.Tab.1.right" timestamp="1588112061657">
+    <state width="1877" height="157" key="GridCell.Tab.0.center/0.0.1920.1080/-1280.0.1280.1024@0.0.1920.1080" timestamp="1592885022010" />
+    <state width="1237" height="170" key="GridCell.Tab.0.center/0.0.1920.1080/-1280.226.1280.1024@-1280.226.1280.1024" timestamp="1593231243948" />
+    <state width="1877" height="387" key="GridCell.Tab.0.center/0.0.1920.1080/-1280.226.1280.1024@0.0.1920.1080" timestamp="1595476379018" />
+    <state width="1877" height="306" key="GridCell.Tab.0.center/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112339985" />
+    <state width="1237" height="226" key="GridCell.Tab.0.center/0.0.1920.1080/1920.52.1280.1024@1920.52.1280.1024" timestamp="1588997854856" />
+    <state width="1877" height="387" key="GridCell.Tab.0.left" timestamp="1595476379018">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="306" key="GridCell.Tab.1.right/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112061657" />
+    <state width="1877" height="157" key="GridCell.Tab.0.left/0.0.1920.1080/-1280.0.1280.1024@0.0.1920.1080" timestamp="1592885022009" />
+    <state width="1237" height="170" key="GridCell.Tab.0.left/0.0.1920.1080/-1280.226.1280.1024@-1280.226.1280.1024" timestamp="1593231243948" />
+    <state width="1877" height="387" key="GridCell.Tab.0.left/0.0.1920.1080/-1280.226.1280.1024@0.0.1920.1080" timestamp="1595476379018" />
+    <state width="1877" height="306" key="GridCell.Tab.0.left/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112339985" />
+    <state width="1237" height="226" key="GridCell.Tab.0.left/0.0.1920.1080/1920.52.1280.1024@1920.52.1280.1024" timestamp="1588997854856" />
+    <state width="1877" height="387" key="GridCell.Tab.0.right" timestamp="1595476379018">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="157" key="GridCell.Tab.0.right/0.0.1920.1080/-1280.0.1280.1024@0.0.1920.1080" timestamp="1592885022010" />
+    <state width="1237" height="170" key="GridCell.Tab.0.right/0.0.1920.1080/-1280.226.1280.1024@-1280.226.1280.1024" timestamp="1593231243948" />
+    <state width="1877" height="387" key="GridCell.Tab.0.right/0.0.1920.1080/-1280.226.1280.1024@0.0.1920.1080" timestamp="1595476379018" />
+    <state width="1877" height="306" key="GridCell.Tab.0.right/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112339985" />
+    <state width="1237" height="226" key="GridCell.Tab.0.right/0.0.1920.1080/1920.52.1280.1024@1920.52.1280.1024" timestamp="1588997854856" />
+    <state width="1877" height="138" key="GridCell.Tab.1.bottom" timestamp="1594403792202">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="263" key="GridCell.Tab.1.bottom/0.0.1920.1080/-1280.0.1280.1024@0.0.1920.1080" timestamp="1592853011017" />
+    <state width="1877" height="138" key="GridCell.Tab.1.bottom/0.0.1920.1080/-1280.226.1280.1024@0.0.1920.1080" timestamp="1594403792202" />
+    <state width="1877" height="306" key="GridCell.Tab.1.bottom/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112339986" />
+    <state width="1877" height="138" key="GridCell.Tab.1.center" timestamp="1594403792202">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="263" key="GridCell.Tab.1.center/0.0.1920.1080/-1280.0.1280.1024@0.0.1920.1080" timestamp="1592853011017" />
+    <state width="1877" height="138" key="GridCell.Tab.1.center/0.0.1920.1080/-1280.226.1280.1024@0.0.1920.1080" timestamp="1594403792202" />
+    <state width="1877" height="306" key="GridCell.Tab.1.center/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112339985" />
+    <state width="1877" height="138" key="GridCell.Tab.1.left" timestamp="1594403792202">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="263" key="GridCell.Tab.1.left/0.0.1920.1080/-1280.0.1280.1024@0.0.1920.1080" timestamp="1592853011017" />
+    <state width="1877" height="138" key="GridCell.Tab.1.left/0.0.1920.1080/-1280.226.1280.1024@0.0.1920.1080" timestamp="1594403792202" />
+    <state width="1877" height="306" key="GridCell.Tab.1.left/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112339985" />
+    <state width="1877" height="138" key="GridCell.Tab.1.right" timestamp="1594403792202">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="263" key="GridCell.Tab.1.right/0.0.1920.1080/-1280.0.1280.1024@0.0.1920.1080" timestamp="1592853011017" />
+    <state width="1877" height="138" key="GridCell.Tab.1.right/0.0.1920.1080/-1280.226.1280.1024@0.0.1920.1080" timestamp="1594403792202" />
+    <state width="1877" height="306" key="GridCell.Tab.1.right/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112339986" />
     <state x="848" y="407" width="389" height="265" key="MultipleFileMergeDialog" timestamp="1587399787898">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="848" y="407" width="389" height="265" key="MultipleFileMergeDialog/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1587399787898" />
-    <state x="461" y="184" key="SettingsEditor" timestamp="1588025134561">
+    <state x="814" y="242" key="RollbackChangesDialog" timestamp="1594393539987">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state x="814" y="242" key="RollbackChangesDialog/0.0.1920.1080/-1280.226.1280.1024@0.0.1920.1080" timestamp="1594393539987" />
+    <state x="423" y="184" key="SettingsEditor" timestamp="1595476403549">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="423" y="184" key="SettingsEditor/0.0.1920.1080/-1280.0.1280.1024@0.0.1920.1080" timestamp="1592826514907" />
+    <state x="423" y="184" key="SettingsEditor/0.0.1920.1080/-1280.226.1280.1024@0.0.1920.1080" timestamp="1595476403549" />
     <state x="461" y="184" key="SettingsEditor/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588025134561" />
-    <state x="552" y="272" key="Vcs.Push.Dialog.v2" timestamp="1587399871075">
+    <state x="2202" y="226" key="SettingsEditor/0.0.1920.1080/1920.52.1280.1024@1920.52.1280.1024" timestamp="1588997431942" />
+    <state x="552" y="272" key="Vcs.Push.Dialog.v2" timestamp="1594403536714">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="552" y="272" key="Vcs.Push.Dialog.v2/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1587399871075" />
-    <state width="968" height="548" key="XDebugger.FullValuePopup" timestamp="1587400174557">
+    <state x="552" y="272" key="Vcs.Push.Dialog.v2/0.0.1920.1080/-1280.0.1280.1024@0.0.1920.1080" timestamp="1592884783881" />
+    <state x="-912" y="484" key="Vcs.Push.Dialog.v2/0.0.1920.1080/-1280.226.1280.1024@-1280.226.1280.1024" timestamp="1594008371873" />
+    <state x="552" y="272" key="Vcs.Push.Dialog.v2/0.0.1920.1080/-1280.226.1280.1024@0.0.1920.1080" timestamp="1594403536714" />
+    <state x="552" y="272" key="Vcs.Push.Dialog.v2/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112318611" />
+    <state x="2288" y="310" key="Vcs.Push.Dialog.v2/0.0.1920.1080/1920.52.1280.1024@1920.52.1280.1024" timestamp="1588997529718" />
+    <state width="968" height="548" key="XDebugger.FullValuePopup" timestamp="1588112197142">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="968" height="548" key="XDebugger.FullValuePopup/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1587400174557" />
-    <state x="769" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587944144373">
+    <state width="968" height="548" key="XDebugger.FullValuePopup/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588112197142" />
+    <state x="769" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592880273382">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="769" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1587944144373" />
+    <state x="769" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080/-1280.0.1280.1024@0.0.1920.1080" timestamp="1592880273382" />
+    <state x="769" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080/1920.52.1280.1024@0.0.1920.1080" timestamp="1588996541574" />
+    <state x="514" y="268" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1594398381817">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="514" y="268" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1080/-1280.226.1280.1024@0.0.1920.1080" timestamp="1594398381817" />
+    <state x="667" y="139" width="585" height="801" key="find.popup" timestamp="1593320246780">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="667" y="139" width="585" height="801" key="find.popup/0.0.1920.1080/-1280.226.1280.1024@0.0.1920.1080" timestamp="1593320246780" />
+    <state x="740" y="252" key="git4idea.branch.GitSmartOperationDialog" timestamp="1594393506628">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="740" y="252" key="git4idea.branch.GitSmartOperationDialog/0.0.1920.1080/-1280.226.1280.1024@0.0.1920.1080" timestamp="1594393506628" />
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1594400491244">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080/-1280.0.1280.1024@0.0.1920.1080" timestamp="1592825797218" />
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080/-1280.226.1280.1024@0.0.1920.1080" timestamp="1594400491244" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/acnh.py</url>
-          <line>21</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -658,10 +734,16 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="pic_url" language="Python" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Alfred$src_main.coverage" NAME="src.main Coverage Results" MODIFIED="1588112201811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/Alfred$src_main.coverage" NAME="src.main Coverage Results" MODIFIED="1595476406662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/Alfred$test_fi.coverage" NAME="test fi Coverage Results" MODIFIED="1585590525941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Alfred$dict.coverage" NAME="dict Coverage Results" MODIFIED="1594398386373" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Alfred$main.coverage" NAME="main Coverage Results" MODIFIED="1581572366917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>

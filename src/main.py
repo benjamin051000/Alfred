@@ -1,4 +1,5 @@
 from discord.ext import commands
+
 import configloader as cfload
 from logger import Logger as log
 
@@ -27,9 +28,8 @@ async def on_ready():
     log.info('\nConnected to Discord as', bot.user.name, '- ID ', str(bot.user.id))
     log.info('Alfred loaded successfully.\n______________________________\n')
 
-@bot.event
+@bot.listen()
 async def on_message(message):
-    await bot.process_commands(message)
     if message.author == bot.user and message.content.startswith(command_prefix):
         return
     # Magically checks for any of the greetings in message and waves

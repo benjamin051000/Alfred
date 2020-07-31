@@ -14,7 +14,7 @@ from discord.ext import commands
 import configloader as cfload
 from logger import Logger as log
 
-cfload.read('..\\config.ini')
+cfload.read('..\\config.ini')  # TODO maybe move this to the setup function?
 log.info(cfload.configSectionMap("Owner Credentials")['owner_id'], "is the owner. Only this user can use /shutdown.")
 
 class Commands(commands.Cog):
@@ -23,6 +23,13 @@ class Commands(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
+        # Set up reddit client
+        self.reddit_credentials = cfload.configSectionMap("Reddit API")
+        self.reddit = praw.Reddit(client_id=self.reddit_credentials['client_id'],
+                        client_secret=self.reddit_credentials['client_secret'],
+                        user_agent=self.reddit_credentials['user_agent'],
+                        username=self.reddit_credentials['username'],
+                        password=self.reddit_credentials['password'])
 
     @commands.command()
     async def ping(self, ctx):
@@ -54,80 +61,74 @@ class Commands(commands.Cog):
             await ctx.message.add_reaction('\U0000274C')  # Cross mark
             await ctx.send("You can't shut me down.", delete_after=15)
 
-    @commands.command()
-    async def meme(self, ctx, subreddit='dankmemes'):  #TODO fix gif playback
+    @commands.command(aliases=['reddit'])
+    async def meme(self, ctx: commands.Context, subreddit='memes'):
         """Gets a random meme from Reddit and posts it.
         Specify a subreddit to get a post from (actually works with any sub). Default is r/dankmemes."""
-        credentials = cfload.configSectionMap("Reddit API")
 
-        await ctx.message.add_reaction("\U0000231B")  # hourglass done (not actually done)
+        await ctx.message.add_reaction('⌛')
+        sub = self.reddit.subreddit(subreddit)
 
-        r = praw.Reddit(client_id=credentials['client_id'],
-                        client_secret=credentials['client_secret'],
-                        user_agent=credentials['user_agent'],
-                        username=credentials['username'],
-                        password=credentials['password'])
-        try:
-            sub = r.subreddit(subreddit)
-            if sub.over18:
-                return await ctx.message.add_reaction("\U0001F6AB")  # Prohibited
-            n = 100
-            posts = sub.hot(limit=n)
-            rand = random.randint(0, n)
-            for (i, post) in enumerate(posts):  # TODO try random.choice() for the enumeration
-                if i == rand:
-                    embed = discord.Embed(
-                        title=post.title,  #TODO add subreddit link somewhere, maybe use add fields
-                        url='http://www.reddit.com' + post.permalink,
-                        # description=post.name,
-                        colour=discord.Colour(0xe7d066)
-                    )
-                    if post.url != 'https://www.reddit.com' + post.permalink:  # It's an image post
-                        embed.set_image(url=post.url)
-                    embed.set_author(
-                        name='u/' + str(post.author),
-                        url='http://www.reddit.com/user/' + str(post.author),
-                        icon_url=post.author.icon_img
-                    )
-                    if post.selftext is not '':  #If the post is a text post
-                        description = post.selftext[:1021] + '...' if len(post.selftext) > 1024 else post.selftext
-                        embed.add_field(
-                            name=str(post.score) + ' points',
-                            value=description
-                        )
-                    else:  #If the post is a link post
-                        embed.add_field(
-                            name='Score:',
-                            value=post.score,
-                            inline=True
-                        )
-                        embed.add_field(
-                            name='Comments:',
-                            value=str(len(post.comments)),
-                            inline=True
-                        )
-                    embed.set_footer(
-                        text='r/' + str(post.subreddit),
-                        icon_url='https://styles.redditmedia.com/t5_6/styles/communityIcon_a8uzjit9bwr21.png'
-                    )
+        # Restrict NSFW subs
+        if sub.over18:
+            await ctx.message.add_reaction('🔞')
+            return
 
-                    await ctx.send(embed=embed)
+        # Get posts and choose a random one.
+        n = 100 # This could be replaced with a generator, but this is easier and almost never repeats.
+        posts = [p for p in sub.hot(limit=n)]
+        post = random.choice(posts)
 
-        except Exception as e:
-            await ctx.message.add_reaction("\U0000274C")  # Cross mark
-            log.error('Exception in /meme:', e)
-        finally:
-            await ctx.message.remove_reaction('\U0000231B', ctx.me)
+        # Create the embed
+        embed = discord.Embed(
+            title=post.title,
+            url='http://www.reddit.com' + post.permalink,
+            # description=post.name,
+            colour=discord.Colour(0xe7d066)
+        )
+        if post.url != 'https://www.reddit.com' + post.permalink:  # It's an image post
+            embed.set_image(url=post.url)
+        embed.set_author(
+            name='u/' + str(post.author),
+            url='http://www.reddit.com/user/' + str(post.author),
+            icon_url=post.author.icon_img
+        )
+        if post.selftext is not '':  #If the post is a text post
+            description = post.selftext[:1021] + '...' if len(post.selftext) > 1024 else post.selftext
+            embed.add_field(name=str(post.score) + ' points', value=description)
 
-    # @commands.command()
-    async def qr(self, ctx, *link: str):  # TODO broken
-        """Generates a QR code from a provided link."""
+        else:  #If the post is a link post
+            embed.add_field(name='Score:', value=post.score, inline=True)
+            embed.add_field(name='Comments:', value=str(len(post.comments)), inline=True)
+
+        embed.set_footer(
+            text='r/' + str(post.subreddit),
+            icon_url='https://styles.redditmedia.com/t5_6/styles/communityIcon_a8uzjit9bwr21.png'
+        )
+
+        await ctx.send(embed=embed)
+
+        # Change the reaction
+        await ctx.message.remove_reaction('⌛', ctx.me)
+        await ctx.message.add_reaction('✅')
+
+    @commands.command()
+    async def qr(self, ctx, *link: str):
+        """ Generates a QR code from a provided link. Useful
+        for quickly sending/picking up information on a non-discord
+        device, such as a smartphone. """
         link = ' '.join(link)
-        img = qrcode.make(link)  # TODO Run in executor # TODO shrink img size (maybe)
+        # Create the QR code
+        qr = qrcode.QRCode(border=2)  # Shrinks the border a little
+        qr.add_data(link)
+        qr.make(fit=True)
+        img = qr.make_image()
+        # Save the qr image in a file.
         file = BytesIO()
-        img.save(file, 'JPEG')  # TODO Run in executor
+        img.save(file, 'JPEG')
         file.seek(0)
-        url = link if 'http://' in link else 'http://' + link
+
+        url = link if 'http' in link else 'http://' + link
         await ctx.send(url, file=discord.File(file, 'qr.jpeg'))
 
     @commands.command(aliases=['ms'])
@@ -202,6 +203,7 @@ class Commands(commands.Cog):
 
 
 class Dictionary(commands.Cog):
+    """ A simple dictionary API. """
     dict_url = 'https://www.dictionaryapi.com/api/v3/references/collegiate/json/'
     thes_url = ''
 

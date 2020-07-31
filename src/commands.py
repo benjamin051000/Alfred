@@ -14,7 +14,7 @@ from discord.ext import commands
 import configloader as cfload
 from logger import Logger as log
 
-cfload.read('..\\config.ini')
+cfload.read('..\\config.ini')  # TODO maybe move this to the setup function?
 log.info(cfload.configSectionMap("Owner Credentials")['owner_id'], "is the owner. Only this user can use /shutdown.")
 
 class Commands(commands.Cog):

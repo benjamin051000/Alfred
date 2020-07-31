@@ -113,14 +113,22 @@ class Commands(commands.Cog):
         await ctx.message.add_reaction('✅')
 
     @commands.command()
-    async def qr(self, ctx, *link: str):  # TODO broken
-        """Generates a QR code from a provided link."""
+    async def qr(self, ctx, *link: str):
+        """ Generates a QR code from a provided link. Useful
+        for quickly sending/picking up information on a non-discord
+        device, such as a smartphone. """
         link = ' '.join(link)
-        img = qrcode.make(link)  # TODO Run in executor # TODO shrink img size (maybe)
+        # Create the QR code
+        qr = qrcode.QRCode(border=2)  # Shrinks the border a little
+        qr.add_data(link)
+        qr.make(fit=True)
+        img = qr.make_image()
+        # Save the qr image in a file.
         file = BytesIO()
-        img.save(file, 'JPEG')  # TODO Run in executor
+        img.save(file, 'JPEG')
         file.seek(0)
-        url = link if 'http://' in link else 'http://' + link
+
+        url = link if 'http' in link else 'http://' + link
         await ctx.send(url, file=discord.File(file, 'qr.jpeg'))
 
     @commands.command(aliases=['ms'])

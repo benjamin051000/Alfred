@@ -1,9 +1,13 @@
+import glob
+import os
 from collections import deque
 
 import discord
 from discord.ext import commands
-from logger import Logger as log
 from youtube_dl import YoutubeDL
+
+import configloader as cfload
+from logger import Logger as log
 
 
 class MusicActivity:
@@ -106,8 +110,9 @@ class Music(commands.Cog):
     # Represents guild-specific music clients.
     players = {}
 
-    def __init__(self, bot):
+    def __init__(self, bot, owner_id):
         self.bot = bot
+        self.owner_id = owner_id
 
     def get_player(self, ctx):
         """Gets a guild's music player.
@@ -248,5 +253,23 @@ class Music(commands.Cog):
         else:
             await ctx.send('Volume currently set to ' + str(int(player.audio_streamer.volume * 100)) + '%.', delete_after=10)
 
+    @commands.command()
+    async def clearcache(self, ctx):
+        """ ADMIN COMMAND: Clear music cache. """
+        if ctx.author.id == self.owner_id:
+            await ctx.send('You can\'t use this command.', delete_after=5)
+            return
+        try:
+            music_files = glob.glob('../music_cache/*')
+            print('Files to be removed:', music_files)
+            for file in music_files:
+                os.remove(file)
+            await ctx.message.add_reaction('🗑')
+        except Exception as e:
+            await ctx.add_reaction('⚠')
+            raise e
+
+
 def setup(bot):
-    bot.add_cog(Music(bot))
+    admin_id = cfload.configSectionMap('Owner Credentials')['owner_id']
+    bot.add_cog(Music(bot, admin_id))

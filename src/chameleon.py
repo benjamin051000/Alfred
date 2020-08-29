@@ -27,7 +27,7 @@ class Chameleon(commands.Cog):
 
     def __init__(self, bot, command_prefix):
         self.bot = bot
-        self.command_prefix = command_prefix
+        self.command_prefix = command_prefix  # TODO is this ever used?
         self.game_state: GameState = GameState.init
         self.lobby = []  # Holds the names of the people in the lobby.
         self.category = None  # Points to discord.categoryChannel created (NOT in-game category card).
@@ -294,6 +294,8 @@ class Chameleon(commands.Cog):
             ########################################################
             chameleon_guess = False
 
+            self.who_got_points = f'The secret  word was: **{word}**!\n'
+
             if self.round_winner == self.the_chameleon:
                 # Chameleon was found
                 desc = f'You discovered the chameleon to be **{self.round_winner}**! ' \
@@ -318,7 +320,7 @@ class Chameleon(commands.Cog):
 
                 # Update points. The chameleon gets 2 points.
                 self.points[self.the_chameleon] += 2
-                self.who_got_points = 'For eluding the party, chameleon gets 2 points!'
+                self.who_got_points += 'For eluding the party, chameleon gets 2 points!'
 
             # Score chameleon's guess
             if chameleon_guess:
@@ -329,7 +331,7 @@ class Chameleon(commands.Cog):
                 await self.bot.wait_for('reaction_add', check=self.check_guess)
 
             ########################################################
-            # Display points, Round over
+            # Display word, points, Round over
             ########################################################
             embed = discord.Embed(title=f"Round {game_round} Leaderboard",
                                   colour=discord.Colour(0xe7d066), description=self.who_got_points)
@@ -347,7 +349,7 @@ class Chameleon(commands.Cog):
             await tc.send(embed=embed)
 
             round_over_msg = await tc.send('Once the round is over, click 🔁 to play another round, or 🛑 to finish the game.'
-                                           'If you play another round, click 📝 to enable/disable custom deck.')
+                                           ' If you play another round, click 📝 to enable/disable custom deck.')
             self.game_state = GameState.roundover
             for r in '🔁🛑📝':
                 await round_over_msg.add_reaction(r)
@@ -395,14 +397,14 @@ class Chameleon(commands.Cog):
         if reaction.emoji == '✅':
             # The chameleon guessed correctly. Give the chameleon one point.
             self.points[self.round_winner] += 1
-            self.who_got_points = 'The chameleon gets 1 point for guessing correctly!'
+            self.who_got_points += 'The chameleon gets 1 point for guessing correctly!'
             return True
         elif reaction.emoji == '❌':
             # The chameleon guessed wrong. Everyone except him/her gets 2 points.
             for k in self.points.keys():
                 if k != self.the_chameleon:
                     self.points[k] += 2
-                self.who_got_points = 'Because the chameleon guessed wrong, everyone else gets 2 points!'
+                self.who_got_points += 'Because the chameleon guessed wrong, everyone else gets 2 points!'
             return True
 
     async def new_category_card(self, channel):

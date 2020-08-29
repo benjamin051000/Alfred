@@ -26,11 +26,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e37654ec-6a1d-4080-9d15-14bbfe331706" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Alfred II.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Alfred II.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
-    <list id="a2eab84e-aa84-4526-b1b3-951d10b3c01a" name="added todo for cfload" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -150,6 +147,8 @@
       <workItem from="1596082121448" duration="86000" />
       <workItem from="1596162682464" duration="5200000" />
       <workItem from="1598240690347" duration="149000" />
+      <workItem from="1598708965581" duration="79000" />
+      <workItem from="1598709060424" duration="207000" />
     </task>
     <task id="LOCAL-00013" summary="moved await ctx.joinchannel() to hopefully fix the issue">
       <created>1558920588629</created>
@@ -595,10 +594,10 @@
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state x="262" y="82" key="#SSH_Configurations/0.0.1368.872@0.0.1368.872" timestamp="1596079788469" />
-    <state x="140" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598240839865">
+    <state x="140" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598709262141">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state x="140" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1368.872@0.0.1368.872" timestamp="1598240839865" />
+    <state x="140" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1368.872@0.0.1368.872" timestamp="1598709262141" />
     <state x="400" y="238" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596164000008">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
@@ -705,7 +704,7 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Alfred$src_main.coverage" NAME="src.main Coverage Results" MODIFIED="1596167453345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/Alfred$src_main.coverage" NAME="src.main Coverage Results" MODIFIED="1598710454888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/Alfred$test_fi.coverage" NAME="test fi Coverage Results" MODIFIED="1585590525941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Alfred$main.coverage" NAME="main Coverage Results" MODIFIED="1581572366917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>

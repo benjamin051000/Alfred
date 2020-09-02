@@ -150,21 +150,8 @@
       <workItem from="1598240690347" duration="149000" />
       <workItem from="1598708965581" duration="79000" />
       <workItem from="1598709060424" duration="207000" />
-      <workItem from="1598710667870" duration="1748000" />
-    </task>
-    <task id="LOCAL-00013" summary="moved await ctx.joinchannel() to hopefully fix the issue">
-      <created>1558920588629</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1558920588630</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Changed path name to remove redundant bit (../music_cache/../music_cache....) and fixed / \ error">
-      <created>1558990890630</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1558990890630</updated>
+      <workItem from="1598710667870" duration="2941000" />
+      <workItem from="1598789530961" duration="6948000" />
     </task>
     <task id="LOCAL-00015" summary="Put back in the try/except handling for joinChannel and changed some docs">
       <created>1558991443247</created>
@@ -495,7 +482,21 @@
       <option name="project" value="LOCAL" />
       <updated>1596167706633</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Shows word in the leaderboard embed. Fixed small typo.">
+      <created>1598712606088</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1598712606088</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Fixed typo in winnie-the-pooh">
+      <created>1598712920059</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1598712920060</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -555,8 +556,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Checks every word for a greeting. Added /clear as alias to /prune. Small misc housekeeping." />
-    <MESSAGE value="Adds red cross if empty play query or if an error is encountered getting the source." />
     <MESSAGE value="Overhauled logger.py. Updated to discord.py 1.2.3." />
     <MESSAGE value="Added extensive logger to all modules. Updated .gitignore to&#10;exclude logs." />
     <MESSAGE value="Added a cleanup function to always delete the queue and voice client,&#10;as well as disconnect alfred as soon as he's done playing." />
@@ -580,7 +579,9 @@
     <MESSAGE value="Added Pillow to requirements.txt for /qr" />
     <MESSAGE value="added todo for cfload" />
     <MESSAGE value="Added todo for cfload" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added todo for cfload" />
+    <MESSAGE value="Shows word in the leaderboard embed. Fixed small typo." />
+    <MESSAGE value="Fixed typo in winnie-the-pooh" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed typo in winnie-the-pooh" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -612,22 +613,22 @@
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state x="466" y="192" key="FileChooserDialogImpl/0.0.1368.872@0.0.1368.872" timestamp="1596163590242" />
-    <state width="1326" height="227" key="GridCell.Tab.0.bottom" timestamp="1598712339794">
+    <state width="1326" height="227" key="GridCell.Tab.0.bottom" timestamp="1598712551006">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="227" key="GridCell.Tab.0.bottom/0.0.1368.872@0.0.1368.872" timestamp="1598712339794" />
-    <state width="1326" height="227" key="GridCell.Tab.0.center" timestamp="1598712339794">
+    <state width="1326" height="227" key="GridCell.Tab.0.bottom/0.0.1368.872@0.0.1368.872" timestamp="1598712551006" />
+    <state width="1326" height="227" key="GridCell.Tab.0.center" timestamp="1598712551005">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="227" key="GridCell.Tab.0.center/0.0.1368.872@0.0.1368.872" timestamp="1598712339794" />
-    <state width="1326" height="227" key="GridCell.Tab.0.left" timestamp="1598712339794">
+    <state width="1326" height="227" key="GridCell.Tab.0.center/0.0.1368.872@0.0.1368.872" timestamp="1598712551005" />
+    <state width="1326" height="227" key="GridCell.Tab.0.left" timestamp="1598712551004">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="227" key="GridCell.Tab.0.left/0.0.1368.872@0.0.1368.872" timestamp="1598712339794" />
-    <state width="1326" height="227" key="GridCell.Tab.0.right" timestamp="1598712339794">
+    <state width="1326" height="227" key="GridCell.Tab.0.left/0.0.1368.872@0.0.1368.872" timestamp="1598712551004" />
+    <state width="1326" height="227" key="GridCell.Tab.0.right" timestamp="1598712551006">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="227" key="GridCell.Tab.0.right/0.0.1368.872@0.0.1368.872" timestamp="1598712339794" />
+    <state width="1326" height="227" key="GridCell.Tab.0.right/0.0.1368.872@0.0.1368.872" timestamp="1598712551006" />
     <state width="1326" height="226" key="GridCell.Tab.1.bottom" timestamp="1596167895650">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
@@ -652,10 +653,10 @@
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state x="31" y="105" key="SettingsEditor/0.0.1368.872@0.0.1368.872" timestamp="1598240806647" />
-    <state x="393" y="220" key="Vcs.Push.Dialog.v2" timestamp="1596167839361">
+    <state x="393" y="220" key="Vcs.Push.Dialog.v2" timestamp="1598754240270">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state x="393" y="220" key="Vcs.Push.Dialog.v2/0.0.1368.872@0.0.1368.872" timestamp="1596167839361" />
+    <state x="393" y="220" key="Vcs.Push.Dialog.v2/0.0.1368.872@0.0.1368.872" timestamp="1598754240270" />
     <state x="547" y="335" key="WebDeployment.AddServerDialog.v.1" timestamp="1596031703576">
       <screen x="0" y="0" width="1368" height="872" />
     </state>

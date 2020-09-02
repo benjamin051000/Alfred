@@ -27,7 +27,7 @@ class Chameleon(commands.Cog):
 
     def __init__(self, bot, command_prefix):
         self.bot = bot
-        self.command_prefix = command_prefix  # TODO is this ever used?
+        #self.command_prefix = command_prefix  # TODO is this ever used?
         self.game_state: GameState = GameState.init
         self.lobby = []  # Holds the names of the people in the lobby.
         self.category = None  # Points to discord.categoryChannel created (NOT in-game category card).
@@ -35,8 +35,12 @@ class Chameleon(commands.Cog):
         self.the_chameleon = None
         self.points = {}  # key: name, val: points
         self.who_got_points = '-'  # Used in points embed to explain who got points.
+
         self.custom_cards = {}  # Holds custom-made cards. (key:category, val:words)
         self.use_custom_cards = False  # Whether or not to use the custom cards.
+
+        self.guild: discord.Guild = None  # Holds guild ref for color role creation.
+        self.color_roles = []  # Holds references to roles created for assignment and deletion.
 
     @commands.Cog.listener('on_reaction_add')
     async def on_reaction_add(self, reaction: discord.Reaction, user):
@@ -138,6 +142,9 @@ class Chameleon(commands.Cog):
             await sent_msg.add_reaction('➕')
             await sent_msg.add_reaction('▶')
 
+            # Save the guild reference for role creation.
+            self.guild = ctx.guild
+
     async def update_lobby_embed(self, message: discord.Message):
         new_embed: discord.Embed = message.embeds[0]
 
@@ -220,6 +227,7 @@ class Chameleon(commands.Cog):
         self.points.clear()
         self.game_state = GameState.init
         await self.destroy_game_channels()
+        await self.__remove_color_roles()
 
     async def game_loop(self):
         """ The main game loop. """
@@ -267,9 +275,21 @@ class Chameleon(commands.Cog):
 
             names = [e.display_name for e in self.lobby]
             colors = ['🔴', '🟠', '🟡', '🟢', '🔵', '🟣', '🟤', '⚫', '⚪']
-            random.shuffle(colors)  # Vary colors (aesthetic purposes only)
+            # Used for role creation.
+            c_codes = [0xde2e43, 0xffac32, 0xfdcb58, 0x79b15a, 0x55acef, 0xaa8fd6, 0xc0694e, 0x32373d, 0xe6e7e9]
 
-            f_names = [f'{c} {n}' for c, n in zip(colors, names)]
+            color_codes = {k: v for k, v in zip(colors, c_codes)}
+
+            keys = random.shuffle(color_codes.keys())  # Vary colors (aesthetic purposes only)
+
+            f_names = [f'{c} {n}' for c, n in zip(keys, names)]
+
+            # Assign corresponding color roles to players.
+            await self.create_color_roles(color_codes)
+
+            # Assign color roles to each player.
+            await self.__assign_color_roles()
+
             embed = discord.Embed(title='Player Order', colour=discord.Colour(0xe7d066), description='\n'.join(f_names))
             poll_msg = await tc.send('In the following order, describe the secret word with one descriptor word.', embed=embed)
 
@@ -433,6 +453,24 @@ class Chameleon(commands.Cog):
     def toggle_custom_cards(self):
         """ Invoked via reaction event handler. """
         self.use_custom_cards = not self.use_custom_cards
+
+    async def create_color_roles(self, color_codes):
+        """ Generate the color roles outlined by the given color codes. """
+        for color, c_code in color_codes.items():
+            self.color_roles.append(await self.guild.create_role(
+                name=f'Chameleon-{color}',
+                reason='Used in Chameleon game.',
+                colour=c_code
+            ))
+
+    async def __remove_color_roles(self):
+        """ Deletes the color roles from the guild. Used during cleanup. """
+        for role in self.color_roles:
+            await role.delete()
+
+    async def __assign_color_roles(self):
+        """ Assigns self.color_roles to self.players """
+
 
 def setup(bot):
     prefix = cfload.configSectionMap('Commands')['command_prefix']

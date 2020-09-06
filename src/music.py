@@ -1,3 +1,5 @@
+import asyncio
+import datetime
 import glob
 import os
 from collections import deque
@@ -51,23 +53,68 @@ class YTDLSource:  # TODO subclass to PCMVolumeTransformer? (like that noob in t
         'outtmpl': '../music_cache/%(extractor)s-%(title)s.%(ext)s',  # %(title)s.%(ext)s',
     }
 
-    def __init__(self, query):
-        self.query = ' '.join(query)
-        self.data = {}
+    """ The maximum duration a video can be before Alfred asks you to confirm you want to download a long video. """
+    CUTOFF_DURATION = 7200
 
-        with YoutubeDL(YTDLSource.ytdl_opts) as ydl:
-            info = ydl.extract_info(self.query, download=False)
-            if 'entries' in info:  # grab the first video
-                info = info['entries'][0]
+    # def __init__(self, query):
+        # self.query = ' '.join(query)
+        # self.data = {}
+        #
+        # with YoutubeDL(YTDLSource.ytdl_opts) as ydl:
+        #     info = ydl.extract_info(self.query, download=False)
+        #
+        #     if 'entries' in info:  # grab the first video
+        #         if info['duration'] > YTDLSource.CUTOFF_DURATION:
+        #             pass
+        #         info = info['entries'][0]
+        #
+        #     print('Duration is:', info['duration'])
+        #
+        #     if not info['is_live']:
+        #         self.data = ydl.extract_info(self.query)  # TODO run in executor?
+        #     else:
+        #         pass  #TODO get next video
+        #
+        #     if 'entries' in self.data:  # if we get a playlist, grab the first video TODO does ytdl_opts['noplaylist'] prevent this error?
+        #         self.data = self.data['entries'][0]
+        #     self.path = ydl.prepare_filename(self.data)
 
-            if not info['is_live']:
-                self.data = ydl.extract_info(self.query)  # TODO run in executor?
-            else:
-                pass  #TODO get next video
+    def __init__(self, query, data, path):
+        self.query = query
+        self.data = data
+        self.path = path
 
-            if 'entries' in self.data:  # if we get a playlist, grab the first video TODO does ytdl_opts['noplaylist'] prevent this error?
-                self.data = self.data['entries'][0]
-            self.path = ydl.prepare_filename(self.data)
+    @classmethod
+    async def create(cls, ctx: commands.Context, query: str):
+        query = ' '.join(query)
+
+        with YoutubeDL(cls.ytdl_opts) as ydl:
+            info = ydl.extract_info(query, download=False)
+
+            if 'entries' in info: # Grab the first video.
+                info = info[0]
+
+            # Check the duration
+            if info['duration'] > cls.CUTOFF_DURATION:
+                fduration = datetime.timedelta(seconds=info['duration'])
+                msg = await ctx.send(f'This video is {fduration} long. Are you sure you want to play it?', delete_after=40)
+                for emoji in '✅❌':
+                    await msg.add_reaction(emoji)
+
+                try:
+                    reaction, user = await ctx.bot.wait_for('reaction_add', timeout=30, check=lambda r, u: r in '✅❌')
+                except asyncio.TimeoutError:
+                    raise Exception
+
+                if reaction == '❌':
+                    raise Exception
+
+            # Download the video
+            download_data = ydl.extract_info(info['url'])
+            path = ydl.prepare_filename(download_data)
+
+        return cls(query, download_data, path)
+
 
 
 class MusicPlayer:
@@ -191,13 +238,14 @@ class Music(commands.Cog):
 
         # Add the YTDLSource to the queue, either up front or in the back
         try:
+            source = YTDLSource.create(ctx, query)
             if up_next:
-                player.queue.appendleft(YTDLSource(query))
+                player.queue.appendleft(source)
             else:
-                player.queue.append(YTDLSource(query))
+                player.queue.append(source)
         except Exception as e:
             await ctx.message.add_reaction("\U0000274C")  # Cross mark
-            # log.error('Exception while getting the YTDLSource:', e)
+            raise e
 
         if not player.vc.is_playing() and not player.vc.is_paused():
             # Start the music loop.

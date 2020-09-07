@@ -1,4 +1,3 @@
-import asyncio
 import datetime
 import glob
 import os
@@ -92,25 +91,26 @@ class YTDLSource:  # TODO subclass to PCMVolumeTransformer? (like that noob in t
             info = ydl.extract_info(query, download=False)
 
             if 'entries' in info: # Grab the first video.
-                info = info[0]
+                info = info['entries'][0]
 
             # Check the duration
             if info['duration'] > cls.CUTOFF_DURATION:
                 fduration = datetime.timedelta(seconds=info['duration'])
                 msg = await ctx.send(f'This video is {fduration} long. Are you sure you want to play it?', delete_after=40)
+                # TODO if user hits check box, delete message after it's downloaded maybe
                 for emoji in '✅❌':
                     await msg.add_reaction(emoji)
 
-                try:
-                    reaction, user = await ctx.bot.wait_for('reaction_add', timeout=30, check=lambda r, u: r in '✅❌')
-                except asyncio.TimeoutError:
-                    raise Exception
+                # try:  # TODO Fix this. Not working
+                reaction, user = await ctx.bot.wait_for('reaction_add', timeout=30, check=lambda r, _: str(r.emoji) in '✅❌')
+                # except asyncio.TimeoutError:
+                #     raise Exception('Took too long to respond.')  # TODO do something more useful here
 
-                if reaction == '❌':
-                    raise Exception
+                if str(reaction.emoji) == '❌':
+                    raise Exception('YTDL cancelled by user.')
 
             # Download the video
-            download_data = ydl.extract_info(info['url'])
+            download_data = ydl.extract_info(info['webpage_url'])
             path = ydl.prepare_filename(download_data)
 
         return cls(query, download_data, path)
@@ -237,15 +237,15 @@ class Music(commands.Cog):
         await self.joinChannel(ctx, player)
 
         # Add the YTDLSource to the queue, either up front or in the back
-        try:
-            source = YTDLSource.create(ctx, query)
-            if up_next:
-                player.queue.appendleft(source)
-            else:
-                player.queue.append(source)
-        except Exception as e:
-            await ctx.message.add_reaction("\U0000274C")  # Cross mark
-            raise e
+        # try:
+        source = await YTDLSource.create(ctx, query)
+        if up_next:
+            player.queue.appendleft(source)
+        else:
+            player.queue.append(source)
+        # except Exception as e:
+        #     await ctx.message.add_reaction("\U0000274C")  # Cross mark
+        #     raise e
 
         if not player.vc.is_playing() and not player.vc.is_paused():
             # Start the music loop.

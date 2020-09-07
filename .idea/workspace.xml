@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -57,11 +60,11 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/configloader.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/music.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/commands.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/music.py" root0="SKIP_INSPECTION" />
   </component>
-  <component name="JupyterTrust" id="40c2b450-ebed-4516-9bb9-f8b9484c0886" />
+  <component name="JupyterTrust" id="06ae4c10-f9a1-41f3-8612-6fc7c2ad2364" />
   <component name="ProjectId" id="1Xjw04WYlyZBEqmIIBmOsOBm3KJ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -157,6 +160,7 @@
       <workItem from="1599188146539" duration="654000" />
       <workItem from="1599407155191" duration="73000" />
       <workItem from="1599407354218" duration="3197000" />
+      <workItem from="1599440583795" duration="1854000" />
     </task>
     <task id="LOCAL-00015" summary="Put back in the try/except handling for joinChannel and changed some docs">
       <created>1558991443247</created>
@@ -590,10 +594,10 @@
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="277" y="94" key="#Deployment" timestamp="1596163595918">
+    <state x="277" y="94" key="#Deployment" timestamp="1599436287706">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state x="277" y="94" key="#Deployment/0.0.1368.872@0.0.1368.872" timestamp="1596163595918" />
+    <state x="277" y="94" key="#Deployment/0.0.1368.872@0.0.1368.872" timestamp="1599436287706" />
     <state x="357" y="117" key="#Options" timestamp="1596081304818">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
@@ -602,10 +606,10 @@
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state x="262" y="82" key="#SSH_Configurations/0.0.1368.872@0.0.1368.872" timestamp="1596079788469" />
-    <state x="140" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598710670801">
+    <state x="140" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599435775923">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state x="140" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1368.872@0.0.1368.872" timestamp="1598710670801" />
+    <state x="140" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1368.872@0.0.1368.872" timestamp="1599435775923" />
     <state x="400" y="238" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596164000008">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
@@ -614,6 +618,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="640" y="275" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599407167246" />
+    <state x="0" y="189" key="#xdebugger.XInspectDialog" timestamp="1599436705039">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state x="0" y="189" key="#xdebugger.XInspectDialog/0.0.1368.872@0.0.1368.872" timestamp="1599436705039" />
     <state x="181" y="23" key="CommitChangelistDialog2" timestamp="1596167606295">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
@@ -622,45 +630,45 @@
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state x="466" y="192" key="FileChooserDialogImpl/0.0.1368.872@0.0.1368.872" timestamp="1596163590242" />
-    <state width="1877" height="179" key="GridCell.Tab.0.bottom" timestamp="1599410541679">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1326" height="225" key="GridCell.Tab.0.bottom" timestamp="1599442245026">
+      <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="227" key="GridCell.Tab.0.bottom/0.0.1368.872@0.0.1368.872" timestamp="1598712551006" />
+    <state width="1326" height="225" key="GridCell.Tab.0.bottom/0.0.1368.872@0.0.1368.872" timestamp="1599442245026" />
     <state width="1877" height="179" key="GridCell.Tab.0.bottom/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541679" />
-    <state width="1877" height="179" key="GridCell.Tab.0.center" timestamp="1599410541679">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1326" height="225" key="GridCell.Tab.0.center" timestamp="1599442245025">
+      <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="227" key="GridCell.Tab.0.center/0.0.1368.872@0.0.1368.872" timestamp="1598712551005" />
+    <state width="1326" height="225" key="GridCell.Tab.0.center/0.0.1368.872@0.0.1368.872" timestamp="1599442245025" />
     <state width="1877" height="179" key="GridCell.Tab.0.center/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541679" />
-    <state width="1877" height="179" key="GridCell.Tab.0.left" timestamp="1599410541678">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1326" height="225" key="GridCell.Tab.0.left" timestamp="1599442245025">
+      <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="227" key="GridCell.Tab.0.left/0.0.1368.872@0.0.1368.872" timestamp="1598712551004" />
+    <state width="1326" height="225" key="GridCell.Tab.0.left/0.0.1368.872@0.0.1368.872" timestamp="1599442245025" />
     <state width="1877" height="179" key="GridCell.Tab.0.left/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541678" />
-    <state width="1877" height="179" key="GridCell.Tab.0.right" timestamp="1599410541679">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1326" height="225" key="GridCell.Tab.0.right" timestamp="1599442245025">
+      <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="227" key="GridCell.Tab.0.right/0.0.1368.872@0.0.1368.872" timestamp="1598712551006" />
+    <state width="1326" height="225" key="GridCell.Tab.0.right/0.0.1368.872@0.0.1368.872" timestamp="1599442245025" />
     <state width="1877" height="179" key="GridCell.Tab.0.right/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541679" />
-    <state width="1877" height="179" key="GridCell.Tab.1.bottom" timestamp="1599410541063">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1326" height="225" key="GridCell.Tab.1.bottom" timestamp="1599442244856">
+      <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="226" key="GridCell.Tab.1.bottom/0.0.1368.872@0.0.1368.872" timestamp="1596167895650" />
+    <state width="1326" height="225" key="GridCell.Tab.1.bottom/0.0.1368.872@0.0.1368.872" timestamp="1599442244856" />
     <state width="1877" height="179" key="GridCell.Tab.1.bottom/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541063" />
-    <state width="1877" height="179" key="GridCell.Tab.1.center" timestamp="1599410541063">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1326" height="225" key="GridCell.Tab.1.center" timestamp="1599442244855">
+      <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="226" key="GridCell.Tab.1.center/0.0.1368.872@0.0.1368.872" timestamp="1596167895650" />
+    <state width="1326" height="225" key="GridCell.Tab.1.center/0.0.1368.872@0.0.1368.872" timestamp="1599442244855" />
     <state width="1877" height="179" key="GridCell.Tab.1.center/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541063" />
-    <state width="1877" height="179" key="GridCell.Tab.1.left" timestamp="1599410541063">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1326" height="225" key="GridCell.Tab.1.left" timestamp="1599442244855">
+      <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="226" key="GridCell.Tab.1.left/0.0.1368.872@0.0.1368.872" timestamp="1596167895649" />
+    <state width="1326" height="225" key="GridCell.Tab.1.left/0.0.1368.872@0.0.1368.872" timestamp="1599442244855" />
     <state width="1877" height="179" key="GridCell.Tab.1.left/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541063" />
-    <state width="1877" height="179" key="GridCell.Tab.1.right" timestamp="1599410541063">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1326" height="225" key="GridCell.Tab.1.right" timestamp="1599442244856">
+      <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="226" key="GridCell.Tab.1.right/0.0.1368.872@0.0.1368.872" timestamp="1596167895650" />
+    <state width="1326" height="225" key="GridCell.Tab.1.right/0.0.1368.872@0.0.1368.872" timestamp="1599442244856" />
     <state width="1877" height="179" key="GridCell.Tab.1.right/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541063" />
     <state x="554" y="156" key="RollbackChangesDialog" timestamp="1596167885345">
       <screen x="0" y="0" width="1368" height="872" />
@@ -691,10 +699,10 @@
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state x="555" y="167" key="ftp.server.browser/0.0.1368.872@0.0.1368.872" timestamp="1596080435096" />
-    <state x="350" y="187" width="672" height="678" key="search.everywhere.popup" timestamp="1596167833485">
+    <state x="351" y="188" width="672" height="678" key="search.everywhere.popup" timestamp="1599441464606">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state x="350" y="187" width="672" height="678" key="search.everywhere.popup/0.0.1368.872@0.0.1368.872" timestamp="1596167833485" />
+    <state x="351" y="188" width="672" height="678" key="search.everywhere.popup/0.0.1368.872@0.0.1368.872" timestamp="1599441464606" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -708,11 +716,6 @@
           <url>file://$PROJECT_DIR$/src/commands.py</url>
           <line>119</line>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/music.py</url>
-          <line>88</line>
-          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -731,7 +734,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Alfred$test_fi.coverage" NAME="test fi Coverage Results" MODIFIED="1585590525941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Alfred$src_main.coverage" NAME="src.main Coverage Results" MODIFIED="1599410432171" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/Alfred$src_main.coverage" NAME="src.main Coverage Results" MODIFIED="1599442434886" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/Alfred$main.coverage" NAME="main Coverage Results" MODIFIED="1581572366917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>

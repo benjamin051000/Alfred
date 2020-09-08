@@ -41,6 +41,11 @@ class MusicActivity:
         # self.activity.details = "test details section" # Doesn't work with the current Discord API
 
 
+class UserCanceledDownloadError(Exception):
+    """ Custom Error for handling when a user cancels the downloading of a YTDLSource. """
+    pass
+
+
 class YTDLSource:  # TODO subclass to PCMVolumeTransformer? (like that noob in the help server did)
 
     ytdl_opts = {
@@ -110,15 +115,17 @@ class YTDLSource:  # TODO subclass to PCMVolumeTransformer? (like that noob in t
                 try:
                     reaction, user = await ctx.bot.wait_for('reaction_add', timeout=30, check=check_confirmation)
                 except TimeoutError:
+                    # After 30 seconds, trigger a timeout.
                     await confirmation_msg.delete()
                     raise TimeoutError('Confirmation to download content timed out.')
 
                 if str(reaction.emoji) == '❌':
                     await confirmation_msg.delete()
-                    raise Exception('Content download canceled by user.')
+                    raise UserCanceledDownloadError('Content download canceled by user.')
+
+            await confirmation_msg.delete()
 
             # Download the video
-            await ctx.send('Downloading data...', delete_after=3)
             download_data = ydl.extract_info(info['webpage_url'])
             path = ydl.prepare_filename(download_data)
 
@@ -246,16 +253,24 @@ class Music(commands.Cog):
         await self.joinChannel(ctx, player)
 
         # Add the YTDLSource to the queue, either up front or in the back
-        # try:
-        source = await YTDLSource.create(ctx, query)
+        try:
+            source = await YTDLSource.create(ctx, query)
+        except TimeoutError:
+            # User took too long to respond to the confirmation message. By default, the track is not downloaded.
+            await ctx.message.remove_reaction("\U0000231B", ctx.me)  # hourglass done
+            await ctx.message.add_reaction('⏰')
+            return
+        except UserCanceledDownloadError:
+            await ctx.message.remove_reaction("\U0000231B", ctx.me)  # hourglass done
+            await ctx.message.add_reaction('🚫')
+            return
+
 
         if up_next:
             player.queue.appendleft(source)
         else:
             player.queue.append(source)
-        # except Exception as e:
-        #     await ctx.message.add_reaction("\U0000274C")  # Cross mark
-        #     raise e
+
 
         if not player.vc.is_playing() and not player.vc.is_paused():
             # Start the music loop.

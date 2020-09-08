@@ -1,6 +1,7 @@
 import datetime
 import glob
 import os
+from asyncio import TimeoutError
 from collections import deque
 
 import discord
@@ -84,7 +85,7 @@ class YTDLSource:  # TODO subclass to PCMVolumeTransformer? (like that noob in t
         self.path = path
 
     @classmethod
-    async def create(cls, ctx: commands.Context, query: str):
+    async def create(cls, ctx: commands.Context, query: tuple):
         query = ' '.join(query)
 
         with YoutubeDL(cls.ytdl_opts) as ydl:
@@ -96,20 +97,28 @@ class YTDLSource:  # TODO subclass to PCMVolumeTransformer? (like that noob in t
             # Check the duration
             if info['duration'] > cls.CUTOFF_DURATION:
                 fduration = datetime.timedelta(seconds=info['duration'])
-                msg = await ctx.send(f'This video is {fduration} long. Are you sure you want to play it?', delete_after=40)
-                # TODO if user hits check box, delete message after it's downloaded maybe
-                for emoji in '✅❌':
-                    await msg.add_reaction(emoji)
+                confirmation_msg = await ctx.send(f'This video is {fduration} long. Are you sure you want to play it?')
 
-                # try:  # TODO Fix this. Not working
-                reaction, user = await ctx.bot.wait_for('reaction_add', timeout=30, check=lambda r, _: str(r.emoji) in '✅❌')
-                # except asyncio.TimeoutError:
-                #     raise Exception('Took too long to respond.')  # TODO do something more useful here
+                for emoji in '✅❌':
+                    await confirmation_msg.add_reaction(emoji)
+
+                def check_confirmation(reaction, user):
+                    if user == reaction.message.author:
+                        return False
+                    return reaction.message.id == confirmation_msg.id and (reaction.emoji) in '✅❌'
+
+                try:
+                    reaction, user = await ctx.bot.wait_for('reaction_add', timeout=30, check=check_confirmation)
+                except TimeoutError:
+                    await confirmation_msg.delete()
+                    raise TimeoutError('Confirmation to download content timed out.')
 
                 if str(reaction.emoji) == '❌':
-                    raise Exception('YTDL cancelled by user.')
+                    await confirmation_msg.delete()
+                    raise Exception('Content download canceled by user.')
 
             # Download the video
+            await ctx.send('Downloading data...', delete_after=3)
             download_data = ydl.extract_info(info['webpage_url'])
             path = ydl.prepare_filename(download_data)
 
@@ -239,6 +248,7 @@ class Music(commands.Cog):
         # Add the YTDLSource to the queue, either up front or in the back
         # try:
         source = await YTDLSource.create(ctx, query)
+
         if up_next:
             player.queue.appendleft(source)
         else:

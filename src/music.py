@@ -90,14 +90,19 @@ class YTDLSource:  # TODO subclass to PCMVolumeTransformer? (like that noob in t
         self.path = path
 
     @classmethod
-    async def create(cls, ctx: commands.Context, query: tuple):
+    async def create(cls, ctx: commands.Context, query):
         query = ' '.join(query)
 
         with YoutubeDL(cls.ytdl_opts) as ydl:
+
+            await ctx.message.add_reaction("🔍")
+
             info = ydl.extract_info(query, download=False)
 
             if 'entries' in info: # Grab the first video.
                 info = info['entries'][0]
+
+            confirmation_msg = None
 
             # Check the duration
             if info['duration'] > cls.CUTOFF_DURATION:
@@ -123,11 +128,19 @@ class YTDLSource:  # TODO subclass to PCMVolumeTransformer? (like that noob in t
                     await confirmation_msg.delete()
                     raise UserCanceledDownloadError('Content download canceled by user.')
 
-            await confirmation_msg.delete()
+            if confirmation_msg:
+                await confirmation_msg.delete()
+
+            # await ctx.message.remove_reaction('🔍', ctx.me)
+            await ctx.message.add_reaction('⌛')
 
             # Download the video
             download_data = ydl.extract_info(info['webpage_url'])
             path = ydl.prepare_filename(download_data)
+
+            await ctx.message.remove_reaction('🔍', ctx.me)
+            await ctx.message.remove_reaction('⌛', ctx.me)
+            await ctx.message.add_reaction('✅')
 
         return cls(query, download_data, path)
 
@@ -246,9 +259,9 @@ class Music(commands.Cog):
 
         # Make sure the user actually searched something
         if not query:
-            return await ctx.message.add_reaction("\U0000274C")  # Cross mark
+            return await ctx.message.add_reaction("❓")
 
-        await ctx.message.add_reaction("\U0000231B")  # hourglass done (not actually done)
+
 
         await self.joinChannel(ctx, player)
 
@@ -261,15 +274,15 @@ class Music(commands.Cog):
             await ctx.message.add_reaction('⏰')
             return
         except UserCanceledDownloadError:
-            await ctx.message.remove_reaction("\U0000231B", ctx.me)  # hourglass done
+            await ctx.message.remove_reaction("\U0000231B", ctx.me)  # hourglass done (not actually done)
             await ctx.message.add_reaction('🚫')
             return
-
 
         if up_next:
             player.queue.appendleft(source)
         else:
             player.queue.append(source)
+
 
 
         if not player.vc.is_playing() and not player.vc.is_paused():
@@ -312,19 +325,20 @@ class Music(commands.Cog):
     @commands.command(aliases=["vol"])
     async def volume(self, ctx, vol=None):
         player = self.get_player(ctx)
-        if vol is not None:
+        if vol:
             try:
                 # Limit the volume between 0 and 100.
                 new_vol = max(min(100., float(vol)), 0.)  # TODO do these need to be floats?
             except ValueError:
                 log.debug('Volume must be a float.')
-                return await ctx.message.add_reaction("\U00002753")  # question mark
+                return await ctx.message.add_reaction('❓')
 
             player.volume = new_vol / 100
             player.audio_streamer.volume = player.volume
-            await ctx.message.add_reaction("\U00002705")  # white heavy check mark (green in Discord)
+            emoji = '🔈' if player.volume == 0 else '🔊'
+            await ctx.message.add_reaction(emoji)  # white heavy check mark (green in Discord)
         else:
-            await ctx.send('Volume currently set to ' + str(int(player.audio_streamer.volume * 100)) + '%.', delete_after=10)
+            await ctx.send(f'Volume currently set to {int(player.audio_streamer.volume * 100)}%.', delete_after=10)
 
     @commands.command()
     async def clearcache(self, ctx):

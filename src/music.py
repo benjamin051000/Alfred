@@ -56,34 +56,11 @@ class YTDLSource:  # TODO subclass to PCMVolumeTransformer? (like that noob in t
         # 'logger' : 'the logger'
         'format': 'bestaudio/best',
         'restrictfilenames': True,
-        'outtmpl': '../music_cache/%(extractor)s-%(title)s.%(ext)s',  # %(title)s.%(ext)s',
+        'outtmpl': '../music_cache/%(extractor)s-%(title)s.%(ext)s',
     }
 
     """ The maximum duration a video can be before Alfred asks you to confirm you want to download a long video. """
     CUTOFF_DURATION = 7200
-
-    # def __init__(self, query):
-        # self.query = ' '.join(query)
-        # self.data = {}
-        #
-        # with YoutubeDL(YTDLSource.ytdl_opts) as ydl:
-        #     info = ydl.extract_info(self.query, download=False)
-        #
-        #     if 'entries' in info:  # grab the first video
-        #         if info['duration'] > YTDLSource.CUTOFF_DURATION:
-        #             pass
-        #         info = info['entries'][0]
-        #
-        #     print('Duration is:', info['duration'])
-        #
-        #     if not info['is_live']:
-        #         self.data = ydl.extract_info(self.query)  # TODO run in executor?
-        #     else:
-        #         pass  #TODO get next video
-        #
-        #     if 'entries' in self.data:  # if we get a playlist, grab the first video TODO does ytdl_opts['noplaylist'] prevent this error?
-        #         self.data = self.data['entries'][0]
-        #     self.path = ydl.prepare_filename(self.data)
 
     def __init__(self, query, data, path):
         self.query = query
@@ -92,6 +69,8 @@ class YTDLSource:  # TODO subclass to PCMVolumeTransformer? (like that noob in t
 
     @classmethod
     async def create(cls, ctx: commands.Context, query):
+        """ Creates and returns a YTDLSource object, which represents audio content
+         from YouTube. """
         query = ' '.join(query)
 
         with YoutubeDL(cls.ytdl_opts) as ydl:
@@ -101,7 +80,7 @@ class YTDLSource:  # TODO subclass to PCMVolumeTransformer? (like that noob in t
             search_func = partial(ydl.extract_info, url=query, download=False)
             info = await ctx.bot.loop.run_in_executor(None, search_func)
 
-            if 'entries' in info: # Grab the first video.
+            if 'entries' in info:  # Grab the first video.
                 info = info['entries'][0]
 
             confirmation_msg = None
@@ -147,7 +126,6 @@ class YTDLSource:  # TODO subclass to PCMVolumeTransformer? (like that noob in t
             await ctx.message.add_reaction('✅')
 
         return cls(query, download_data, path)
-
 
 
 class MusicPlayer:
@@ -265,8 +243,6 @@ class Music(commands.Cog):
         if not query:
             return await ctx.message.add_reaction("❓")
 
-
-
         await self.joinChannel(ctx, player)
 
         # Add the YTDLSource to the queue, either up front or in the back
@@ -287,26 +263,12 @@ class Music(commands.Cog):
         else:
             player.queue.append(source)
 
-
-
         if not player.vc.is_playing() and not player.vc.is_paused():
             # Start the music loop.
             player.music_loop(ctx)
 
         await ctx.message.remove_reaction("\U0000231B", ctx.me)  # hourglass done
         await ctx.message.add_reaction("\U00002705")  # white heavy check mark (green in discord)
-
-    # @commands.command()
-    # async def search(self, ctx, *, search : str):
-    #
-    #     ydl = YoutubeDL(MusicCog.ytdl_opts)
-    #     func = functools.partial(ydl.extract_info, search, download = False)
-    #     info = await self.bot.loop.run_in_executor(None, func)
-    #     if "entries" in info:
-    #         info = info["entries"][0]
-    #     # for i in info:
-    #     #     print(i, ':', info[i])
-    #     await ctx.send(info['webpage_url'])
 
     @commands.command()
     async def pause(self, ctx):

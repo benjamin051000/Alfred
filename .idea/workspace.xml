@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -26,11 +29,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e37654ec-6a1d-4080-9d15-14bbfe331706" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Alfred II.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Alfred II.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/music.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/music.py" afterDir="false" />
     </list>
-    <list id="a2eab84e-aa84-4526-b1b3-951d10b3c01a" name="added todo for cfload" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,18 +52,19 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="update-qr" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/music.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/configloader.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/commands.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/music.py" root0="SKIP_INSPECTION" />
   </component>
+  <component name="JupyterTrust" id="06ae4c10-f9a1-41f3-8612-6fc7c2ad2364" />
   <component name="ProjectId" id="1Xjw04WYlyZBEqmIIBmOsOBm3KJ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -121,6 +123,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -150,20 +153,14 @@
       <workItem from="1596082121448" duration="86000" />
       <workItem from="1596162682464" duration="5200000" />
       <workItem from="1598240690347" duration="149000" />
-    </task>
-    <task id="LOCAL-00013" summary="moved await ctx.joinchannel() to hopefully fix the issue">
-      <created>1558920588629</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1558920588630</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Changed path name to remove redundant bit (../music_cache/../music_cache....) and fixed / \ error">
-      <created>1558990890630</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1558990890630</updated>
+      <workItem from="1598708965581" duration="79000" />
+      <workItem from="1598709060424" duration="207000" />
+      <workItem from="1598710667870" duration="2941000" />
+      <workItem from="1598789530961" duration="6948000" />
+      <workItem from="1599188146539" duration="654000" />
+      <workItem from="1599407155191" duration="73000" />
+      <workItem from="1599407354218" duration="3197000" />
+      <workItem from="1599440583795" duration="1854000" />
     </task>
     <task id="LOCAL-00015" summary="Put back in the try/except handling for joinChannel and changed some docs">
       <created>1558991443247</created>
@@ -494,11 +491,25 @@
       <option name="project" value="LOCAL" />
       <updated>1596167706633</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Shows word in the leaderboard embed. Fixed small typo.">
+      <created>1598712606088</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1598712606088</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Fixed typo in winnie-the-pooh">
+      <created>1598712920059</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1598712920060</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -554,8 +565,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Checks every word for a greeting. Added /clear as alias to /prune. Small misc housekeeping." />
-    <MESSAGE value="Adds red cross if empty play query or if an error is encountered getting the source." />
     <MESSAGE value="Overhauled logger.py. Updated to discord.py 1.2.3." />
     <MESSAGE value="Added extensive logger to all modules. Updated .gitignore to&#10;exclude logs." />
     <MESSAGE value="Added a cleanup function to always delete the queue and voice client,&#10;as well as disconnect alfred as soon as he's done playing." />
@@ -579,14 +588,16 @@
     <MESSAGE value="Added Pillow to requirements.txt for /qr" />
     <MESSAGE value="added todo for cfload" />
     <MESSAGE value="Added todo for cfload" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added todo for cfload" />
+    <MESSAGE value="Shows word in the leaderboard embed. Fixed small typo." />
+    <MESSAGE value="Fixed typo in winnie-the-pooh" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed typo in winnie-the-pooh" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="277" y="94" key="#Deployment" timestamp="1596163595918">
+    <state x="277" y="94" key="#Deployment" timestamp="1599436287706">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state x="277" y="94" key="#Deployment/0.0.1368.872@0.0.1368.872" timestamp="1596163595918" />
+    <state x="277" y="94" key="#Deployment/0.0.1368.872@0.0.1368.872" timestamp="1599436287706" />
     <state x="357" y="117" key="#Options" timestamp="1596081304818">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
@@ -595,14 +606,22 @@
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state x="262" y="82" key="#SSH_Configurations/0.0.1368.872@0.0.1368.872" timestamp="1596079788469" />
-    <state x="140" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598240839865">
+    <state x="140" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599435775923">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state x="140" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1368.872@0.0.1368.872" timestamp="1598240839865" />
+    <state x="140" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1368.872@0.0.1368.872" timestamp="1599435775923" />
     <state x="400" y="238" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596164000008">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state x="400" y="238" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1368.872@0.0.1368.872" timestamp="1596164000008" />
+    <state x="640" y="275" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1599407167246">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="640" y="275" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599407167246" />
+    <state x="0" y="189" key="#xdebugger.XInspectDialog" timestamp="1599436705039">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state x="0" y="189" key="#xdebugger.XInspectDialog/0.0.1368.872@0.0.1368.872" timestamp="1599436705039" />
     <state x="181" y="23" key="CommitChangelistDialog2" timestamp="1596167606295">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
@@ -611,38 +630,46 @@
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state x="466" y="192" key="FileChooserDialogImpl/0.0.1368.872@0.0.1368.872" timestamp="1596163590242" />
-    <state width="1326" height="226" key="GridCell.Tab.0.bottom" timestamp="1596167895649">
+    <state width="1326" height="225" key="GridCell.Tab.0.bottom" timestamp="1599442245026">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="226" key="GridCell.Tab.0.bottom/0.0.1368.872@0.0.1368.872" timestamp="1596167895649" />
-    <state width="1326" height="226" key="GridCell.Tab.0.center" timestamp="1596167895649">
+    <state width="1326" height="225" key="GridCell.Tab.0.bottom/0.0.1368.872@0.0.1368.872" timestamp="1599442245026" />
+    <state width="1877" height="179" key="GridCell.Tab.0.bottom/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541679" />
+    <state width="1326" height="225" key="GridCell.Tab.0.center" timestamp="1599442245025">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="226" key="GridCell.Tab.0.center/0.0.1368.872@0.0.1368.872" timestamp="1596167895649" />
-    <state width="1326" height="226" key="GridCell.Tab.0.left" timestamp="1596167895644">
+    <state width="1326" height="225" key="GridCell.Tab.0.center/0.0.1368.872@0.0.1368.872" timestamp="1599442245025" />
+    <state width="1877" height="179" key="GridCell.Tab.0.center/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541679" />
+    <state width="1326" height="225" key="GridCell.Tab.0.left" timestamp="1599442245025">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="226" key="GridCell.Tab.0.left/0.0.1368.872@0.0.1368.872" timestamp="1596167895644" />
-    <state width="1326" height="226" key="GridCell.Tab.0.right" timestamp="1596167895649">
+    <state width="1326" height="225" key="GridCell.Tab.0.left/0.0.1368.872@0.0.1368.872" timestamp="1599442245025" />
+    <state width="1877" height="179" key="GridCell.Tab.0.left/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541678" />
+    <state width="1326" height="225" key="GridCell.Tab.0.right" timestamp="1599442245025">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="226" key="GridCell.Tab.0.right/0.0.1368.872@0.0.1368.872" timestamp="1596167895649" />
-    <state width="1326" height="226" key="GridCell.Tab.1.bottom" timestamp="1596167895650">
+    <state width="1326" height="225" key="GridCell.Tab.0.right/0.0.1368.872@0.0.1368.872" timestamp="1599442245025" />
+    <state width="1877" height="179" key="GridCell.Tab.0.right/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541679" />
+    <state width="1326" height="225" key="GridCell.Tab.1.bottom" timestamp="1599442244856">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="226" key="GridCell.Tab.1.bottom/0.0.1368.872@0.0.1368.872" timestamp="1596167895650" />
-    <state width="1326" height="226" key="GridCell.Tab.1.center" timestamp="1596167895650">
+    <state width="1326" height="225" key="GridCell.Tab.1.bottom/0.0.1368.872@0.0.1368.872" timestamp="1599442244856" />
+    <state width="1877" height="179" key="GridCell.Tab.1.bottom/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541063" />
+    <state width="1326" height="225" key="GridCell.Tab.1.center" timestamp="1599442244855">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="226" key="GridCell.Tab.1.center/0.0.1368.872@0.0.1368.872" timestamp="1596167895650" />
-    <state width="1326" height="226" key="GridCell.Tab.1.left" timestamp="1596167895649">
+    <state width="1326" height="225" key="GridCell.Tab.1.center/0.0.1368.872@0.0.1368.872" timestamp="1599442244855" />
+    <state width="1877" height="179" key="GridCell.Tab.1.center/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541063" />
+    <state width="1326" height="225" key="GridCell.Tab.1.left" timestamp="1599442244855">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="226" key="GridCell.Tab.1.left/0.0.1368.872@0.0.1368.872" timestamp="1596167895649" />
-    <state width="1326" height="226" key="GridCell.Tab.1.right" timestamp="1596167895650">
+    <state width="1326" height="225" key="GridCell.Tab.1.left/0.0.1368.872@0.0.1368.872" timestamp="1599442244855" />
+    <state width="1877" height="179" key="GridCell.Tab.1.left/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541063" />
+    <state width="1326" height="225" key="GridCell.Tab.1.right" timestamp="1599442244856">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="226" key="GridCell.Tab.1.right/0.0.1368.872@0.0.1368.872" timestamp="1596167895650" />
+    <state width="1326" height="225" key="GridCell.Tab.1.right/0.0.1368.872@0.0.1368.872" timestamp="1599442244856" />
+    <state width="1877" height="179" key="GridCell.Tab.1.right/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541063" />
     <state x="554" y="156" key="RollbackChangesDialog" timestamp="1596167885345">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
@@ -651,18 +678,19 @@
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state x="31" y="105" key="SettingsEditor/0.0.1368.872@0.0.1368.872" timestamp="1598240806647" />
-    <state x="393" y="220" key="Vcs.Push.Dialog.v2" timestamp="1596167839361">
+    <state x="393" y="220" key="Vcs.Push.Dialog.v2" timestamp="1598754240270">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state x="393" y="220" key="Vcs.Push.Dialog.v2/0.0.1368.872@0.0.1368.872" timestamp="1596167839361" />
+    <state x="393" y="220" key="Vcs.Push.Dialog.v2/0.0.1368.872@0.0.1368.872" timestamp="1598754240270" />
     <state x="547" y="335" key="WebDeployment.AddServerDialog.v.1" timestamp="1596031703576">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state x="547" y="335" key="WebDeployment.AddServerDialog.v.1/0.0.1368.872@0.0.1368.872" timestamp="1596031703576" />
-    <state x="548" y="366" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596163312905">
-      <screen x="0" y="0" width="1368" height="872" />
+    <state x="769" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599407904506">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="548" y="366" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1368.872@0.0.1368.872" timestamp="1596163312905" />
+    <state x="769" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599407904506" />
     <state x="339" y="327" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration" timestamp="1596080298637">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
@@ -671,10 +699,10 @@
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state x="555" y="167" key="ftp.server.browser/0.0.1368.872@0.0.1368.872" timestamp="1596080435096" />
-    <state x="350" y="187" width="672" height="678" key="search.everywhere.popup" timestamp="1596167833485">
+    <state x="351" y="188" width="672" height="678" key="search.everywhere.popup" timestamp="1599441464606">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state x="350" y="187" width="672" height="678" key="search.everywhere.popup/0.0.1368.872@0.0.1368.872" timestamp="1596167833485" />
+    <state x="351" y="188" width="672" height="678" key="search.everywhere.popup/0.0.1368.872@0.0.1368.872" timestamp="1599441464606" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -705,8 +733,8 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Alfred$src_main.coverage" NAME="src.main Coverage Results" MODIFIED="1596167453345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/Alfred$test_fi.coverage" NAME="test fi Coverage Results" MODIFIED="1585590525941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Alfred$src_main.coverage" NAME="src.main Coverage Results" MODIFIED="1599442434886" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/Alfred$main.coverage" NAME="main Coverage Results" MODIFIED="1581572366917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>

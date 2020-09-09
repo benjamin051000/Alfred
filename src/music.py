@@ -1,6 +1,9 @@
+import datetime
 import glob
 import os
+from asyncio import TimeoutError
 from collections import deque
+from functools import partial
 
 import discord
 from discord.ext import commands
@@ -39,6 +42,11 @@ class MusicActivity:
         # self.activity.details = "test details section" # Doesn't work with the current Discord API
 
 
+class UserCanceledDownloadError(Exception):
+    """ Custom Error for handling when a user cancels the downloading of a YTDLSource. """
+    pass
+
+
 class YTDLSource:  # TODO subclass to PCMVolumeTransformer? (like that noob in the help server did)
 
     ytdl_opts = {
@@ -48,26 +56,76 @@ class YTDLSource:  # TODO subclass to PCMVolumeTransformer? (like that noob in t
         # 'logger' : 'the logger'
         'format': 'bestaudio/best',
         'restrictfilenames': True,
-        'outtmpl': '../music_cache/%(extractor)s-%(title)s.%(ext)s',  # %(title)s.%(ext)s',
+        'outtmpl': '../music_cache/%(extractor)s-%(title)s.%(ext)s',
     }
 
-    def __init__(self, query):
-        self.query = ' '.join(query)
-        self.data = {}
+    """ The maximum duration a video can be before Alfred asks you to confirm you want to download a long video. """
+    CUTOFF_DURATION = 7200
 
-        with YoutubeDL(YTDLSource.ytdl_opts) as ydl:
-            info = ydl.extract_info(self.query, download=False)
-            if 'entries' in info:  # grab the first video
+    def __init__(self, query, data, path):
+        self.query = query
+        self.data = data
+        self.path = path
+
+    @classmethod
+    async def create(cls, ctx: commands.Context, query):
+        """ Creates and returns a YTDLSource object, which represents audio content
+         from YouTube. """
+        query = ' '.join(query)
+
+        with YoutubeDL(cls.ytdl_opts) as ydl:
+
+            await ctx.message.add_reaction("🔍")
+
+            search_func = partial(ydl.extract_info, url=query, download=False)
+            info = await ctx.bot.loop.run_in_executor(None, search_func)
+
+            if 'entries' in info:  # Grab the first video.
                 info = info['entries'][0]
 
-            if not info['is_live']:
-                self.data = ydl.extract_info(self.query)  # TODO run in executor?
-            else:
-                pass  #TODO get next video
+            confirmation_msg = None
 
-            if 'entries' in self.data:  # if we get a playlist, grab the first video TODO does ytdl_opts['noplaylist'] prevent this error?
-                self.data = self.data['entries'][0]
-            self.path = ydl.prepare_filename(self.data)
+            # Check the duration
+            if info['duration'] > cls.CUTOFF_DURATION:
+                fduration = datetime.timedelta(seconds=info['duration'])
+                confirmation_msg = await ctx.send(f'This video is {fduration} long. Are you sure you want to play it?')
+
+                for emoji in '✅❌':
+                    await confirmation_msg.add_reaction(emoji)
+
+                def check_confirmation(reaction, user):
+                    if user == reaction.message.author:
+                        return False
+                    return reaction.message.id == confirmation_msg.id and (reaction.emoji) in '✅❌'
+
+                try:
+                    reaction, user = await ctx.bot.wait_for('reaction_add', timeout=30, check=check_confirmation)
+                except TimeoutError:
+                    # After 30 seconds, trigger a timeout.
+                    await confirmation_msg.delete()
+                    raise TimeoutError('Confirmation to download content timed out.')
+
+                if str(reaction.emoji) == '❌':
+                    await confirmation_msg.delete()
+                    raise UserCanceledDownloadError('Content download canceled by user.')
+
+            if confirmation_msg:
+                await confirmation_msg.delete()
+
+            await ctx.message.remove_reaction('🔍', ctx.me)
+            await ctx.message.add_reaction('⌛')
+
+            # Download the video
+            download_func = partial(ydl.extract_info, url=info['webpage_url'])
+            # Interesting observation: Songs may play out of order depending on how long it takes them to download.
+            download_data = await ctx.bot.loop.run_in_executor(None, download_func)
+            path = ydl.prepare_filename(download_data)
+
+            await ctx.message.remove_reaction('🔍', ctx.me)  # TODO might throw
+            await ctx.message.remove_reaction('⌛', ctx.me)
+            await ctx.message.add_reaction('✅')
+
+        return cls(query, download_data, path)
 
 
 class MusicPlayer:
@@ -183,21 +241,27 @@ class Music(commands.Cog):
 
         # Make sure the user actually searched something
         if not query:
-            return await ctx.message.add_reaction("\U0000274C")  # Cross mark
-
-        await ctx.message.add_reaction("\U0000231B")  # hourglass done (not actually done)
+            return await ctx.message.add_reaction("❓")
 
         await self.joinChannel(ctx, player)
 
         # Add the YTDLSource to the queue, either up front or in the back
         try:
-            if up_next:
-                player.queue.appendleft(YTDLSource(query))
-            else:
-                player.queue.append(YTDLSource(query))
-        except Exception as e:
-            await ctx.message.add_reaction("\U0000274C")  # Cross mark
-            # log.error('Exception while getting the YTDLSource:', e)
+            source = await YTDLSource.create(ctx, query)
+        except TimeoutError:
+            # User took too long to respond to the confirmation message. By default, the track is not downloaded.
+            await ctx.message.remove_reaction("\U0000231B", ctx.me)  # hourglass done
+            await ctx.message.add_reaction('⏰')
+            return
+        except UserCanceledDownloadError:
+            await ctx.message.remove_reaction("\U0000231B", ctx.me)  # hourglass done (not actually done)
+            await ctx.message.add_reaction('🚫')
+            return
+
+        if up_next:
+            player.queue.appendleft(source)
+        else:
+            player.queue.append(source)
 
         if not player.vc.is_playing() and not player.vc.is_paused():
             # Start the music loop.
@@ -205,18 +269,6 @@ class Music(commands.Cog):
 
         await ctx.message.remove_reaction("\U0000231B", ctx.me)  # hourglass done
         await ctx.message.add_reaction("\U00002705")  # white heavy check mark (green in discord)
-
-    # @commands.command()
-    # async def search(self, ctx, *, search : str):
-    #
-    #     ydl = YoutubeDL(MusicCog.ytdl_opts)
-    #     func = functools.partial(ydl.extract_info, search, download = False)
-    #     info = await self.bot.loop.run_in_executor(None, func)
-    #     if "entries" in info:
-    #         info = info["entries"][0]
-    #     # for i in info:
-    #     #     print(i, ':', info[i])
-    #     await ctx.send(info['webpage_url'])
 
     @commands.command()
     async def pause(self, ctx):
@@ -239,19 +291,20 @@ class Music(commands.Cog):
     @commands.command(aliases=["vol"])
     async def volume(self, ctx, vol=None):
         player = self.get_player(ctx)
-        if vol is not None:
+        if vol:
             try:
                 # Limit the volume between 0 and 100.
                 new_vol = max(min(100., float(vol)), 0.)  # TODO do these need to be floats?
             except ValueError:
                 log.debug('Volume must be a float.')
-                return await ctx.message.add_reaction("\U00002753")  # question mark
+                return await ctx.message.add_reaction('❓')
 
             player.volume = new_vol / 100
             player.audio_streamer.volume = player.volume
-            await ctx.message.add_reaction("\U00002705")  # white heavy check mark (green in Discord)
+            emoji = '🔈' if player.volume == 0 else '🔊'
+            await ctx.message.add_reaction(emoji)  # white heavy check mark (green in Discord)
         else:
-            await ctx.send('Volume currently set to ' + str(int(player.audio_streamer.volume * 100)) + '%.', delete_after=10)
+            await ctx.send(f'Volume currently set to {int(player.audio_streamer.volume * 100)}%.', delete_after=10)
 
     @commands.command()
     async def clearcache(self, ctx):

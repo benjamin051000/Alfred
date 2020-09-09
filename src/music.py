@@ -3,6 +3,7 @@ import glob
 import os
 from asyncio import TimeoutError
 from collections import deque
+from functools import partial
 
 import discord
 from discord.ext import commands
@@ -97,7 +98,8 @@ class YTDLSource:  # TODO subclass to PCMVolumeTransformer? (like that noob in t
 
             await ctx.message.add_reaction("🔍")
 
-            info = ydl.extract_info(query, download=False)
+            search_func = partial(ydl.extract_info, url=query, download=False)
+            info = await ctx.bot.loop.run_in_executor(None, search_func)
 
             if 'entries' in info: # Grab the first video.
                 info = info['entries'][0]
@@ -131,14 +133,16 @@ class YTDLSource:  # TODO subclass to PCMVolumeTransformer? (like that noob in t
             if confirmation_msg:
                 await confirmation_msg.delete()
 
-            # await ctx.message.remove_reaction('🔍', ctx.me)
+            await ctx.message.remove_reaction('🔍', ctx.me)
             await ctx.message.add_reaction('⌛')
 
             # Download the video
-            download_data = ydl.extract_info(info['webpage_url'])
+            download_func = partial(ydl.extract_info, url=info['webpage_url'])
+            # Interesting observation: Songs may play out of order depending on how long it takes them to download.
+            download_data = await ctx.bot.loop.run_in_executor(None, download_func)
             path = ydl.prepare_filename(download_data)
 
-            await ctx.message.remove_reaction('🔍', ctx.me)
+            await ctx.message.remove_reaction('🔍', ctx.me)  # TODO might throw
             await ctx.message.remove_reaction('⌛', ctx.me)
             await ctx.message.add_reaction('✅')
 

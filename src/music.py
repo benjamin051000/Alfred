@@ -218,12 +218,30 @@ class Music(commands.Cog):
         player = self.get_player(ctx)
 
         embed = discord.Embed(title='Song Queue', colour=discord.Colour(0xe7d066))  # Yellow
-        if len(player.queue) == 0:
-            await ctx.send('Nothing is enqueued. Play a song with /play', delete_after=10)
+        if len(player.queue) == 0 and not player.current_source:
+            await ctx.send('Nothing is playing. Play a song with /play', delete_after=10)
         else:
-            for p in player.queue:
-                embed.add_field(name=p.data['title'], value='_'*10, inline=False)
-            await ctx.send(embed=embed)
+            embed = discord.Embed(title="Song Queue", colour=discord.Colour(0xe7d066),
+                                  description="__🎶Now Playing__")
+
+            ############ First, set the field for the current song. ############
+            cur_song = player.current_source
+
+            f_title = cur_song.data['title']
+            f_value = f"[🔗]({cur_song.data['webpage_url']}) | {datetime.timedelta(seconds=cur_song.data['duration'])}"
+            f_value += '\n\n__🎼Coming up:__' if player.queue else '\n\nNothing is enqueued. Type /play to enqueue a song.'
+
+            embed.add_field(name=f_title, value=f_value, inline=False)
+            embed.set_thumbnail(url=cur_song.data['thumbnail'])
+
+            ############ Add fields for each song in the queue. ############
+            for i, p in enumerate(player.queue):
+                f_title = f"{i+1}. {p.data['title']}"
+                f_value = f"[🔗]({p.data['webpage_url']}) | {datetime.timedelta(seconds=p.data['duration'])}"
+
+                embed.add_field(name=f_title, value=f_value, inline=False)
+
+            await ctx.send(embed=embed, delete_after=120)
 
     @commands.command()
     async def play(self, ctx, *query):
@@ -301,7 +319,7 @@ class Music(commands.Cog):
 
             player.volume = new_vol / 100
             player.audio_streamer.volume = player.volume
-            emoji = '🔈' if player.volume == 0 else '🔊'
+            emoji = '🔇' if player.volume == 0 else '🔊'
             await ctx.message.add_reaction(emoji)  # white heavy check mark (green in Discord)
         else:
             await ctx.send(f'Volume currently set to {int(player.audio_streamer.volume * 100)}%.', delete_after=10)

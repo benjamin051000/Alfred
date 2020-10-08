@@ -10,7 +10,7 @@ cfload.read('../config.ini')
 startup_extensions = cfload.configSectionMap('Startup')['startup_extensions'].split()
 command_prefix = cfload.configSectionMap('Commands')['command_prefix']
 
-bot = commands.Bot(command_prefix=commands.when_mentioned_or(command_prefix), description=cfload.configSectionMap('Startup')['description'])
+bot = commands.Bot(command_prefix=commands.when_mentioned_or(command_prefix), description=cfload.configSectionMap('Startup')['description'], case_insensitive = True)
 
 # Load extensions
 if __name__ == '__main__':

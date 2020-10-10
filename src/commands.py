@@ -196,8 +196,18 @@ class Commands(commands.Cog):
         else:
             n, d = ndm.lower().split('d')
 
-            for i in range(1, int(n) + 1):
-                output += f'd{d}: {random.randint(1, int(d))}\n'
+            try:
+                n = int(n)
+                d = int(d)
+                print(d <= 0)
+                if n <= 0 or d <= 0:
+                    raise ValueError
+
+                for i in range(1, int(n) + 1):
+                    output += f'd{d}: {random.randint(1, int(d))}\n'
+            except ValueError:
+                output = "Please specify positive integers for this command (Ex. 2d5)"
+
 
         await ctx.send(output)
 

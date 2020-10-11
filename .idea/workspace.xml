@@ -29,10 +29,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e37654ec-6a1d-4080-9d15-14bbfe331706" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Alfred II.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Alfred II.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/src.main.run.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +88,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="web.server" />
+    <property name="settings.editor.selected.configurable" value="preferences.customizations" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -178,7 +175,7 @@
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>C:\Users\benja\AppData\Roaming\Subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -225,35 +222,7 @@
       <workItem from="1601664636707" duration="635000" />
       <workItem from="1602220459505" duration="3562000" />
       <workItem from="1602270004255" duration="5000" />
-      <workItem from="1602345117856" duration="2228000" />
-    </task>
-    <task id="LOCAL-00018" summary="Fixed small bug in /prune.">
-      <created>1559514812306</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1559514812306</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Added /meme, which returns a random r/bonehurtingjuice post (from top 100 hot). lmao">
-      <created>1560916780677</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1560916780677</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Hid reddit login credentials in config.ini.">
-      <created>1560993680237</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1560993680237</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Added update.git to automatically update the repo and restart the bot.">
-      <created>1560995957117</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1560995957117</updated>
+      <workItem from="1602345117856" duration="2725000" />
     </task>
     <task id="LOCAL-00022" summary="Changed /meme to exclude NSFW subreddits (to be tested). Added reactions&#10;to specify loading times.">
       <created>1560998389353</created>
@@ -570,7 +539,35 @@
       <option name="project" value="LOCAL" />
       <updated>1602223159095</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Set up docker debugging. Removed remote debugging on server.">
+      <created>1602453331107</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1602453331107</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Updated .gitignore to include node_modules. This server will someday be gone.">
+      <created>1602453382572</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1602453382572</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Commented Dockerfile">
+      <created>1602453625720</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1602453625720</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Updated to add Merriam Webster info">
+      <created>1602453648517</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1602453648517</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -630,10 +627,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed logger level to warning" />
-    <MESSAGE value="Guards against live video errors." />
-    <MESSAGE value="Webhook deployment via Node Express" />
-    <MESSAGE value="Added package.json" />
     <MESSAGE value="Added listening port" />
     <MESSAGE value="Updated deploy script. Updated gitignore." />
     <MESSAGE value="Added output for debugging" />
@@ -655,7 +648,11 @@
     <MESSAGE value="Facelifted /queue. Shows current song with thumbnail, each song shows duration and link to website." />
     <MESSAGE value="updated requirements.txt" />
     <MESSAGE value="Added Dockerfile (python on Debian buster)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Dockerfile (python on Debian buster)" />
+    <MESSAGE value="Set up docker debugging. Removed remote debugging on server." />
+    <MESSAGE value="Updated .gitignore to include node_modules. This server will someday be gone." />
+    <MESSAGE value="Commented Dockerfile" />
+    <MESSAGE value="Updated to add Merriam Webster info" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated to add Merriam Webster info" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -678,11 +675,11 @@
     </state>
     <state x="262" y="82" key="#SSH_Configurations/0.0.1368.872@0.0.1368.872" timestamp="1596079788469" />
     <state x="368" y="102" key="#SSH_Configurations/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602453293481" />
-    <state x="196" y="113" width="1092" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602453120432">
+    <state x="196" y="113" width="1092" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602453682974">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="140" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1368.872@0.0.1368.872" timestamp="1599435775923" />
-    <state x="196" y="113" width="1092" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602453120432" />
+    <state x="196" y="113" width="1092" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602453682974" />
     <state x="561" y="295" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601344676330">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -754,11 +751,11 @@
     </state>
     <state x="554" y="156" key="RollbackChangesDialog/0.0.1368.872@0.0.1368.872" timestamp="1596167885345" />
     <state x="778" y="193" key="RollbackChangesDialog/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602221842866" />
-    <state x="284" y="127" width="998" height="869" key="SettingsEditor" timestamp="1602453297016">
+    <state x="284" y="127" width="998" height="869" key="SettingsEditor" timestamp="1602453807650">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="31" y="105" key="SettingsEditor/0.0.1368.872@0.0.1368.872" timestamp="1598240806647" />
-    <state x="284" y="127" width="998" height="869" key="SettingsEditor/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602453297016" />
+    <state x="284" y="127" width="998" height="869" key="SettingsEditor/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602453807650" />
     <state x="552" y="272" key="Vcs.Push.Dialog.v2" timestamp="1602223174415">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -781,11 +778,11 @@
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state x="555" y="167" key="ftp.server.browser/0.0.1368.872@0.0.1368.872" timestamp="1596080435096" />
-    <state x="493" y="233" width="944" height="840" key="search.everywhere.popup" timestamp="1602224226213">
+    <state x="493" y="233" width="944" height="840" key="search.everywhere.popup" timestamp="1602453514266">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="351" y="188" width="672" height="678" key="search.everywhere.popup/0.0.1368.872@0.0.1368.872" timestamp="1599441464606" />
-    <state x="493" y="233" width="944" height="840" key="search.everywhere.popup/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602224226213" />
+    <state x="493" y="233" width="944" height="840" key="search.everywhere.popup/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602453514266" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

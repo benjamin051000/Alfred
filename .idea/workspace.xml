@@ -23,14 +23,16 @@
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:dockerize" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e37654ec-6a1d-4080-9d15-14bbfe331706" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Alfred II.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Alfred II.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/music.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/music.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.run/src.main.run.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,11 +62,11 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/configloader.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/music.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/commands.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/music.py" root0="SKIP_INSPECTION" />
   </component>
-  <component name="JupyterTrust" id="06ae4c10-f9a1-41f3-8612-6fc7c2ad2364" />
+  <component name="JupyterTrust" id="40c2b450-ebed-4516-9bb9-f8b9484c0886" />
   <component name="ProjectId" id="1Xjw04WYlyZBEqmIIBmOsOBm3KJ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -82,14 +84,14 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/venv" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Dockerfile" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="web.server" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -112,6 +114,57 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="src.main" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="true" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="src.main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Alfred II" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="DockerContainerSettingsRunConfigurationExtension">
+        <option name="envVars">
+          <list />
+        </option>
+        <option name="extraHosts">
+          <list />
+        </option>
+        <option name="links">
+          <list />
+        </option>
+        <option name="networkDisabled" value="false" />
+        <option name="networkMode" value="bridge" />
+        <option name="portBindings">
+          <list />
+        </option>
+        <option name="publishAllPorts" value="false" />
+        <option name="runCliOptions" value="--entrypoint= --rm" />
+        <option name="version" value="2" />
+        <option name="volumeBindings">
+          <list>
+            <DockerVolumeBindingImpl>
+              <option name="containerPath" value="/opt/project" />
+              <option name="editable" value="true" />
+              <option name="hostPath" value="$PROJECT_DIR$" />
+              <option name="readOnly" value="false" />
+            </DockerVolumeBindingImpl>
+          </list>
+        </option>
+      </EXTENSION>
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="src.main" />
       <option name="PARAMETERS" value="" />
@@ -161,27 +214,18 @@
       <workItem from="1599407155191" duration="73000" />
       <workItem from="1599407354218" duration="3197000" />
       <workItem from="1599440583795" duration="1854000" />
-    </task>
-    <task id="LOCAL-00015" summary="Put back in the try/except handling for joinChannel and changed some docs">
-      <created>1558991443247</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1558991443247</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Changed class names">
-      <created>1559509943329</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1559509943329</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Fixed volume persistence between songs.">
-      <created>1559512652447</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1559512652447</updated>
+      <workItem from="1600305733744" duration="726000" />
+      <workItem from="1600574660883" duration="560000" />
+      <workItem from="1601060379638" duration="86000" />
+      <workItem from="1601327757437" duration="5694000" />
+      <workItem from="1601353415815" duration="14000" />
+      <workItem from="1601405102166" duration="1604000" />
+      <workItem from="1601439813437" duration="55000" />
+      <workItem from="1601439913749" duration="30000" />
+      <workItem from="1601664636707" duration="635000" />
+      <workItem from="1602220459505" duration="3562000" />
+      <workItem from="1602270004255" duration="5000" />
+      <workItem from="1602345117856" duration="2228000" />
     </task>
     <task id="LOCAL-00018" summary="Fixed small bug in /prune.">
       <created>1559514812306</created>
@@ -505,7 +549,28 @@
       <option name="project" value="LOCAL" />
       <updated>1598712920060</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Facelifted /queue. Shows current song with thumbnail, each song shows duration and link to website.">
+      <created>1600152406963</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1600152406963</updated>
+    </task>
+    <task id="LOCAL-00065" summary="updated requirements.txt">
+      <created>1602223140925</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1602223140926</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Added Dockerfile (python on Debian buster)">
+      <created>1602223159095</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1602223159095</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -537,7 +602,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="dockerize" />
                       </list>
                     </value>
                   </entry>
@@ -565,9 +630,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Overhauled logger.py. Updated to discord.py 1.2.3." />
-    <MESSAGE value="Added extensive logger to all modules. Updated .gitignore to&#10;exclude logs." />
-    <MESSAGE value="Added a cleanup function to always delete the queue and voice client,&#10;as well as disconnect alfred as soon as he's done playing." />
     <MESSAGE value="Changed logger level to warning" />
     <MESSAGE value="Guards against live video errors." />
     <MESSAGE value="Webhook deployment via Node Express" />
@@ -590,34 +652,46 @@
     <MESSAGE value="Added todo for cfload" />
     <MESSAGE value="Shows word in the leaderboard embed. Fixed small typo." />
     <MESSAGE value="Fixed typo in winnie-the-pooh" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed typo in winnie-the-pooh" />
+    <MESSAGE value="Facelifted /queue. Shows current song with thumbnail, each song shows duration and link to website." />
+    <MESSAGE value="updated requirements.txt" />
+    <MESSAGE value="Added Dockerfile (python on Debian buster)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Dockerfile (python on Debian buster)" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="277" y="94" key="#Deployment" timestamp="1599436287706">
-      <screen x="0" y="0" width="1368" height="872" />
-    </state>
-    <state x="277" y="94" key="#Deployment/0.0.1368.872@0.0.1368.872" timestamp="1599436287706" />
-    <state x="357" y="117" key="#Options" timestamp="1596081304818">
-      <screen x="0" y="0" width="1368" height="872" />
-    </state>
-    <state x="357" y="117" key="#Options/0.0.1368.872@0.0.1368.872" timestamp="1596081304818" />
-    <state x="262" y="82" key="#SSH_Configurations" timestamp="1596079788469">
-      <screen x="0" y="0" width="1368" height="872" />
-    </state>
-    <state x="262" y="82" key="#SSH_Configurations/0.0.1368.872@0.0.1368.872" timestamp="1596079788469" />
-    <state x="140" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599435775923">
-      <screen x="0" y="0" width="1368" height="872" />
-    </state>
-    <state x="140" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1368.872@0.0.1368.872" timestamp="1599435775923" />
-    <state x="400" y="238" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596164000008">
-      <screen x="0" y="0" width="1368" height="872" />
-    </state>
-    <state x="400" y="238" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1368.872@0.0.1368.872" timestamp="1596164000008" />
-    <state x="640" y="275" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1599407167246">
+    <state x="389" y="116" key="#Deployment" timestamp="1602453305787">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="640" y="275" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599407167246" />
+    <state x="277" y="94" key="#Deployment/0.0.1368.872@0.0.1368.872" timestamp="1599436287706" />
+    <state x="389" y="116" key="#Deployment/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602453305787" />
+    <state x="554" y="281" key="#Docker2" timestamp="1602345171909">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="554" y="281" key="#Docker2/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602345171909" />
+    <state x="501" y="145" key="#Options" timestamp="1602453181813">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="357" y="117" key="#Options/0.0.1368.872@0.0.1368.872" timestamp="1596081304818" />
+    <state x="501" y="145" key="#Options/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602453181813" />
+    <state x="368" y="102" key="#SSH_Configurations" timestamp="1602453293481">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="262" y="82" key="#SSH_Configurations/0.0.1368.872@0.0.1368.872" timestamp="1596079788469" />
+    <state x="368" y="102" key="#SSH_Configurations/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602453293481" />
+    <state x="196" y="113" width="1092" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602453120432">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="140" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1368.872@0.0.1368.872" timestamp="1599435775923" />
+    <state x="196" y="113" width="1092" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602453120432" />
+    <state x="561" y="295" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601344676330">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="400" y="238" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1368.872@0.0.1368.872" timestamp="1596164000008" />
+    <state x="561" y="295" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1601344676330" />
+    <state x="640" y="275" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1601439828967">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="640" y="275" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1601439828967" />
     <state x="0" y="189" key="#xdebugger.XInspectDialog" timestamp="1599436705039">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
@@ -626,71 +700,79 @@
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state x="181" y="23" key="CommitChangelistDialog2/0.0.1368.872@0.0.1368.872" timestamp="1596167606295" />
-    <state x="466" y="192" key="FileChooserDialogImpl" timestamp="1596163590242">
-      <screen x="0" y="0" width="1368" height="872" />
+    <state x="92" y="92" width="1736" height="896" key="DiffContextDialog" timestamp="1602220724459">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="92" y="92" width="1736" height="896" key="DiffContextDialog/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602220724459" />
+    <state x="654" y="238" key="FileChooserDialogImpl" timestamp="1602220738166">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="466" y="192" key="FileChooserDialogImpl/0.0.1368.872@0.0.1368.872" timestamp="1596163590242" />
-    <state width="1326" height="225" key="GridCell.Tab.0.bottom" timestamp="1599442245026">
-      <screen x="0" y="0" width="1368" height="872" />
+    <state x="654" y="238" key="FileChooserDialogImpl/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602220738166" />
+    <state width="1877" height="183" key="GridCell.Tab.0.bottom" timestamp="1602452904753">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1326" height="225" key="GridCell.Tab.0.bottom/0.0.1368.872@0.0.1368.872" timestamp="1599442245026" />
-    <state width="1877" height="179" key="GridCell.Tab.0.bottom/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541679" />
-    <state width="1326" height="225" key="GridCell.Tab.0.center" timestamp="1599442245025">
-      <screen x="0" y="0" width="1368" height="872" />
+    <state width="1877" height="183" key="GridCell.Tab.0.bottom/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602452904753" />
+    <state width="1877" height="183" key="GridCell.Tab.0.center" timestamp="1602452904753">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1326" height="225" key="GridCell.Tab.0.center/0.0.1368.872@0.0.1368.872" timestamp="1599442245025" />
-    <state width="1877" height="179" key="GridCell.Tab.0.center/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541679" />
-    <state width="1326" height="225" key="GridCell.Tab.0.left" timestamp="1599442245025">
-      <screen x="0" y="0" width="1368" height="872" />
+    <state width="1877" height="183" key="GridCell.Tab.0.center/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602452904753" />
+    <state width="1877" height="183" key="GridCell.Tab.0.left" timestamp="1602452904753">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1326" height="225" key="GridCell.Tab.0.left/0.0.1368.872@0.0.1368.872" timestamp="1599442245025" />
-    <state width="1877" height="179" key="GridCell.Tab.0.left/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541678" />
-    <state width="1326" height="225" key="GridCell.Tab.0.right" timestamp="1599442245025">
-      <screen x="0" y="0" width="1368" height="872" />
+    <state width="1877" height="183" key="GridCell.Tab.0.left/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602452904753" />
+    <state width="1877" height="183" key="GridCell.Tab.0.right" timestamp="1602452904753">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1326" height="225" key="GridCell.Tab.0.right/0.0.1368.872@0.0.1368.872" timestamp="1599442245025" />
-    <state width="1877" height="179" key="GridCell.Tab.0.right/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541679" />
-    <state width="1326" height="225" key="GridCell.Tab.1.bottom" timestamp="1599442244856">
-      <screen x="0" y="0" width="1368" height="872" />
+    <state width="1877" height="183" key="GridCell.Tab.0.right/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602452904753" />
+    <state width="1877" height="298" key="GridCell.Tab.1.bottom" timestamp="1602345642521">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1326" height="225" key="GridCell.Tab.1.bottom/0.0.1368.872@0.0.1368.872" timestamp="1599442244856" />
-    <state width="1877" height="179" key="GridCell.Tab.1.bottom/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541063" />
-    <state width="1326" height="225" key="GridCell.Tab.1.center" timestamp="1599442244855">
-      <screen x="0" y="0" width="1368" height="872" />
+    <state width="1877" height="298" key="GridCell.Tab.1.bottom/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602345642521" />
+    <state width="1877" height="298" key="GridCell.Tab.1.center" timestamp="1602345642521">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1326" height="225" key="GridCell.Tab.1.center/0.0.1368.872@0.0.1368.872" timestamp="1599442244855" />
-    <state width="1877" height="179" key="GridCell.Tab.1.center/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541063" />
-    <state width="1326" height="225" key="GridCell.Tab.1.left" timestamp="1599442244855">
-      <screen x="0" y="0" width="1368" height="872" />
+    <state width="1877" height="298" key="GridCell.Tab.1.center/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602345642521" />
+    <state width="1877" height="298" key="GridCell.Tab.1.left" timestamp="1602345642521">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1326" height="225" key="GridCell.Tab.1.left/0.0.1368.872@0.0.1368.872" timestamp="1599442244855" />
-    <state width="1877" height="179" key="GridCell.Tab.1.left/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541063" />
-    <state width="1326" height="225" key="GridCell.Tab.1.right" timestamp="1599442244856">
-      <screen x="0" y="0" width="1368" height="872" />
+    <state width="1877" height="298" key="GridCell.Tab.1.left/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602345642521" />
+    <state width="1877" height="298" key="GridCell.Tab.1.right" timestamp="1602345642521">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1326" height="225" key="GridCell.Tab.1.right/0.0.1368.872@0.0.1368.872" timestamp="1599442244856" />
-    <state width="1877" height="179" key="GridCell.Tab.1.right/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599410541063" />
-    <state x="554" y="156" key="RollbackChangesDialog" timestamp="1596167885345">
-      <screen x="0" y="0" width="1368" height="872" />
+    <state width="1877" height="298" key="GridCell.Tab.1.right/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602345642521" />
+    <state x="778" y="193" key="RollbackChangesDialog" timestamp="1602221842866">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="554" y="156" key="RollbackChangesDialog/0.0.1368.872@0.0.1368.872" timestamp="1596167885345" />
-    <state x="31" y="105" key="SettingsEditor" timestamp="1598240806647">
-      <screen x="0" y="0" width="1368" height="872" />
+    <state x="778" y="193" key="RollbackChangesDialog/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602221842866" />
+    <state x="284" y="127" width="998" height="869" key="SettingsEditor" timestamp="1602453297016">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="31" y="105" key="SettingsEditor/0.0.1368.872@0.0.1368.872" timestamp="1598240806647" />
-    <state x="393" y="220" key="Vcs.Push.Dialog.v2" timestamp="1598754240270">
-      <screen x="0" y="0" width="1368" height="872" />
+    <state x="284" y="127" width="998" height="869" key="SettingsEditor/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602453297016" />
+    <state x="552" y="272" key="Vcs.Push.Dialog.v2" timestamp="1602223174415">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="393" y="220" key="Vcs.Push.Dialog.v2/0.0.1368.872@0.0.1368.872" timestamp="1598754240270" />
+    <state x="552" y="272" key="Vcs.Push.Dialog.v2/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602223174415" />
     <state x="547" y="335" key="WebDeployment.AddServerDialog.v.1" timestamp="1596031703576">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state x="547" y="335" key="WebDeployment.AddServerDialog.v.1/0.0.1368.872@0.0.1368.872" timestamp="1596031703576" />
-    <state x="769" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599407904506">
+    <state x="769" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602220506563">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="548" y="366" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1368.872@0.0.1368.872" timestamp="1596163312905" />
-    <state x="769" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1599407904506" />
+    <state x="769" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602220506563" />
     <state x="339" y="327" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration" timestamp="1596080298637">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
@@ -699,10 +781,11 @@
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state x="555" y="167" key="ftp.server.browser/0.0.1368.872@0.0.1368.872" timestamp="1596080435096" />
-    <state x="351" y="188" width="672" height="678" key="search.everywhere.popup" timestamp="1599441464606">
-      <screen x="0" y="0" width="1368" height="872" />
+    <state x="493" y="233" width="944" height="840" key="search.everywhere.popup" timestamp="1602224226213">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="351" y="188" width="672" height="678" key="search.everywhere.popup/0.0.1368.872@0.0.1368.872" timestamp="1599441464606" />
+    <state x="493" y="233" width="944" height="840" key="search.everywhere.popup/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602224226213" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -716,6 +799,16 @@
           <url>file://$PROJECT_DIR$/src/commands.py</url>
           <line>119</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/music.py</url>
+          <line>79</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/music.py</url>
+          <line>257</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -734,7 +827,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Alfred$test_fi.coverage" NAME="test fi Coverage Results" MODIFIED="1585590525941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Alfred$src_main.coverage" NAME="src.main Coverage Results" MODIFIED="1599442434886" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/Alfred$src_main.coverage" NAME="src.main Coverage Results" MODIFIED="1602452884700" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/Alfred$main.coverage" NAME="main Coverage Results" MODIFIED="1581572366917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>

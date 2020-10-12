@@ -3,3 +3,4 @@
 **/logs/*
 **/.idea
 config.ini
+/deploy/node_modules

@@ -219,8 +219,11 @@ class Commands(commands.Cog):
         num_users = len(user_choices) - 1
         choice = random.randint(0, num_users)
 
-        # Prevent Alfred from choosing himself
-        while user_choices[choice].display_name == "Alfred": choice = random.randint(0, num_users)
+        #If a bot is chosen, remove it from the list and choose again
+        while(user_choices[choice].bot):
+            user_choices.remove(user_choices[choice])
+            num_users = len(user_choices) - 1
+            choice = random.randint(0, num_users)
 
         #Send chosen user
         await ctx.send(f"I randomly chose {user_choices[choice].display_name}")

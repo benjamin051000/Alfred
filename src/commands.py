@@ -215,7 +215,9 @@ class Commands(commands.Cog):
     async def pick(self, ctx):
 
         #Get users and choose a random user
-        user_choices = ctx.author.voice.channel.members
+        if(ctx.message.mentions): user_choices = ctx.message.mentions
+        else: user_choices = ctx.author.voice.channel.members
+        
         num_users = len(user_choices) - 1
         choice = random.randint(0, num_users)
 

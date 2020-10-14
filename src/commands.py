@@ -17,6 +17,7 @@ from logger import Logger as log
 cfload.read('..\\config.ini')  # TODO maybe move this to the setup function?
 log.info(cfload.configSectionMap("Owner Credentials")['owner_id'], "is the owner. Only this user can use /shutdown.")
 
+
 class Commands(commands.Cog):
     """Various commands"""
     prune_cutoff = 25
@@ -26,10 +27,10 @@ class Commands(commands.Cog):
         # Set up reddit client
         self.reddit_credentials = cfload.configSectionMap("Reddit API")
         self.reddit = praw.Reddit(client_id=self.reddit_credentials['client_id'],
-                        client_secret=self.reddit_credentials['client_secret'],
-                        user_agent=self.reddit_credentials['user_agent'],
-                        username=self.reddit_credentials['username'],
-                        password=self.reddit_credentials['password'])
+                                  client_secret=self.reddit_credentials['client_secret'],
+                                  user_agent=self.reddit_credentials['user_agent'],
+                                  username=self.reddit_credentials['username'],
+                                  password=self.reddit_credentials['password'])
 
     @commands.command()
     async def ping(self, ctx):
@@ -75,7 +76,7 @@ class Commands(commands.Cog):
             return
 
         # Get posts and choose a random one.
-        n = 100 # This could be replaced with a generator, but this is easier and almost never repeats.
+        n = 100  # This could be replaced with a generator, but this is easier and almost never repeats.
         posts = [p for p in sub.hot(limit=n)]
         post = random.choice(posts)
 
@@ -93,11 +94,11 @@ class Commands(commands.Cog):
             url='http://www.reddit.com/user/' + str(post.author),
             icon_url=post.author.icon_img
         )
-        if post.selftext is not '':  #If the post is a text post
+        if post.selftext is not '':  # If the post is a text post
             description = post.selftext[:1021] + '...' if len(post.selftext) > 1024 else post.selftext
             embed.add_field(name=str(post.score) + ' points', value=description)
 
-        else:  #If the post is a link post
+        else:  # If the post is a link post
             embed.add_field(name='Score:', value=post.score, inline=True)
             embed.add_field(name='Comments:', value=str(len(post.comments)), inline=True)
 
@@ -169,7 +170,8 @@ class Commands(commands.Cog):
                     minefield[x][y] = '\U0001F4A3'
                 else:
                     # Convert the number to its proper keycap emoji variant
-                    minefield[x][y] = f'\\U0000003{str(minefield[x][y])}\\U0000FE0F\\U000020E3'.encode().decode('unicode-escape')
+                    minefield[x][y] = f'\\U0000003{str(minefield[x][y])}\\U0000FE0F\\U000020E3'.encode().decode(
+                        'unicode-escape')
 
         # Create string to send
         text_field = 'Minesweeper:\n'
@@ -208,27 +210,28 @@ class Commands(commands.Cog):
                 await ctx.message.add_reaction("❌")
                 return
 
-
         await ctx.send(output)
 
     @commands.command()
     async def pick(self, ctx):
+        """ Choose a random member. """
+        # Get users and choose a random user
+        if ctx.message.mentions:
+            user_choices = ctx.message.mentions
+        else:
+            user_choices = ctx.author.voice.channel.members
 
-        #Get users and choose a random user
-        if(ctx.message.mentions): user_choices = ctx.message.mentions
-        else: user_choices = ctx.author.voice.channel.members
-        
         num_users = len(user_choices) - 1
         choice = random.randint(0, num_users)
 
-        #If a bot is chosen, remove it from the list and choose again
-        while(user_choices[choice].bot):
+        # If a bot is chosen, remove it from the list and choose again
+        while user_choices[choice].bot:
             user_choices.remove(user_choices[choice])
             num_users = len(user_choices) - 1
             choice = random.randint(0, num_users)
 
-        #Send chosen user
-        await ctx.send(f"I randomly chose {user_choices[choice].display_name}")
+        await ctx.send(f"I randomly chose {user_choices[choice].display_name}.", delete_after=30)
+
 
 class Dictionary(commands.Cog):
     """ A simple dictionary API. """

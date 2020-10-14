@@ -23,13 +23,14 @@
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:dockerize" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e37654ec-6a1d-4080-9d15-14bbfe331706" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/commands.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +52,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="dockerize" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -98,7 +99,7 @@
       </console-settings>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.src.main (alfred-image)">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="Alfred II" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -121,7 +122,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="src.main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="src.main (alfred-image)" type="PythonConfigurationType" factoryName="Python">
       <module name="Alfred II" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -172,6 +173,25 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Build alfred-image" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="imageTag" value="alfred-image" />
+          <option name="buildCliOptions" value="" />
+          <option name="buildOnly" value="true" />
+          <option name="command" value="" />
+          <option name="containerName" value="" />
+          <option name="entrypoint" value="" />
+          <option name="commandLineOptions" value="" />
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.src.main (alfred-image)" />
+      <item itemvalue="Docker.Build alfred-image" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -223,13 +243,9 @@
       <workItem from="1602220459505" duration="3562000" />
       <workItem from="1602270004255" duration="5000" />
       <workItem from="1602345117856" duration="2725000" />
-    </task>
-    <task id="LOCAL-00022" summary="Changed /meme to exclude NSFW subreddits (to be tested). Added reactions&#10;to specify loading times.">
-      <created>1560998389353</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1560998389353</updated>
+      <workItem from="1602526912029" duration="454000" />
+      <workItem from="1602562723297" duration="606000" />
+      <workItem from="1602631141128" duration="2085000" />
     </task>
     <task id="LOCAL-00023" summary="Polished meme embed">
       <created>1561037636174</created>
@@ -567,7 +583,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602453648517</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="added docker instructions">
+      <created>1602467642067</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1602467642067</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -599,7 +622,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="dockerize" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -627,7 +650,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added listening port" />
     <MESSAGE value="Updated deploy script. Updated gitignore." />
     <MESSAGE value="Added output for debugging" />
     <MESSAGE value="Updated update.sh" />
@@ -652,7 +674,8 @@
     <MESSAGE value="Updated .gitignore to include node_modules. This server will someday be gone." />
     <MESSAGE value="Commented Dockerfile" />
     <MESSAGE value="Updated to add Merriam Webster info" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated to add Merriam Webster info" />
+    <MESSAGE value="added docker instructions" />
+    <option name="LAST_COMMIT_MESSAGE" value="added docker instructions" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -675,11 +698,11 @@
     </state>
     <state x="262" y="82" key="#SSH_Configurations/0.0.1368.872@0.0.1368.872" timestamp="1596079788469" />
     <state x="368" y="102" key="#SSH_Configurations/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602453293481" />
-    <state x="196" y="113" width="1092" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602453682974">
+    <state x="196" y="113" width="1092" height="739" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602562805556">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="140" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1368.872@0.0.1368.872" timestamp="1599435775923" />
-    <state x="196" y="113" width="1092" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602453682974" />
+    <state x="196" y="113" width="1092" height="739" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602562805556" />
     <state x="561" y="295" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601344676330">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -689,10 +712,11 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="640" y="275" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1601439828967" />
-    <state x="0" y="189" key="#xdebugger.XInspectDialog" timestamp="1599436705039">
-      <screen x="0" y="0" width="1368" height="872" />
+    <state x="259" y="257" width="699" height="796" key="#xdebugger.XInspectDialog" timestamp="1602635211988">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="0" y="189" key="#xdebugger.XInspectDialog/0.0.1368.872@0.0.1368.872" timestamp="1599436705039" />
+    <state x="259" y="257" width="699" height="796" key="#xdebugger.XInspectDialog/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602635211988" />
     <state x="181" y="23" key="CommitChangelistDialog2" timestamp="1596167606295">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
@@ -706,70 +730,70 @@
     </state>
     <state x="466" y="192" key="FileChooserDialogImpl/0.0.1368.872@0.0.1368.872" timestamp="1596163590242" />
     <state x="654" y="238" key="FileChooserDialogImpl/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602220738166" />
-    <state width="1877" height="183" key="GridCell.Tab.0.bottom" timestamp="1602452904753">
+    <state width="1877" height="298" key="GridCell.Tab.0.bottom" timestamp="1602635080499">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1326" height="225" key="GridCell.Tab.0.bottom/0.0.1368.872@0.0.1368.872" timestamp="1599442245026" />
-    <state width="1877" height="183" key="GridCell.Tab.0.bottom/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602452904753" />
-    <state width="1877" height="183" key="GridCell.Tab.0.center" timestamp="1602452904753">
+    <state width="1877" height="298" key="GridCell.Tab.0.bottom/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602635080499" />
+    <state width="1877" height="298" key="GridCell.Tab.0.center" timestamp="1602635080499">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1326" height="225" key="GridCell.Tab.0.center/0.0.1368.872@0.0.1368.872" timestamp="1599442245025" />
-    <state width="1877" height="183" key="GridCell.Tab.0.center/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602452904753" />
-    <state width="1877" height="183" key="GridCell.Tab.0.left" timestamp="1602452904753">
+    <state width="1877" height="298" key="GridCell.Tab.0.center/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602635080499" />
+    <state width="1877" height="298" key="GridCell.Tab.0.left" timestamp="1602635080499">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1326" height="225" key="GridCell.Tab.0.left/0.0.1368.872@0.0.1368.872" timestamp="1599442245025" />
-    <state width="1877" height="183" key="GridCell.Tab.0.left/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602452904753" />
-    <state width="1877" height="183" key="GridCell.Tab.0.right" timestamp="1602452904753">
+    <state width="1877" height="298" key="GridCell.Tab.0.left/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602635080499" />
+    <state width="1877" height="298" key="GridCell.Tab.0.right" timestamp="1602635080499">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1326" height="225" key="GridCell.Tab.0.right/0.0.1368.872@0.0.1368.872" timestamp="1599442245025" />
-    <state width="1877" height="183" key="GridCell.Tab.0.right/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602452904753" />
-    <state width="1877" height="298" key="GridCell.Tab.1.bottom" timestamp="1602345642521">
+    <state width="1877" height="298" key="GridCell.Tab.0.right/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602635080499" />
+    <state width="1877" height="298" key="GridCell.Tab.1.bottom" timestamp="1602635081061">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1326" height="225" key="GridCell.Tab.1.bottom/0.0.1368.872@0.0.1368.872" timestamp="1599442244856" />
-    <state width="1877" height="298" key="GridCell.Tab.1.bottom/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602345642521" />
-    <state width="1877" height="298" key="GridCell.Tab.1.center" timestamp="1602345642521">
+    <state width="1877" height="298" key="GridCell.Tab.1.bottom/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602635081061" />
+    <state width="1877" height="298" key="GridCell.Tab.1.center" timestamp="1602635081061">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1326" height="225" key="GridCell.Tab.1.center/0.0.1368.872@0.0.1368.872" timestamp="1599442244855" />
-    <state width="1877" height="298" key="GridCell.Tab.1.center/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602345642521" />
-    <state width="1877" height="298" key="GridCell.Tab.1.left" timestamp="1602345642521">
+    <state width="1877" height="298" key="GridCell.Tab.1.center/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602635081061" />
+    <state width="1877" height="298" key="GridCell.Tab.1.left" timestamp="1602635081061">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1326" height="225" key="GridCell.Tab.1.left/0.0.1368.872@0.0.1368.872" timestamp="1599442244855" />
-    <state width="1877" height="298" key="GridCell.Tab.1.left/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602345642521" />
-    <state width="1877" height="298" key="GridCell.Tab.1.right" timestamp="1602345642521">
+    <state width="1877" height="298" key="GridCell.Tab.1.left/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602635081061" />
+    <state width="1877" height="298" key="GridCell.Tab.1.right" timestamp="1602635081061">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1326" height="225" key="GridCell.Tab.1.right/0.0.1368.872@0.0.1368.872" timestamp="1599442244856" />
-    <state width="1877" height="298" key="GridCell.Tab.1.right/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602345642521" />
+    <state width="1877" height="298" key="GridCell.Tab.1.right/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602635081061" />
     <state x="778" y="193" key="RollbackChangesDialog" timestamp="1602221842866">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="554" y="156" key="RollbackChangesDialog/0.0.1368.872@0.0.1368.872" timestamp="1596167885345" />
     <state x="778" y="193" key="RollbackChangesDialog/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602221842866" />
-    <state x="284" y="127" width="998" height="869" key="SettingsEditor" timestamp="1602453807650">
+    <state x="284" y="127" width="998" height="869" key="SettingsEditor" timestamp="1602466733426">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="31" y="105" key="SettingsEditor/0.0.1368.872@0.0.1368.872" timestamp="1598240806647" />
-    <state x="284" y="127" width="998" height="869" key="SettingsEditor/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602453807650" />
-    <state x="552" y="272" key="Vcs.Push.Dialog.v2" timestamp="1602223174415">
+    <state x="284" y="127" width="998" height="869" key="SettingsEditor/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602466733426" />
+    <state x="552" y="272" key="Vcs.Push.Dialog.v2" timestamp="1602467747363">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="393" y="220" key="Vcs.Push.Dialog.v2/0.0.1368.872@0.0.1368.872" timestamp="1598754240270" />
-    <state x="552" y="272" key="Vcs.Push.Dialog.v2/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602223174415" />
+    <state x="552" y="272" key="Vcs.Push.Dialog.v2/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602467747363" />
     <state x="547" y="335" key="WebDeployment.AddServerDialog.v.1" timestamp="1596031703576">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state x="547" y="335" key="WebDeployment.AddServerDialog.v.1/0.0.1368.872@0.0.1368.872" timestamp="1596031703576" />
-    <state x="769" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602220506563">
+    <state x="769" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602562792982">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="548" y="366" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1368.872@0.0.1368.872" timestamp="1596163312905" />
-    <state x="769" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602220506563" />
+    <state x="769" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080/-1280.294.1280.1024@0.0.1920.1080" timestamp="1602562792982" />
     <state x="339" y="327" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration" timestamp="1596080298637">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
@@ -793,11 +817,6 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/commands.py</url>
-          <line>119</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/music.py</url>
           <line>79</line>
           <option name="timeStamp" value="5" />
@@ -806,6 +825,11 @@
           <url>file://$PROJECT_DIR$/src/music.py</url>
           <line>257</line>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/commands.py</url>
+          <line>223</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -824,6 +848,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Alfred$test_fi.coverage" NAME="test fi Coverage Results" MODIFIED="1585590525941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Alfred$src_main__alfred_image_.coverage" NAME="src.main (alfred-image) Coverage Results" MODIFIED="1602634928885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/Alfred$src_main.coverage" NAME="src.main Coverage Results" MODIFIED="1602452884700" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/Alfred$main.coverage" NAME="main Coverage Results" MODIFIED="1581572366917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>

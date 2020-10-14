@@ -1,3 +1,4 @@
+import discord
 from discord.ext import commands
 
 import configloader as cfload
@@ -10,7 +11,16 @@ cfload.read('../config.ini')
 startup_extensions = cfload.configSectionMap('Startup')['startup_extensions'].split()
 command_prefix = cfload.configSectionMap('Commands')['command_prefix']
 
-bot = commands.Bot(command_prefix=commands.when_mentioned_or(command_prefix), description=cfload.configSectionMap('Startup')['description'], case_insensitive = True)
+# Add gateway intents for members.
+intents = discord.Intents.default()  # All but the two privileged ones
+intents.members = True  # Subscribe to the Members intent
+
+bot = commands.Bot(
+    command_prefix=commands.when_mentioned_or(command_prefix),
+    description=cfload.configSectionMap('Startup')['description'],
+    case_insensitive = True,
+    intents=intents
+)
 
 # Load extensions
 if __name__ == '__main__':

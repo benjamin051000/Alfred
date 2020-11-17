@@ -4,3 +4,6 @@
 **/.idea
 config.ini
 /deploy/node_modules
+keys/
+music_cache/
+**/__pycache__/

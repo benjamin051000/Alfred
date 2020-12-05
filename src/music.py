@@ -121,7 +121,7 @@ class YTDLSource:  # TODO subclass to PCMVolumeTransformer? (like that noob in t
             download_data = await ctx.bot.loop.run_in_executor(None, download_func)
             path = ydl.prepare_filename(download_data)
 
-            await ctx.message.remove_reaction('🔍', ctx.me)  # TODO might throw
+            # await ctx.message.remove_reaction('🔍', ctx.me)  # TODO might throw
             await ctx.message.remove_reaction('⌛', ctx.me)
             await ctx.message.add_reaction('✅')
 
@@ -336,7 +336,7 @@ class Music(commands.Cog):
             print('Files to be removed:', music_files)
             for file in music_files:
                 os.remove(file)
-            await ctx.message.add_reaction('🗑')
+            await ctx.message.add_reaction('🗑')  # Trash can
         except Exception as e:
             await ctx.add_reaction('⚠')
             raise e

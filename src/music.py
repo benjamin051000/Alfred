@@ -188,6 +188,9 @@ class Music(commands.Cog):
         """Destroys a guild's player. Disconnects from the channel
         and deletes the player entry in Music.players."""
         if cls.players[guild_id].vc is not None:
+            # Stop music activity.
+            await cls.players[guild_id].activity.change_act(MusicActivity.Status.STOPPED, None)
+            # Disconnect client.
             await cls.players[guild_id].vc.disconnect()
         del cls.players[guild_id]
         log.debug('Destroyed', str(guild_id) + '\'s MusicPlayer.')
@@ -210,7 +213,6 @@ class Music(commands.Cog):
         """Leave the voice channel, clear the queue."""
         player = self.get_player(ctx)
         await Music.destroy_player(player.guild_id)
-        await self.activity.change_act(MusicActivity.Status.STOPPED, None)
         await ctx.message.add_reaction('🚪')
 
     @commands.command(aliases=['q'])

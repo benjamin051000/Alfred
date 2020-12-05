@@ -206,11 +206,12 @@ class Music(commands.Cog):
             log.info('Player already connected.')
 
     @commands.command()
-    async def leave(self, ctx):
+    async def leave(self, ctx: commands.Context):
         """Leave the voice channel, clear the queue."""
         player = self.get_player(ctx)
         await Music.destroy_player(player.guild_id)
         await self.activity.change_act(MusicActivity.Status.STOPPED, None)
+        await ctx.message.add_reaction('🚪')
 
     @commands.command(aliases=['q'])
     async def queue(self, ctx):  # TODO add links to queues, improve embed functionality and UI

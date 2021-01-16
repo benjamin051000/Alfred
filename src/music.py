@@ -88,7 +88,7 @@ class YTDLSource:  # TODO subclass to PCMVolumeTransformer? (like that noob in t
             # Check the duration
             if info['duration'] > cls.CUTOFF_DURATION:
                 fduration = datetime.timedelta(seconds=info['duration'])
-                confirmation_msg = await ctx.send(f'This video is {fduration} long. Are you sure you want to play it?')
+                confirmation_msg = await ctx.reply(f'This video is {fduration} long. Are you sure you want to play it?', mention_author=True)
 
                 for emoji in '✅❌':
                     await confirmation_msg.add_reaction(emoji)
@@ -206,7 +206,10 @@ class Music(commands.Cog):
         try:
             player.vc = await ctx.author.voice.channel.connect()
         except discord.errors.ClientException:
-            log.info('Player already connected.')
+            log.warning('Player already connected.')
+        except AttributeError:
+            await ctx.add_reaction('🚫')
+            log.warning('You must be in a voice channel to summon me.')
 
     @commands.command()
     async def leave(self, ctx: commands.Context):
@@ -222,7 +225,7 @@ class Music(commands.Cog):
 
         embed = discord.Embed(title='Song Queue', colour=discord.Colour(0xe7d066))  # Yellow
         if len(player.queue) == 0 and not player.current_source:
-            await ctx.send('Nothing is playing. Play a song with /play', delete_after=10)
+            await ctx.reply('Nothing is playing. Play a song with /play', delete_after=10, mention_author=True)
         else:
             embed = discord.Embed(title="Song Queue", colour=discord.Colour(0xe7d066),
                                   description="__🎶Now Playing__")
@@ -325,13 +328,13 @@ class Music(commands.Cog):
             emoji = '🔇' if player.volume == 0 else '🔊'
             await ctx.message.add_reaction(emoji)  # white heavy check mark (green in Discord)
         else:
-            await ctx.send(f'Volume currently set to {int(player.audio_streamer.volume * 100)}%.', delete_after=10)
+            await ctx.reply(f'Volume currently set to {int(player.audio_streamer.volume * 100)}%.', delete_after=10)
 
     @commands.command()
     async def clearcache(self, ctx):
         """ ADMIN COMMAND: Clear music cache. """
         if ctx.author.id == self.owner_id:
-            await ctx.send('You can\'t use this command.', delete_after=5)
+            await ctx.reply('You can\'t use this command.', delete_after=5)
             return
         try:
             music_files = glob.glob('../music_cache/*')

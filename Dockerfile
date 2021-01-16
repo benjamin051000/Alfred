@@ -1,6 +1,6 @@
 # Dockerfile to run Alfred in an Docker container.
 
-FROM python:3.6.12-buster
+FROM python:3.9-buster
 
 WORKDIR /Alfred
 
@@ -11,7 +11,11 @@ COPY requirements.txt /Alfred/requirements.txt
 
 RUN pip3 install -r requirements.txt
 
+# Add directories
+RUN mkdir /Alfred/music_cache && mkdir /Alfred/logs
+
 # Copy all files into the container
-COPY . .
+COPY src /Alfred/src
+COPY config.ini /Alfred/config.ini
 
 CMD cd src && python3 main.py

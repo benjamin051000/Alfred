@@ -94,7 +94,7 @@ class Commands(commands.Cog):
             url='http://www.reddit.com/user/' + str(post.author),
             icon_url=post.author.icon_img
         )
-        if post.selftext is not '':  # If the post is a text post
+        if post.selftext != '':  # If the post is a text post
             description = post.selftext[:1021] + '...' if len(post.selftext) > 1024 else post.selftext
             embed.add_field(name=str(post.score) + ' points', value=description)
 

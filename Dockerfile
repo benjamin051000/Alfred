@@ -1,11 +1,11 @@
 # Dockerfile to run Alfred in an Docker container.
 
-FROM python:3.9-buster
+FROM python:3.9-slim
 
 WORKDIR /Alfred
 
 # Install all dependencies for voice (including ffmpeg)
-RUN apt-get update && apt-get install -y libffi-dev libnacl-dev ffmpeg
+RUN apt-get update && apt-get install -y gcc libffi-dev libnacl-dev ffmpeg
 
 COPY requirements.txt /Alfred/requirements.txt
 

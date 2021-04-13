@@ -16,6 +16,5 @@ RUN mkdir /Alfred/music_cache && mkdir /Alfred/logs
 
 # Copy all files into the container
 COPY src /Alfred/src
-COPY config.ini /Alfred/config.ini
 
 CMD cd src && python3 main.py
